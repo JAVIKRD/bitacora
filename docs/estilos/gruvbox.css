@@ -1,0 +1,322 @@
+/* ==========================================================================
+   GitBook Hacker Dark (Red & Pitch Black Edition)
+   Inspirado en la estética de extictz: fondo negro profundo, rojo hacker y banner
+   ========================================================================== */
+
+[data-md-color-scheme="slate"] {
+  /* Fondo negro profundo y superficies estilo GitBook Dark */
+  --md-default-bg-color:          #07080a;
+  --md-default-bg-color--light:   #0d0f14;
+  --md-default-bg-color--lighter: #12151c;
+  --md-default-bg-color--lightest:#1a1d26;
+
+  /* Texto de alto contraste */
+  --md-default-fg-color:          #f0f6fc;
+  --md-default-fg-color--light:   #c9d1d9;
+  --md-default-fg-color--lighter: #8b949e;
+  --md-default-fg-color--lightest:#484f58;
+
+  /* Primario y acento Rojo Hacker (#ff3838 / #ff4d4d) */
+  --md-primary-fg-color:          #ff3838;
+  --md-primary-fg-color--light:   #ff4d4d;
+  --md-primary-fg-color--dark:    #d32f2f;
+  --md-primary-bg-color:          #07080a;
+  --md-primary-bg-color--light:   #0d0f14;
+
+  --md-accent-fg-color:              #ff3838;
+  --md-accent-fg-color--transparent: rgba(255, 56, 56, 0.15);
+  --md-accent-bg-color:              #07080a;
+  --md-accent-bg-color--light:       #0d0f14;
+
+  /* Código */
+  --md-code-bg-color:             #040406;
+  --md-code-fg-color:             #f0f6fc;
+  --md-code-hl-color:             #12151c;
+  --md-code-hl-number-color:      #ff7b72;
+  --md-code-hl-special-color:     #ff3838;
+  --md-code-hl-function-color:    #7ee787;
+  --md-code-hl-constant-color:    #d2a8ff;
+  --md-code-hl-keyword-color:     #ff7b72;
+  --md-code-hl-string-color:      #a5d6ff;
+  --md-code-hl-name-color:        #79c0ff;
+  --md-code-hl-operator-color:    #ffa657;
+  --md-code-hl-punctuation-color: #c9d1d9;
+  --md-code-hl-comment-color:     #8b949e;
+  --md-code-hl-generic-color:     #f0f6fc;
+  --md-code-hl-variable-color:    #79c0ff;
+
+  /* Bordes sutiles y divisores */
+  --md-typeset-table-color:       #1e222b;
+  --md-typeset-kbd-border-color:  #1e222b;
+  --md-shadow-z1:                 0 4px 14px rgba(0, 0, 0, 0.6);
+  --md-shadow-z2:                 0 8px 28px rgba(0, 0, 0, 0.8);
+}
+
+/* Header superior estilo GitBook */
+.md-header {
+  background-color: #07080a !important;
+  border-bottom: 1px solid #171a21;
+  box-shadow: none !important;
+  color: #f0f6fc;
+}
+
+.md-header__title,
+.md-header__button {
+  color: #f0f6fc !important;
+}
+
+.md-logo img {
+  border-radius: 4px;
+}
+
+/* Barra de búsqueda estilo píldora GitBook */
+.md-search__inner {
+  border-radius: 20px;
+  background-color: #0d0f14;
+  border: 1px solid #1e222b;
+}
+
+.md-search__input {
+  border-radius: 20px;
+}
+
+/* Barra lateral de navegación */
+.md-sidebar--primary {
+  background-color: #07080a;
+  border-right: 1px solid #171a21;
+}
+
+.md-nav {
+  font-size: 0.85rem;
+}
+
+.md-nav__link {
+  color: #c9d1d9;
+  transition: all 0.15s ease;
+  padding: 0.35rem 0.6rem;
+  border-radius: 5px;
+}
+
+.md-nav__link:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Elemento activo del menú: limpio, sin fondo rojo ni barra vertical */
+.md-nav__link--active,
+.md-nav__item--active > .md-nav__link,
+.md-nav__link--active:focus,
+.md-nav__link--active:hover {
+  color: #ffffff !important;
+  font-weight: 600;
+  background-color: transparent !important;
+}
+
+.md-nav__item--active > .md-nav__link::before {
+  content: none !important;
+}
+
+/* Ocultar completamente la flecha del acordeón y su botón lateral */
+.md-nav__icon,
+.md-nav__link .md-icon,
+.md-nav__container > label.md-nav__link,
+label.md-nav__link {
+  display: none !important;
+}
+
+.md-nav__container {
+  display: block !important;
+}
+
+.md-nav__container > a.md-nav__link {
+  display: block !important;
+  width: 100%;
+}
+
+/* Enlaces generales */
+.md-typeset a,
+a {
+  color: #ff4d4d;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.md-typeset a:hover,
+a:hover {
+  color: #ff7b72;
+  text-decoration: underline;
+}
+
+/* Títulos con peso y contraste limpio */
+.md-typeset h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #f0f6fc;
+  margin-top: 1rem;
+  letter-spacing: -0.5px;
+}
+
+.md-typeset h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #f0f6fc;
+  border-bottom: 1px solid #171a21;
+  padding-bottom: 0.3rem;
+}
+
+.md-typeset h3,
+.md-typeset h4 {
+  color: #f0f6fc;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   Componentes de la Portada
+   ========================================================================== */
+
+/* Banner de portada estilo Black Hole */
+.banner-container {
+  width: 100%;
+  margin-bottom: 1.8rem;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #1e222b;
+  box-shadow: 0 4px 24px rgba(255, 56, 56, 0.15);
+  background-color: #040406;
+}
+
+.banner-img {
+  width: 100%;
+  max-height: 280px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Cuadro de bienvenida destacado y centrado */
+.welcome-box {
+  margin: 2.2rem auto;
+  text-align: center;
+  max-width: 780px;
+  padding: 1.2rem;
+}
+
+.welcome-box h2 {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #ffffff;
+  border-bottom: none;
+  line-height: 1.45;
+  letter-spacing: -0.3px;
+}
+
+/* Terminal Lockout centrado */
+.terminal-lockout-container {
+  display: flex;
+  justify-content: center;
+  margin: 1.5rem auto 2.5rem auto;
+}
+
+.lockout-img {
+  max-width: 420px;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #2a1012;
+  box-shadow: 0 4px 20px rgba(255, 56, 56, 0.2);
+}
+
+/* Tarjetas (.grid.cards) con estilo negro profundo y hover rojo */
+.grid.cards > ul > li,
+.grid.cards > ol > li,
+.grid.cards > div,
+.grid.cards .card {
+  background-color: #0d0f14;
+  border: 1px solid #1a1d26;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.grid.cards > ul > li:hover,
+.grid.cards > ol > li:hover,
+.grid.cards > div:hover,
+.grid.cards .card:hover {
+  border-color: #ff3838;
+  box-shadow: 0 6px 20px rgba(255, 56, 56, 0.25);
+  transform: translateY(-2px);
+}
+
+.grid.cards a {
+  color: #f0f6fc;
+}
+
+.grid.cards a:hover {
+  color: #ff4d4d;
+  text-decoration: none;
+}
+
+/* Botones de acción */
+.hero-actions {
+  display: flex;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.md-button {
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  border: 1px solid #1e222b;
+  color: #c9d1d9;
+  background-color: #0d0f14;
+  padding: 0.5rem 1rem;
+}
+
+.md-button:hover {
+  background-color: #161a22;
+  border-color: #ff3838;
+  color: #ff3838;
+}
+
+.md-button--primary {
+  background-color: #ff3838 !important;
+  color: #ffffff !important;
+  border-color: #ff3838 !important;
+  box-shadow: 0 2px 10px rgba(255, 56, 56, 0.35);
+}
+
+.md-button--primary:hover {
+  background-color: #ff4d4d !important;
+  border-color: #ff4d4d !important;
+  box-shadow: 0 4px 16px rgba(255, 56, 56, 0.55);
+}
+
+/* Tablas con fondo oscuro y encabezado estilizado */
+.md-typeset table:not([class]) {
+  border: 1px solid #1e222b;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #0a0c10;
+}
+
+.md-typeset table:not([class]) th {
+  background-color: #0d0f14;
+  color: #ff4d4d;
+  font-weight: 600;
+  border-bottom: 1px solid #1e222b;
+}
+
+.md-typeset table:not([class]) td {
+  border-bottom: 1px solid #171a21;
+}
+
+/* Admonitions en rojo */
+.md-typeset .admonition.warning,
+.md-typeset details.warning {
+  border-color: #ff3838;
+}
+
+.md-typeset .warning > .admonition-title,
+.md-typeset .warning > summary {
+  background-color: rgba(255, 56, 56, 0.1);
+  border-left-color: #ff3838;
+}

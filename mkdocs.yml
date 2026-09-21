@@ -1,0 +1,63 @@
+site_name: Bitácora de javik
+
+theme:
+  name: material
+  language: es
+  logo: assets/lucifer.png
+  favicon: assets/lucifer.png
+  palette:
+    scheme: slate
+    primary: custom
+    accent: custom
+  font:
+    text: Inter
+    code: JetBrains Mono
+  features:
+    - navigation.indexes
+    - navigation.top
+    - navigation.instant
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - toc.follow
+
+extra_css:
+  - estilos/gruvbox.css
+
+exclude_docs: |
+  maquinas/htb/_plantilla.md
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - admonition
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+nav:
+  - 🎯 Bitácora de javik: index.md
+  - 💀 Máquinas HTB:
+      - maquinas/htb/index.md
+      - Administrator: maquinas/htb/administrator.md
+      - BabyTwo: maquinas/htb/babytwo.md
+      - Delegate: maquinas/htb/delegate.md
+      - TombWatcher: maquinas/htb/tombwatcher.md
+      - EscapeTwo: maquinas/htb/escapetwo.md
+      - Breach: maquinas/htb/breach.md
+  - 🛠️ Herramientas:
+      - herramientas/index.md
+      - NetExec (NXC): herramientas/nxc.md
+      - Sliver C2: herramientas/sliver-c2.md
+      - SeImpersonatePrivilege: herramientas/seimpersonate.md
+      - Enumeración MSSQL: herramientas/mssql.md
+      - Chisel & Pivoting: herramientas/chisel-pivoting.md
+  - 🏆 Certificaciones: certificaciones/index.md
