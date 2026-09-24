@@ -1,0 +1,1516 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../ataques-adcs-esc1/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/lucifer.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Configuración de AD Básico - Bitácora de javik</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../estilos/gruvbox.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#guia-configuracion-de-un-entorno-active-directory-basico" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Bitácora de javik" class="md-header__button md-logo" aria-label="Bitácora de javik" data-md-component="logo">
+      
+  <img src="../../assets/lucifer.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Bitácora de javik
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Configuración de AD Básico
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Bitácora de javik" class="md-nav__button md-logo" aria-label="Bitácora de javik" data-md-component="logo">
+      
+  <img src="../../assets/lucifer.png" alt="logo">
+
+    </a>
+    Bitácora de javik
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎯 Bitácora de javik
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../maquinas/htb/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💀 Máquinas HTB
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    💀 Máquinas HTB
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/administrator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administrator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/babytwo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BabyTwo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/delegate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Delegate
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/tombwatcher/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TombWatcher
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/escapetwo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EscapeTwo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/breach/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Breach
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/media/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Media
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/authority/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authority
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../herramientas/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛠️ Herramientas
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🛠️ Herramientas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../herramientas/nxc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NetExec (NXC)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../herramientas/sliver-c2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sliver C2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../herramientas/seimpersonate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SeImpersonatePrivilege
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../herramientas/mssql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enumeración MSSQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../herramientas/chisel-pivoting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chisel & Pivoting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../certificaciones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏆 Certificaciones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mis Notas
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Mis Notas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuración de AD Básico
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuración de AD Básico
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#fases-del-despliegue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fases del Despliegue
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-configuracion-de-ip-estatica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Configuración de IP estática
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Configuración de IP estática">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ajuste-del-firewall-de-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ajuste del Firewall de Windows
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-cambio-del-nombre-del-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Cambio del Nombre del Servidor
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-instalacion-del-rol-ad-ds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Instalación del Rol AD DS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-promover-el-servidor-a-controlador-de-dominio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Promover el Servidor a Controlador de Dominio
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-unir-un-equipo-windows-10-al-dominio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Unir un Equipo Windows 10 al Dominio
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-gestion-de-usuarios-y-unidades-organizativas-ou" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Gestión de Usuarios y Unidades Organizativas (OU)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Gestión de Usuarios y Unidades Organizativas (OU)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-es-una-unidad-organizativa-ou-y-por-que-es-clave-en-seguridad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Qué es una Unidad Organizativa (OU) y por qué es clave en seguridad?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creacion-de-una-unidad-organizativa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creación de una Unidad Organizativa
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creacion-de-usuarios-de-dominio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creación de Usuarios de Dominio
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-verificacion-del-acceso-remoto-con-netexec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Verificación del Acceso Remoto con NetExec
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ataques-adcs-esc1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abuso de AD CS (ESC1)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#fases-del-despliegue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fases del Despliegue
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-configuracion-de-ip-estatica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Configuración de IP estática
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Configuración de IP estática">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ajuste-del-firewall-de-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ajuste del Firewall de Windows
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-cambio-del-nombre-del-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Cambio del Nombre del Servidor
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-instalacion-del-rol-ad-ds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Instalación del Rol AD DS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-promover-el-servidor-a-controlador-de-dominio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Promover el Servidor a Controlador de Dominio
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-unir-un-equipo-windows-10-al-dominio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Unir un Equipo Windows 10 al Dominio
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-gestion-de-usuarios-y-unidades-organizativas-ou" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Gestión de Usuarios y Unidades Organizativas (OU)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Gestión de Usuarios y Unidades Organizativas (OU)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-es-una-unidad-organizativa-ou-y-por-que-es-clave-en-seguridad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Qué es una Unidad Organizativa (OU) y por qué es clave en seguridad?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creacion-de-una-unidad-organizativa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creación de una Unidad Organizativa
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creacion-de-usuarios-de-dominio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creación de Usuarios de Dominio
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-verificacion-del-acceso-remoto-con-netexec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Verificación del Acceso Remoto con NetExec
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="guia-configuracion-de-un-entorno-active-directory-basico">Guía: Configuración de un Entorno Active Directory Básico<a class="headerlink" href="#guia-configuracion-de-un-entorno-active-directory-basico" title="Permanent link">&para;</a></h1>
+<p>Guía práctica paso a paso para desplegar un laboratorio de <strong>Active Directory</strong> en Windows Server, unir una estación de trabajo Windows 10 al dominio, crear Unidades Organizativas (OU) y dar de alta usuarios para prácticas de seguridad ofensiva y pentesting.</p>
+<hr />
+<h2 id="fases-del-despliegue">Fases del Despliegue<a class="headerlink" href="#fases-del-despliegue" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Configuración de IP estática</strong></li>
+<li><strong>Cambio del nombre del servidor</strong></li>
+<li><strong>Instalación del rol AD DS (Servicios de Dominio de Active Directory)</strong></li>
+<li><strong>Promoción a Controlador de Dominio (Domain Controller)</strong></li>
+<li><strong>Unión de un equipo cliente Windows 10 al Dominio</strong></li>
+<li><strong>Creación de Unidades Organizativas (OU) y Usuarios de Dominio</strong></li>
+<li><strong>Verificación de autenticación remota con NetExec</strong></li>
+</ol>
+<hr />
+<h2 id="1-configuracion-de-ip-estatica">1. Configuración de IP estática<a class="headerlink" href="#1-configuracion-de-ip-estatica" title="Permanent link">&para;</a></h2>
+<p>Para que el Controlador de Dominio funcione de forma estable y pueda resolver peticiones DNS de los clientes, es indispensable configurar una dirección IP fija.</p>
+<p>Accedemos a las conexiones de red:</p>
+<p><img alt="Configuración Adaptador" src="../assets/Pasted%20image%2020260924040811.png" /></p>
+<p>Abrimos las propiedades del protocolo IPv4:</p>
+<p><img alt="Propiedades IPv4" src="../assets/Pasted%20image%2020260924040959.png" /></p>
+<p>Asignamos una dirección IP fija dentro del rango de nuestro laboratorio, asegurando que el servidor DNS preferido apunte a la propia máquina o a <code>127.0.0.1</code>:</p>
+<p><img alt="IP Estática Configurada" src="../assets/Pasted%20image%2020260924042053.png" /></p>
+<h3 id="ajuste-del-firewall-de-windows">Ajuste del Firewall de Windows<a class="headerlink" href="#ajuste-del-firewall-de-windows" title="Permanent link">&para;</a></h3>
+<p>En un entorno de laboratorio controlado podemos desactivar el firewall de Windows para evitar bloqueos en las fases iniciales de enumeración y pruebas:</p>
+<p><img alt="Ajustes de Firewall" src="../assets/Pasted%20image%2020260924042423.png" /></p>
+<p>Desactivamos los tres perfiles de red (Dominio, Privado y Público):</p>
+<p><img alt="Firewall Desactivado" src="../assets/Pasted%20image%2020260924042459.png" /></p>
+<p>Comprobamos conectividad mediante <code>ping</code> desde nuestra máquina atacante:</p>
+<p><img alt="Prueba de Ping" src="../assets/Pasted%20image%2020260924042559.png" /></p>
+<hr />
+<h2 id="2-cambio-del-nombre-del-servidor">2. Cambio del Nombre del Servidor<a class="headerlink" href="#2-cambio-del-nombre-del-servidor" title="Permanent link">&para;</a></h2>
+<p>Asignamos un nombre descriptivo al servidor (por ejemplo, <code>DC01</code> o <code>ServerDC</code>):</p>
+<p><img alt="Propiedades del Servidor" src="../assets/Pasted%20image%2020260924042914.png" /></p>
+<p>Hacemos doble clic en el nombre del equipo y definimos el nuevo identificador:</p>
+<p><img alt="Cambio de Nombre" src="../assets/Pasted%20image%2020260924043011.png" /></p>
+<p>Reiniciamos el sistema operativo para aplicar los cambios y verificamos que el nuevo nombre se refleje correctamente:</p>
+<p><img alt="Nombre Aplicado" src="../assets/Pasted%20image%2020260924043343.png" /></p>
+<hr />
+<h2 id="3-instalacion-del-rol-ad-ds">3. Instalación del Rol AD DS<a class="headerlink" href="#3-instalacion-del-rol-ad-ds" title="Permanent link">&para;</a></h2>
+<p>Abrimos el <strong>Server Manager</strong> y seleccionamos <strong>Add roles and features</strong>:</p>
+<p><img alt="Server Manager Roles" src="../assets/Pasted%20image%2020260924043457.png" /></p>
+<p><img alt="Asistente de Roles" src="../assets/Pasted%20image%2020260924043555.png" /></p>
+<p>Marcamos el rol <strong>Active Directory Domain Services (AD DS)</strong> y aceptamos las características requeridas:</p>
+<p><img alt="Selección AD DS" src="../assets/Pasted%20image%2020260924043734.png" /></p>
+<p>Avanzamos en el asistente manteniendo las opciones por defecto y procedemos a la instalación:</p>
+<p><img alt="Instalación en Curso" src="../assets/Pasted%20image%2020260924043926.png" /></p>
+<p>Una vez completada la instalación, cerramos el asistente:</p>
+<p><img alt="Instalación Completa" src="../assets/Pasted%20image%2020260924044611.png" /></p>
+<hr />
+<h2 id="4-promover-el-servidor-a-controlador-de-dominio">4. Promover el Servidor a Controlador de Dominio<a class="headerlink" href="#4-promover-el-servidor-a-controlador-de-dominio" title="Permanent link">&para;</a></h2>
+<p>En el Server Manager aparecerá un icono de notificación triangular amarillo. Hacemos clic en <strong>Promote this server to a domain controller</strong>:</p>
+<p><img alt="Notificación Promover DC" src="../assets/Pasted%20image%2020260924044740.png" /></p>
+<p><img alt="Asistente de Configuración" src="../assets/Pasted%20image%2020260924044802.png" /></p>
+<p>Seleccionamos <strong>Add a new forest</strong> e indicamos el nombre raíz del dominio (por ejemplo, <code>domain.com</code>):</p>
+<p><img alt="Nuevo Bosque" src="../assets/Pasted%20image%2020260924044933.png" /></p>
+<p>Establecemos la contraseña para el modo de restauración de servicios de directorio (DSRM):</p>
+<p><img alt="Contraseña DSRM" src="../assets/Pasted%20image%2020260924045206.png" /></p>
+<p>Mantenemos el nivel funcional en Windows Server 2016, avanzamos en las comprobaciones de requisitos previos y pulsamos <strong>Install</strong>:</p>
+<p><img alt="Instalación del DC" src="../assets/Pasted%20image%2020260924045650.png" /></p>
+<p>El servidor se reiniciará automáticamente y ya estará operando como Controlador de Dominio.</p>
+<hr />
+<h2 id="5-unir-un-equipo-windows-10-al-dominio">5. Unir un Equipo Windows 10 al Dominio<a class="headerlink" href="#5-unir-un-equipo-windows-10-al-dominio" title="Permanent link">&para;</a></h2>
+<p>En la máquina cliente con Windows 10, accedemos a la configuración de red IPv4:</p>
+<p><img alt="Red Windows 10" src="../assets/Pasted%20image%2020260924051103.png" /></p>
+<p>Configuramos una IP dentro del mismo segmento de red y asignamos como <strong>servidor DNS primario la dirección IP de nuestro Controlador de Dominio</strong>:</p>
+<p><img alt="DNS hacia el DC" src="../assets/Pasted%20image%2020260924051348.png" /></p>
+<p>Nos aseguramos de que el firewall permita la comunicación mutua:</p>
+<p><img alt="Firewall Windows 10" src="../assets/Pasted%20image%2020260924051854.png" /></p>
+<p>Pulsamos <code>Win + R</code> y ejecutamos <code>sysdm.cpl</code>:</p>
+<div class="highlight"><pre><span></span><code>sysdm.cpl
+</code></pre></div>
+<p><img alt="Ejecutar sysdm.cpl" src="../assets/Pasted%20image%2020260924052100.png" /></p>
+<p>En las propiedades del sistema hacemos clic en <strong>Change...</strong> (Cambiar):</p>
+<p><img alt="Propiedades del Sistema" src="../assets/Pasted%20image%2020260924052235.png" /></p>
+<p>Cambiamos de Grupo de Trabajo (Workgroup) a <strong>Domain</strong> e ingresamos el nombre del dominio:</p>
+<p><img alt="Unirse al Dominio" src="../assets/Pasted%20image%2020260924052529.png" /></p>
+<p>Ingresamos las credenciales de un usuario administrador del dominio:</p>
+<p><img alt="Credenciales de Dominio" src="../assets/Pasted%20image%2020260924052924.png" /></p>
+<p>Aparecerá el mensaje de confirmación de bienvenida al dominio:</p>
+<p><img alt="Bienvenida al Dominio" src="../assets/Pasted%20image%2020260924052954.png" /></p>
+<p>Reiniciamos la máquina cliente para completar la integración.</p>
+<hr />
+<h2 id="6-gestion-de-usuarios-y-unidades-organizativas-ou">6. Gestión de Usuarios y Unidades Organizativas (OU)<a class="headerlink" href="#6-gestion-de-usuarios-y-unidades-organizativas-ou" title="Permanent link">&para;</a></h2>
+<p>En el Controlador de Dominio, abrimos la consola de administración ejecutando <code>dsa.msc</code> (<code>Win + R</code>):</p>
+<div class="highlight"><pre><span></span><code>dsa.msc
+</code></pre></div>
+<p><img alt="Ejecutar dsa.msc" src="../assets/Pasted%20image%2020260924145339.png" /></p>
+<h3 id="que-es-una-unidad-organizativa-ou-y-por-que-es-clave-en-seguridad">¿Qué es una Unidad Organizativa (OU) y por qué es clave en seguridad?<a class="headerlink" href="#que-es-una-unidad-organizativa-ou-y-por-que-es-clave-en-seguridad" title="Permanent link">&para;</a></h3>
+<p>Una <strong>Organizational Unit (OU)</strong> es un contenedor lógico dentro del Active Directory que permite estructurar usuarios, grupos y equipos.</p>
+<ol>
+<li><strong>Organización lógica</strong>: Permite clasificar por departamentos (<code>IT</code>, <code>Ventas</code>, <code>Recursos Humanos</code>, <code>Servidores</code>).</li>
+<li><strong>Delegación de permisos y abuso de ACLs</strong>: Es posible delegar el control sobre una OU específica sin otorgar permisos de <code>Domain Admin</code>. Por ejemplo, permitir que un operador de soporte pueda restablecer contraseñas de la OU <code>Ventas</code>. En auditorías ofensivas y laboratorios de pentesting, herramientas como BloodHound permiten mapear y explotar relaciones de permisos sobre OUs (<code>GenericAll</code>, <code>WriteDacl</code>, <code>ForceChangePassword</code>).</li>
+<li><strong>Aplicación granular de Directivas de Grupo (GPO)</strong>: Permite vincular políticas específicas para cada sector de la empresa.</li>
+</ol>
+<h3 id="creacion-de-una-unidad-organizativa">Creación de una Unidad Organizativa<a class="headerlink" href="#creacion-de-una-unidad-organizativa" title="Permanent link">&para;</a></h3>
+<p>Abrimos <strong>Active Directory Users and Computers</strong>:</p>
+<p><img alt="Consola ADUC" src="../assets/Pasted%20image%2020260924150955.png" /></p>
+<p><img alt="Estructura del Dominio" src="../assets/Pasted%20image%2020260924151103.png" /></p>
+<p>Hacemos clic derecho sobre nuestro dominio, seleccionamos <strong>New</strong> -&gt; <strong>Organizational Unit</strong>:</p>
+<p><img alt="Nueva OU" src="../assets/Pasted%20image%2020260924151408.png" /></p>
+<p>Asignamos un nombre a la OU (por ejemplo, <code>lab-users</code>):</p>
+<p><img alt="Nombre de OU" src="../assets/Pasted%20image%2020260924151640.png" /></p>
+<h3 id="creacion-de-usuarios-de-dominio">Creación de Usuarios de Dominio<a class="headerlink" href="#creacion-de-usuarios-de-dominio" title="Permanent link">&para;</a></h3>
+<p>Hacemos clic derecho sobre la OU <code>lab-users</code>, seleccionamos <strong>New</strong> -&gt; <strong>User</strong>:</p>
+<p><img alt="Nuevo Usuario" src="../assets/Pasted%20image%2020260924151915.png" /></p>
+<p>Completamos los datos del usuario:</p>
+<p><img alt="Datos del Usuario" src="../assets/Pasted%20image%2020260924152228.png" /></p>
+<p>Asignamos una contraseña robusta y marcamos la opción <strong>Password never expires</strong> (desmarcando <em>User must change password at next logon</em> para facilitar las pruebas automatizadas):</p>
+<p><img alt="Configuración de Contraseña" src="../assets/Pasted%20image%2020260924152646.png" /></p>
+<blockquote>
+<p>[!TIP]
+Si dejamos marcada la opción <em>"User must change password at next logon"</em>, al intentar autenticar con herramientas como NetExec obtendremos un error de contraseña expirada hasta que se inicie sesión interactivamente en la estación de trabajo.</p>
+</blockquote>
+<hr />
+<h2 id="7-verificacion-del-acceso-remoto-con-netexec">7. Verificación del Acceso Remoto con NetExec<a class="headerlink" href="#7-verificacion-del-acceso-remoto-con-netexec" title="Permanent link">&para;</a></h2>
+<p>Desde nuestra máquina de auditoría verificamos que las credenciales del usuario sean válidas contra el servicio SMB:</p>
+<div class="highlight"><pre><span></span><code>nxc<span class="w"> </span>smb<span class="w"> </span><span class="m">192</span>.168.100.50<span class="w"> </span>-u<span class="w"> </span><span class="s1">'jose'</span><span class="w"> </span>-p<span class="w"> </span><span class="s1">'1725j@vik'</span>
+</code></pre></div>
+<p><img alt="NetExec Verificación Exitosa" src="../assets/Pasted%20image%2020260924152902.png" /></p>
+<p>Observamos el resultado <code>[+] domain.com\jose:1725j@vik</code>, confirmando la autenticación exitosa.</p>
+<p>A partir de este entorno base se pueden crear múltiples cuentas, grupos y relaciones de pertenencia para simular escenarios de auditoría y explotación de Active Directory.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pie" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Mis Notas">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                Mis Notas
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../ataques-adcs-esc1/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Abuso de AD CS (ESC1)">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              <div class="md-ellipsis">
+                Abuso de AD CS (ESC1)
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.indexes", "navigation.top", "navigation.instant", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

