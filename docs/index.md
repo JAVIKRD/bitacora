@@ -4,7 +4,7 @@ hide:
 ---
 
 <div class="banner-container">
-  <img src="assets/banner.gif" alt="Black Hole Accretion Disk" class="banner-img">
+  <img src="assets/toji-banner.gif" alt="Toji Fushiguro" class="banner-img">
 </div>
 
 # 🎯 Bitácora de javik
@@ -44,5 +44,11 @@ hide:
     ---
 
     Certificaciones profesionales, ProLabs y Mini ProLabs de Hack The Box.
+
+-   :material-file-document-outline:{ .lg .middle } __[Mis Notas](mis-notas/index.md)__
+
+    ---
+
+    Espacio personal para apuntes, guías y notas técnicas.
 
 </div>

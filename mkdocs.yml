@@ -53,6 +53,8 @@ nav:
       - TombWatcher: maquinas/htb/tombwatcher.md
       - EscapeTwo: maquinas/htb/escapetwo.md
       - Breach: maquinas/htb/breach.md
+      - Media: maquinas/htb/media.md
+      - Authority: maquinas/htb/authority.md
   - 🛠️ Herramientas:
       - herramientas/index.md
       - NetExec (NXC): herramientas/nxc.md
@@ -61,3 +63,6 @@ nav:
       - Enumeración MSSQL: herramientas/mssql.md
       - Chisel & Pivoting: herramientas/chisel-pivoting.md
   - 🏆 Certificaciones: certificaciones/index.md
+  - Mis Notas:
+      - mis-notas/index.md
+      - Configuración de AD Básico: mis-notas/configuracion-ad-basico.md
