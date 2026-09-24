@@ -66,3 +66,4 @@ nav:
   - Mis Notas:
       - mis-notas/index.md
       - Configuración de AD Básico: mis-notas/configuracion-ad-basico.md
+      - Abuso de AD CS (ESC1): mis-notas/ataques-adcs-esc1.md
