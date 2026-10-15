@@ -1,0 +1,1697 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../como-funciona-kerberos/">
+      
+      
+        <link rel="next" href="../creacion-de-tickets/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/lucifer.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Tipos de Tickets Kerberos - Bitácora de javik</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../estilos/gruvbox.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#que-significa-forjar-un-ticket-kerberos" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Bitácora de javik" class="md-header__button md-logo" aria-label="Bitácora de javik" data-md-component="logo">
+      
+  <img src="../../assets/lucifer.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Bitácora de javik
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tipos de Tickets Kerberos
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Bitácora de javik" class="md-nav__button md-logo" aria-label="Bitácora de javik" data-md-component="logo">
+      
+  <img src="../../assets/lucifer.png" alt="logo">
+
+    </a>
+    Bitácora de javik
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎯 Bitácora de javik
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../maquinas/htb/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💀 Máquinas HTB
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    💀 Máquinas HTB
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/administrator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administrator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/babytwo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BabyTwo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/delegate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Delegate
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/tombwatcher/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TombWatcher
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/escapetwo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EscapeTwo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/breach/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Breach
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/media/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Media
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/authority/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authority
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/sendai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sendai
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/voleur/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Voleur
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../herramientas/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛠️ Herramientas
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🛠️ Herramientas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../herramientas/nxc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NetExec (NXC)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../herramientas/sliver-c2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sliver C2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../herramientas/seimpersonate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SeImpersonatePrivilege
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../herramientas/mssql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enumeración MSSQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../herramientas/chisel-pivoting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chisel & Pivoting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../certificaciones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏆 Certificaciones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mis Notas
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Mis Notas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuracion-ad-basico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuración de AD Básico
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ataques-adcs-esc1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abuso de AD CS (ESC1)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../como-funciona-kerberos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ¿Cómo Funciona Kerberos?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tipos de Tickets Kerberos
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tipos de Tickets Kerberos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#arbol-de-las-principales-tecnicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Árbol de las principales técnicas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Árbol de las principales técnicas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-golden-ticket" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. Golden Ticket
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-silver-ticket" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. Silver Ticket
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-diamond-ticket" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C. Diamond Ticket
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-krbtgt-y-por-que-importa-tanto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Qué es krbtgt y por qué importa tanto?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#como-ocurre-el-ataque-de-principio-a-fin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Cómo ocurre el ataque, de principio a fin?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="¿Cómo ocurre el ataque, de principio a fin?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#un-detalle-que-debes-entender-bien" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Un detalle que debes entender bien
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#silver-ticket-el-mismo-concepto-pero-con-otra-puerta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Silver Ticket: el mismo concepto, pero con otra puerta
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparacion-directa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparación directa
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diamond-ticket-que-cambia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diamond Ticket: ¿qué cambia?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-informacion-lleva-un-ticket-y-por-que-puedes-modificarla" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Qué información lleva un ticket y por qué puedes modificarla?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../creacion-de-tickets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Creación de Tickets (Golden y Silver)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kerberos-ataques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ataques Kerberos (AS-REP Roasting)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#arbol-de-las-principales-tecnicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Árbol de las principales técnicas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Árbol de las principales técnicas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-golden-ticket" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. Golden Ticket
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-silver-ticket" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. Silver Ticket
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-diamond-ticket" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C. Diamond Ticket
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-krbtgt-y-por-que-importa-tanto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Qué es krbtgt y por qué importa tanto?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#como-ocurre-el-ataque-de-principio-a-fin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Cómo ocurre el ataque, de principio a fin?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="¿Cómo ocurre el ataque, de principio a fin?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#un-detalle-que-debes-entender-bien" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Un detalle que debes entender bien
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#silver-ticket-el-mismo-concepto-pero-con-otra-puerta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Silver Ticket: el mismo concepto, pero con otra puerta
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparacion-directa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparación directa
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diamond-ticket-que-cambia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diamond Ticket: ¿qué cambia?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-informacion-lleva-un-ticket-y-por-que-puedes-modificarla" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Qué información lleva un ticket y por qué puedes modificarla?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="que-significa-forjar-un-ticket-kerberos">¿Qué Significa Forjar un Ticket Kerberos?<a class="headerlink" href="#que-significa-forjar-un-ticket-kerberos" title="Permanent link">&para;</a></h1>
+<p>Forjar significa crear una credencial de Kerberos que parece legítima, sin seguir necesariamente el procedimiento normal de emisión.</p>
+<p>En condiciones normales, el KDC crea tickets utilizando información criptográfica que el cliente no debería poder falsificar por su cuenta.</p>
+<p>La oportunidad de ataque aparece cuando alguien obtiene secretos que permiten producir tickets que un sistema de destino acepta como auténticos.</p>
+<p>Piensa en una acreditación de empresa que tiene elementos de seguridad que solo conoce la entidad emisora. Si alguien consigue el secreto utilizado para fabricar esas acreditaciones, podría crear una que parezca válida. El problema no es simplemente dibujar una tarjeta falsa: es conseguir que el mecanismo de verificación la acepte.</p>
+<hr />
+<h2 id="arbol-de-las-principales-tecnicas">Árbol de las principales técnicas<a class="headerlink" href="#arbol-de-las-principales-tecnicas" title="Permanent link">&para;</a></h2>
+<h3 id="a-golden-ticket">A. Golden Ticket<a class="headerlink" href="#a-golden-ticket" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Se falsifica un <strong>TGT</strong>.</li>
+<li>Se basa habitualmente en obtener el secreto criptográfico: esto es el hash de la cuenta <code>krbtgt</code> del dominio.</li>
+<li><em>Analogía:</em> Alguien consigue el secreto que permite fabricar acreditaciones generales del sistema.</li>
+</ul>
+<h3 id="b-silver-ticket">B. Silver Ticket<a class="headerlink" href="#b-silver-ticket" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Se falsifica un <strong>ticket de servicio</strong>.</li>
+<li>Se basa en obtener la clave de la cuenta que utiliza el servicio de destino.</li>
+<li><em>Analogía:</em> Alguien consigue el secreto con el que se validan los pases de una oficina específica.</li>
+</ul>
+<h3 id="c-diamond-ticket">C. Diamond Ticket<a class="headerlink" href="#c-diamond-ticket" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Se parte de un <strong>TGT legítimo</strong> y se modifica su contenido.</li>
+<li>En el enfoque clásico, se aprovecha el acceso al secreto de <code>krbtgt</code> para volver a proteger criptográficamente el ticket modificado.</li>
+<li><em>Analogía:</em> Se obtiene una acreditación auténtica y se altera su información antes de volver a sellarla con un secreto comprometido.</li>
+</ul>
+<p>Son técnicas relacionadas, pero no son intercambiables. Cada una parte de una credencial distinta y depende de qué secreto se ha comprometido.</p>
+<hr />
+<h2 id="que-es-krbtgt-y-por-que-importa-tanto">¿Qué es <code>krbtgt</code> y por qué importa tanto?<a class="headerlink" href="#que-es-krbtgt-y-por-que-importa-tanto" title="Permanent link">&para;</a></h2>
+<p>En Active Directory existe una cuenta especial llamada <code>krbtgt</code>. No es un usuario normal que inicia sesión y abre aplicaciones.</p>
+<p>Su secreto criptográfico se utiliza para proteger los TGT del dominio. Por eso, si un atacante obtiene el material criptográfico (ejemplo: el hash adecuado de esa cuenta), puede llegar a fabricar TGT que el dominio acepte, siempre que se cumplan las condiciones necesarias.</p>
+<p>Imagina esta jerarquía:</p>
+<p><img alt="Jerarquía krbtgt" src="../assets/Pasted%20image%2020261011195033.png" /></p>
+<p>Aquí está el punto fundamental: el Golden Ticket no consiste en robar directamente la contraseña del administrador del dominio. Consiste en comprometer una clave que participa en la protección de los TGT y abusar de la confianza que el dominio deposita en ellos.</p>
+<hr />
+<h2 id="como-ocurre-el-ataque-de-principio-a-fin">¿Cómo ocurre el ataque, de principio a fin?<a class="headerlink" href="#como-ocurre-el-ataque-de-principio-a-fin" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p><strong>Paso 1. El atacante obtiene acceso a material criptográfico sensible.</strong><br />
+   En el escenario clásico, consigue el secreto de <code>krbtgt</code>. Eso suele implicar un compromiso importante del dominio, aunque las circunstancias concretas dependen del entorno.</p>
+</li>
+<li>
+<p><strong>Paso 2. Construye un TGT.</strong><br />
+   El atacante prepara una credencial con datos como la identidad del usuario, el dominio y la información de autorización que pretende presentar.<br />
+   En lugar de limitarse a pedir un TGT legítimo al KDC, genera uno utilizando el secreto comprometido.</p>
+</li>
+<li>
+<p><strong>Paso 3. Protege criptográficamente el ticket.</strong><br />
+   El atacante utiliza el material criptográfico que posee para crear una protección que pueda superar las comprobaciones correspondientes.<br />
+   Esta es la razón por la que conocer únicamente el formato de un ticket no basta para falsificar uno aceptable.</p>
+</li>
+<li>
+<p><strong>Paso 4. Presenta el TGT al KDC.</strong><br />
+   Si el KDC lo acepta como válido, el atacante puede solicitar tickets para servicios del dominio bajo la identidad representada por ese TGT.</p>
+</li>
+<li>
+<p><strong>Paso 5. Intenta acceder a un servicio.</strong><br />
+   El atacante presenta el ticket de servicio correspondiente al recurso que busca comprometer. El servicio valida la credencial y aplica sus reglas de autorización.</p>
+</li>
+</ol>
+<h3 id="un-detalle-que-debes-entender-bien">Un detalle que debes entender bien<a class="headerlink" href="#un-detalle-que-debes-entender-bien" title="Permanent link">&para;</a></h3>
+<p>El Golden Ticket no convierte automáticamente a una persona en administrador de todos los equipos.</p>
+<p>El alcance depende de la validez del ticket, los datos de autorización, la configuración del dominio, los controles del servicio y otros factores. Una falsificación puede permitir privilegios elevados, pero no elimina mágicamente todas las comprobaciones del sistema.</p>
+<p>👉 <strong>Ver práctica:</strong> <a href="../creacion-de-tickets/#creacion-de-golden-ticket">Creación de Golden Ticket</a></p>
+<hr />
+<h2 id="silver-ticket-el-mismo-concepto-pero-con-otra-puerta">Silver Ticket: el mismo concepto, pero con otra puerta<a class="headerlink" href="#silver-ticket-el-mismo-concepto-pero-con-otra-puerta" title="Permanent link">&para;</a></h2>
+<p>Ahora imagina que no tienes comprometido el secreto de <code>krbtgt</code>, pero sí tienes la clave de una cuenta de servicio.</p>
+<p>Por ejemplo, una cuenta asociada a un servidor de archivos.</p>
+<p>En este escenario, el objetivo cambia: en lugar de fabricar un TGT, el atacante fabrica un ticket de servicio.</p>
+<p><img alt="Silver Ticket Esquema" src="../assets/Pasted%20image%2020261012024926.png" /></p>
+<hr />
+<h2 id="comparacion-directa">Comparación directa<a class="headerlink" href="#comparacion-directa" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Característica</th>
+<th style="text-align: left;">Golden Ticket</th>
+<th style="text-align: left;">Silver Ticket</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Qué se falsifica</strong></td>
+<td style="text-align: left;">TGT</td>
+<td style="text-align: left;">Ticket de servicio</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Secreto comprometido en el caso clásico</strong></td>
+<td style="text-align: left;"><code>krbtgt</code></td>
+<td style="text-align: left;">Clave de la cuenta del servicio</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Objetivo inicial</strong></td>
+<td style="text-align: left;">Obtener tickets de servicio del KDC</td>
+<td style="text-align: left;">Acceder al servicio objetivo</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Interacción con el KDC</strong></td>
+<td style="text-align: left;">Se utiliza para solicitar tickets posteriores</td>
+<td style="text-align: left;">El ticket falsificado puede presentarse directamente al servicio</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Alcance potencial</strong></td>
+<td style="text-align: left;">Amplio dentro del dominio</td>
+<td style="text-align: left;">Centrado en el servicio afectado, aunque el impacto depende de sus privilegios y relaciones</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Regla mental:</strong> Golden = falsificas la acreditación general. Silver = falsificas el pase para una oficina específica.</p>
+<p>Y ojo: Silver Ticket no significa necesariamente que el acceso vaya a ser limitado o poco importante. Si el servicio comprometido tiene permisos elevados o controla información crítica, el impacto puede ser enorme.</p>
+<p>👉 <strong>Ver práctica:</strong> <a href="../creacion-de-tickets/#creacion-de-silver-ticket">Creación de Silver Ticket</a></p>
+<hr />
+<h2 id="diamond-ticket-que-cambia">Diamond Ticket: ¿qué cambia?<a class="headerlink" href="#diamond-ticket-que-cambia" title="Permanent link">&para;</a></h2>
+<p>El Diamond Ticket se entiende mejor si lo comparas con el Golden Ticket:</p>
+<ul>
+<li><strong>Golden:</strong> construyes un TGT falsificado utilizando el secreto comprometido de <code>krbtgt</code>.</li>
+<li><strong>Diamond:</strong> partes de un TGT legítimo, modificas determinados datos y vuelves a protegerlo utilizando el secreto criptográfico comprometido.</li>
+</ul>
+<p>¿Por qué hacerlo de otra manera? Porque el enfoque parte de una credencial que fue emitida legítimamente por el KDC. Eso cambia cómo se construye el ticket, pero no significa que el resultado sea indetectable.</p>
+<p>La idea no es que Diamond sea una versión mágicamente invisible de Golden. Ambos dependen de condiciones específicas, y la detección requiere examinar más que el mero hecho de que el ticket tenga una apariencia normal.</p>
+<hr />
+<h2 id="que-informacion-lleva-un-ticket-y-por-que-puedes-modificarla">¿Qué información lleva un ticket y por qué puedes modificarla?<a class="headerlink" href="#que-informacion-lleva-un-ticket-y-por-que-puedes-modificarla" title="Permanent link">&para;</a></h2>
+<p>Para entender qué hace posible una falsificación, necesitas conocer cuatro piezas:</p>
+<ol>
+<li>
+<p><strong>Identidad:</strong><br />
+   ¿Quién dice ser el usuario del ticket? Por ejemplo, una cuenta de usuario del dominio.</p>
+</li>
+<li>
+<p><strong>Datos de autorización:</strong><br />
+   Incluyen información sobre los grupos y privilegios asociados a la identidad, representada en parte mediante el <strong>PAC (Privilege Attribute Certificate)</strong>.</p>
+</li>
+<li>
+<p><strong>Validez temporal:</strong><br />
+   El ticket contiene información como su período de validez. También intervienen las políticas del dominio y la sincronización horaria.</p>
+</li>
+<li>
+<p><strong>Protección criptográfica:</strong><br />
+   Permite verificar la autenticidad e integridad de la información protegida. Un atacante no puede cambiar libremente los datos y esperar que sigan siendo válidos sin poder generar la protección criptográfica correspondiente.</p>
+</li>
+</ol>
+<p>Por ejemplo, imagina que un ticket representa a un usuario que pertenece al grupo de empleados normales. El atacante querría manipular la información de autorización para representar a una identidad con privilegios mayores.</p>
+<p>Pero cambiar un dato no basta: el ticket debe superar las verificaciones criptográficas y las comprobaciones del entorno. Además, la autorización efectiva depende de cómo el servicio interprete esa información.</p>
+<p>El PAC es especialmente relevante porque transporta información de autorización, pero no es una contraseña ni equivale por sí solo a una prueba de que el usuario es administrador.</p>
+<p><img alt="PAC y estructura del ticket" src="../assets/Pasted%20image%2020261014235626.png" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pie" >
+        
+          
+          <a href="../como-funciona-kerberos/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: ¿Cómo Funciona Kerberos?">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                ¿Cómo Funciona Kerberos?
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../creacion-de-tickets/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Creación de Tickets (Golden y Silver)">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              <div class="md-ellipsis">
+                Creación de Tickets (Golden y Silver)
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.indexes", "navigation.top", "navigation.instant", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

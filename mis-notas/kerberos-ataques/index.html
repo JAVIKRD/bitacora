@@ -1,0 +1,1528 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../creacion-de-tickets/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/lucifer.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Ataques Kerberos (AS-REP Roasting) - Bitácora de javik</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../estilos/gruvbox.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ataques-kerberos-as-rep-roasting" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Bitácora de javik" class="md-header__button md-logo" aria-label="Bitácora de javik" data-md-component="logo">
+      
+  <img src="../../assets/lucifer.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Bitácora de javik
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Ataques Kerberos (AS-REP Roasting)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Bitácora de javik" class="md-nav__button md-logo" aria-label="Bitácora de javik" data-md-component="logo">
+      
+  <img src="../../assets/lucifer.png" alt="logo">
+
+    </a>
+    Bitácora de javik
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎯 Bitácora de javik
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../maquinas/htb/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💀 Máquinas HTB
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    💀 Máquinas HTB
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/administrator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administrator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/babytwo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BabyTwo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/delegate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Delegate
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/tombwatcher/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TombWatcher
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/escapetwo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EscapeTwo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/breach/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Breach
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/media/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Media
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/authority/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authority
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/sendai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sendai
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/voleur/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Voleur
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../herramientas/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛠️ Herramientas
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🛠️ Herramientas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../herramientas/nxc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NetExec (NXC)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../herramientas/sliver-c2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sliver C2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../herramientas/seimpersonate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SeImpersonatePrivilege
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../herramientas/mssql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enumeración MSSQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../herramientas/chisel-pivoting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chisel & Pivoting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../certificaciones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏆 Certificaciones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mis Notas
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Mis Notas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuracion-ad-basico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuración de AD Básico
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ataques-adcs-esc1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abuso de AD CS (ESC1)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../como-funciona-kerberos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ¿Cómo Funciona Kerberos?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tipos-de-tickets-kerberos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tipos de Tickets Kerberos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../creacion-de-tickets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Creación de Tickets (Golden y Silver)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ataques Kerberos (AS-REP Roasting)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ataques Kerberos (AS-REP Roasting)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-as-rep-roasting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Qué es AS-REP Roasting?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="¿Qué es AS-REP Roasting?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#como-funciona-la-preautenticacion-kerberos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Cómo funciona la Preautenticación Kerberos?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#el-problema-dont_req_preauth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El Problema: DONT_REQ_PREAUTH
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-configuracion-del-laboratorio-en-windows-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Configuración del Laboratorio en Windows Server
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-enumeracion-de-cuentas-vulnerables-con-bloodyad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Enumeración de Cuentas Vulnerables con bloodyAD
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-extraccion-del-hash-con-getnpusers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Extracción del Hash con GetNPUsers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-cracking-offline-con-hashcat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Cracking Offline con Hashcat
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medidas-de-mitigacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Medidas de Mitigación
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-as-rep-roasting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Qué es AS-REP Roasting?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="¿Qué es AS-REP Roasting?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#como-funciona-la-preautenticacion-kerberos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Cómo funciona la Preautenticación Kerberos?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#el-problema-dont_req_preauth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El Problema: DONT_REQ_PREAUTH
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-configuracion-del-laboratorio-en-windows-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Configuración del Laboratorio en Windows Server
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-enumeracion-de-cuentas-vulnerables-con-bloodyad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Enumeración de Cuentas Vulnerables con bloodyAD
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-extraccion-del-hash-con-getnpusers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Extracción del Hash con GetNPUsers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-cracking-offline-con-hashcat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Cracking Offline con Hashcat
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medidas-de-mitigacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Medidas de Mitigación
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="ataques-kerberos-as-rep-roasting">Ataques Kerberos: AS-REP Roasting<a class="headerlink" href="#ataques-kerberos-as-rep-roasting" title="Permanent link">&para;</a></h1>
+<p>Guía práctica sobre el ataque <strong>AS-REP Roasting</strong> en Active Directory: fundamentos del protocolo Kerberos, configuración de una cuenta vulnerable en Windows Server, enumeración con bloodyAD, extracción del ticket con GetNPUsers y cracking offline con Hashcat.</p>
+<hr />
+<h2 id="que-es-as-rep-roasting">¿Qué es AS-REP Roasting?<a class="headerlink" href="#que-es-as-rep-roasting" title="Permanent link">&para;</a></h2>
+<p><strong>AS-REP Roasting</strong> es una técnica de ataque contra el protocolo de autenticación Kerberos que permite a un atacante solicitar material de autenticación para cuentas de usuario que tengan deshabilitada la preautenticación Kerberos, con el objetivo de crackear sus contraseñas de forma offline y sin generar bloqueos de cuenta.</p>
+<h3 id="como-funciona-la-preautenticacion-kerberos">¿Cómo funciona la Preautenticación Kerberos?<a class="headerlink" href="#como-funciona-la-preautenticacion-kerberos" title="Permanent link">&para;</a></h3>
+<p>En el flujo normal de Kerberos:
+1. El cliente envía un mensaje <code>AS-REQ</code> al KDC (Key Distribution Center).
+2. Para demostrar que conoce su contraseña, el cliente cifra una marca de tiempo (<em>timestamp</em>) con una clave derivada de su propia contraseña (<strong>Pre-Authentication</strong>).
+3. Si la marca de tiempo se descifra correctamente, el KDC responde con un <code>AS-REP</code> que contiene el Ticket Granting Ticket (TGT) y una sesión cifrada con la clave del usuario.</p>
+<h3 id="el-problema-dont_req_preauth">El Problema: <code>DONT_REQ_PREAUTH</code><a class="headerlink" href="#el-problema-dont_req_preauth" title="Permanent link">&para;</a></h3>
+<p>Cuando un usuario tiene habilitado el atributo <strong><code>DONT_REQ_PREAUTH</code></strong> (<code>Do not require Kerberos preauthentication</code>, correspondiente al valor <code>0x400000</code> o <code>4194304</code> en <code>userAccountControl</code>):
+- <strong>Cualquier atacante puede solicitar un <code>AS-REQ</code> para ese usuario sin conocer su contraseña ni enviar ninguna preautenticación</strong>.
+- El KDC responde inmediatamente con un mensaje <code>AS-REP</code> legítimo.
+- Parte de este mensaje <code>AS-REP</code> está cifrado con la clave secreta derivada de la contraseña del usuario objetivo.
+- El atacante captura esta respuesta y puede intentar romperla <strong>offline mediante fuerza bruta o ataques de diccionario</strong> sin interactuar más con el Controlador de Dominio.</p>
+<hr />
+<h2 id="1-configuracion-del-laboratorio-en-windows-server">1. Configuración del Laboratorio en Windows Server<a class="headerlink" href="#1-configuracion-del-laboratorio-en-windows-server" title="Permanent link">&para;</a></h2>
+<p>Para recrear el escenario vulnerable en nuestro entorno de pruebas:</p>
+<p>Abrimos la consola de administración de usuarios ejecutando <code>dsa.msc</code> (<code>Win + R</code>):</p>
+<p><img alt="Consola dsa.msc" src="../assets/Pasted%20image%2020261014225118.png" /></p>
+<p>Localizamos el usuario objetivo (en nuestro caso <code>jose</code>), hacemos clic derecho y seleccionamos <strong>Properties</strong> (Propiedades):</p>
+<p><img alt="Propiedades del Usuario" src="../assets/Pasted%20image%2020261014225313.png" /></p>
+<p>Nos dirigimos a la pestaña <strong>Account</strong> y en la sección <em>Account options</em> marcamos la casilla <strong>Do not require Kerberos preauthentication</strong>:</p>
+<p><img alt="Do not require Kerberos preauthentication" src="../assets/Pasted%20image%2020261014225401.png" /></p>
+<p>Hacemos clic en <strong>Apply</strong> y <strong>OK</strong>. A partir de este momento, la cuenta queda expuesta a ataques AS-REP Roasting.</p>
+<hr />
+<h2 id="2-enumeracion-de-cuentas-vulnerables-con-bloodyad">2. Enumeración de Cuentas Vulnerables con bloodyAD<a class="headerlink" href="#2-enumeracion-de-cuentas-vulnerables-con-bloodyad" title="Permanent link">&para;</a></h2>
+<p>Desde nuestra máquina de auditoría Linux podemos enumerar las cuentas del dominio que tengan deshabilitada la preautenticación.</p>
+<p>Utilizamos <strong>bloodyAD</strong> aplicando un filtro LDAP bitwise sobre <code>userAccountControl</code>:</p>
+<div class="highlight"><pre><span></span><code>bloodyAD<span class="w"> </span>-u<span class="w"> </span>mike<span class="w"> </span>-p<span class="w"> </span><span class="s1">'1725j@vik'</span><span class="w"> </span>-d<span class="w"> </span>domain.com<span class="w"> </span>--host<span class="w"> </span><span class="m">192</span>.168.100.50<span class="w"> </span>get<span class="w"> </span>search<span class="w"> </span>--filter<span class="w"> </span><span class="s1">'(&amp;(userAccountControl:1.2.840.113556.1.4.803:=4194304)(!(UserAccountControl:1.2.840.113556.1.4.803:=2)))'</span><span class="w"> </span>--attr<span class="w"> </span>sAMAccountName
+</code></pre></div>
+<blockquote>
+<p>[!NOTE]
+<strong>Desglose del filtro LDAP:</strong>
+- <code>userAccountControl:1.2.840.113556.1.4.803:=4194304</code>: Comprueba mediante la regla <code>LDAP_MATCHING_RULE_BIT_AND</code> si el bit <code>DONT_REQ_PREAUTH</code> (4194304) está activo.
+- <code>!(UserAccountControl:1.2.840.113556.1.4.803:=2)</code>: Excluye cuentas que se encuentren deshabilitadas (<code>ACCOUNTDISABLE</code>).</p>
+</blockquote>
+<p><img alt="Salida bloodyAD" src="../assets/Pasted%20image%2020261014230659.png" /></p>
+<p>Obtenemos el usuario vulnerable identificado:</p>
+<div class="highlight"><pre><span></span><code>distinguishedName: CN=jose,OU=lab-users,DC=domain,DC=com
+sAMAccountName: jose
+</code></pre></div>
+<hr />
+<h2 id="3-extraccion-del-hash-con-getnpusers">3. Extracción del Hash con GetNPUsers<a class="headerlink" href="#3-extraccion-del-hash-con-getnpusers" title="Permanent link">&para;</a></h2>
+<p>Utilizamos el script <strong>GetNPUsers.py</strong> de Impacket para solicitar el mensaje <code>AS-REP</code> para el usuario <code>jose</code> sin proporcionar contraseña:</p>
+<div class="highlight"><pre><span></span><code>GetNPUsers.py<span class="w"> </span>-no-pass<span class="w"> </span>domain.com/jose<span class="w"> </span>-format<span class="w"> </span>hashcat<span class="w"> </span>-outputfile<span class="w"> </span>hash.txt
+</code></pre></div>
+<p><img alt="GetNPUsers Solicitud AS-REP" src="../assets/Pasted%20image%2020261014231358.png" /></p>
+<p>GetNPUsers guarda el hash en formato compatible con Hashcat (<code>$krb5asrep$23$...</code>).</p>
+<hr />
+<h2 id="4-cracking-offline-con-hashcat">4. Cracking Offline con Hashcat<a class="headerlink" href="#4-cracking-offline-con-hashcat" title="Permanent link">&para;</a></h2>
+<p>Procedemos a romper el hash de forma offline utilizando el modo <code>18200</code> de <strong>Hashcat</strong> (Kerberos 5, etype 23, AS-REP) y el diccionario <code>rockyou.txt</code>:</p>
+<div class="highlight"><pre><span></span><code>hashcat<span class="w"> </span>-m<span class="w"> </span><span class="m">18200</span><span class="w"> </span>hash.txt<span class="w"> </span>/usr/share/seclists/Passwords/Leaked-Databases/rockyou.txt
+</code></pre></div>
+<p><img alt="Hashcat Cracking" src="../assets/Pasted%20image%2020261014231621.png" /></p>
+<p>Verificamos el resultado obtenido:</p>
+<p><img alt="Contraseña Obtenida" src="../assets/Pasted%20image%2020261014231649.png" /></p>
+<p>La contraseña ha sido descifrada exitosamente mediante el ataque de diccionario offline.</p>
+<hr />
+<h2 id="medidas-de-mitigacion">Medidas de Mitigación<a class="headerlink" href="#medidas-de-mitigacion" title="Permanent link">&para;</a></h2>
+<p>Para proteger las cuentas de dominio frente a AS-REP Roasting:</p>
+<ol>
+<li><strong>Habilitar Preautenticación Kerberos</strong>:<br />
+   Verificar que ninguna cuenta de usuario tenga activada la opción <em>"Do not require Kerberos preauthentication"</em>. La preautenticación debe ser obligatoria para todas las cuentas en entornos de producción.</li>
+<li><strong>Políticas de Contraseñas Robustas</strong>:<br />
+   Si por requerimientos heredados alguna cuenta de servicio debe mantener la preautenticación deshabilitada, se debe exigir una contraseña de más de 25 caracteres generada aleatoriamente para evitar que sea susceptible a ataques por diccionario o fuerza bruta.</li>
+<li><strong>Monitoreo y Detección</strong>:<br />
+   Monitorear eventos en el Controlador de Dominio como el Event ID <code>4768</code> (A Kerberos authentication ticket (TGT) was requested) donde el tipo de preautenticación figure como <code>0</code> o inexistente.</li>
+</ol>
+<p><img alt="Conclusión AS-REP Roasting" src="../assets/Pasted%20image%2020261014232142.png" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pie" >
+        
+          
+          <a href="../creacion-de-tickets/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Creación de Tickets (Golden y Silver)">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                Creación de Tickets (Golden y Silver)
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.indexes", "navigation.top", "navigation.instant", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
