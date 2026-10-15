@@ -258,3 +258,6 @@ Cerramos la sesión y nos volvemos a conectar por SSH con `enox`. Ahora disponem
 ```text
 0079a733e409c584d0880617e96b7937
 ```
+
+![Máquina Media Completada](assets/Pasted%20image%2020261014233803.png)
+

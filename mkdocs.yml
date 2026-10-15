@@ -55,6 +55,9 @@ nav:
       - Breach: maquinas/htb/breach.md
       - Media: maquinas/htb/media.md
       - Authority: maquinas/htb/authority.md
+      - Sendai: maquinas/htb/sendai.md
+      - Voleur: maquinas/htb/voleur.md
+
   - 🛠️ Herramientas:
       - herramientas/index.md
       - NetExec (NXC): herramientas/nxc.md
@@ -67,3 +70,7 @@ nav:
       - mis-notas/index.md
       - Configuración de AD Básico: mis-notas/configuracion-ad-basico.md
       - Abuso de AD CS (ESC1): mis-notas/ataques-adcs-esc1.md
+      - ¿Cómo Funciona Kerberos?: mis-notas/como-funciona-kerberos.md
+      - Tipos de Tickets Kerberos: mis-notas/tipos-de-tickets-kerberos.md
+      - Creación de Tickets (Golden y Silver): mis-notas/creacion-de-tickets.md
+      - Ataques Kerberos (AS-REP Roasting): mis-notas/kerberos-ataques.md

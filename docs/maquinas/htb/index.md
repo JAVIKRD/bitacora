@@ -15,3 +15,6 @@ Registro y recopilación de writeups de máquinas retiradas de Hack The Box con 
 | [**Breach**](breach.md) | Windows | Media | Active Directory, IIS, MSSQL, Kerberos, PrivEsc |
 | [**Media**](media.md) | Windows | Media | Windows Media Player, NTLM Theft, Junctions, SeTcbPrivilege |
 | [**Authority**](authority.md) | Windows | Media | Ansible Vault, PWM Rogue LDAP, AD CS (ESC1), PassTheCert, RBCD |
+| [**Sendai**](sendai.md) | Windows | Media | SMB Shares, changepasswd.py, OU GenericAll, gMSA Dump, AD CS (ESC4/ESC1) |
+| [**Voleur**](voleur.md) | Windows / Linux | Media / Difícil | Kerberos Only, Excel Cracking, WriteSPN, Restore-ADObject, DPAPI, WSL Backups |
+

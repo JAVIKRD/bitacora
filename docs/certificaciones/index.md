@@ -1,16 +1,28 @@
 # 🏆 Certificaciones y Laboratorios
 
-Seguimiento de rutas de estudio, acreditaciones profesionales y progreso en entornos empresariales simulados de Hack The Box.
+Seguimiento de rutas de estudio, acreditaciones profesionales y progreso en entornos empresariales simulados de Hack The Box y CyberWarFare Labs.
 
 ---
 
 ## 📜 Certificaciones
 
-Rutas de preparación, metodologías de estudio y seguimiento de certificaciones de seguridad ofensiva.
+Acreditaciones profesionales y certificaciones de seguridad ofensiva obtenidas.
 
-| Certificación | Emisor | Estado | Enfoque principal |
-| :--- | :--- | :--- | :--- |
-| <!-- TODO: completar (ej. CPTS, OSCP, eCPPT) --> | <!-- TODO: completar (ej. Hack The Box, OffSec) --> | <!-- TODO: En progreso / Obtenida --> | <!-- TODO: Active Directory, Web, Infraestructura --> |
+| Certificación | Emisor | Estado | Credencial ID | Enfoque principal |
+| :--- | :--- | :--- | :--- | :--- |
+| **CRTA (Certified Red Team Analyst)** | CyberWarFare Labs | :white_check_mark: **Obtenida** | `CRTA-6acf05e7a8a9c04132dc91f9` | Active Directory Attacks, Red Teaming, Kerberos, Lateral Movement, Post-Explotación |
+
+### Certificados Oficiales
+
+<div class="grid cards" markdown>
+
+-   __CRTA — Certified Red Team Analyst (CyberWarFare Labs)__
+
+    ---
+
+    ![Certificado CRTA](assets/crta.png)
+
+</div>
 
 ---
 
@@ -18,9 +30,28 @@ Rutas de preparación, metodologías de estudio y seguimiento de certificaciones
 
 Entornos empresariales completos simulados a gran escala para auditorías de Active Directory, pivoting avanzado y post-explotación corporativa.
 
-| ProLab | Dificultad | Tecnologías y Vectores | Progreso |
-| :--- | :--- | :--- | :--- |
-| <!-- TODO: completar (ej. Dante, Offshore, Zephyr, Cybernetics) --> | <!-- TODO: Media / Difícil / Insane --> | <!-- TODO: AD, Pivoting, Kerberos, Evasión --> | <!-- TODO: % banderas obtenidas --> |
+| ProLab | Dificultad | Tecnologías y Vectores | Progreso | Certificado |
+| :--- | :--- | :--- | :--- | :--- |
+| **Dante** | Media | Linux, Windows, Active Directory, Pivoting, Explotación Web | :white_check_mark: **Completado (100%)** | `HTBCERT-01FCB29428` |
+| **Zephyr** | Difícil | Active Directory, Kerberos, Pivoting avanzado, C2, Evasión | :white_check_mark: **Completado (100%)** | `HTBCERT-BB66CB9484` |
+
+### Certificados de Finalización ProLabs
+
+<div class="grid cards" markdown>
+
+-   __Dante — Certificate of Completion__
+
+    ---
+
+    ![Certificado Dante](assets/dante.png)
+
+-   __Zephyr — Certificate of Completion__
+
+    ---
+
+    ![Certificado Zephyr](assets/zephyr.png)
+
+</div>
 
 ---
 
@@ -33,7 +64,7 @@ Escenarios prácticos focalizados y retos tácticos empresariales completados en
 | **Mythical** | Hack The Box | :white_check_mark: **Completado (100%)** | Active Directory, Pivoting, C2, Explotación avanzada |
 | **Puppet** | Hack The Box | :white_check_mark: **Completado (100%)** | Active Directory, C2, Gestión de identidades, PrivEsc |
 
-### Certificados de Finalización
+### Certificados de Finalización Mini ProLabs
 
 <div class="grid cards" markdown>
 
@@ -50,3 +81,4 @@ Escenarios prácticos focalizados y retos tácticos empresariales completados en
     ![Certificado Puppet](assets/puppet.png)
 
 </div>
+
