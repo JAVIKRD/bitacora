@@ -3,7 +3,10 @@
    Inspirado en la estética de extictz: fondo negro profundo, rojo hacker y banner
    ========================================================================== */
 
+:root,
 [data-md-color-scheme="slate"] {
+  --md-sidebar-width:             16.5rem;
+
   /* Fondo negro profundo y superficies estilo GitBook Dark */
   --md-default-bg-color:          #07080a;
   --md-default-bg-color--light:   #0d0f14;
@@ -80,58 +83,196 @@
   border-radius: 20px;
 }
 
-/* Barra lateral de navegación */
-.md-sidebar--primary {
-  background-color: #07080a;
-  border-right: 1px solid #171a21;
+/* Barra lateral de navegación estilo GitBook (extictz) */
+.md-sidebar--primary,
+.md-sidebar--primary .md-sidebar__scrollwrap,
+.md-sidebar--primary .md-sidebar__inner {
+  background-color: #07080a !important;
+  border-right: 1px solid #14171f;
 }
 
-.md-nav {
-  font-size: 0.85rem;
+@media screen and (min-width: 76.25em) {
+  .md-sidebar--primary {
+    width: 16.5rem !important;
+  }
 }
 
-.md-nav__link {
-  color: #c9d1d9;
-  transition: all 0.15s ease;
-  padding: 0.35rem 0.6rem;
-  border-radius: 5px;
-}
-
-.md-nav__link:hover {
-  color: #ffffff;
-  background-color: rgba(255, 255, 255, 0.05);
-}
-
-/* Elemento activo del menú: limpio, sin fondo rojo ni barra vertical */
-.md-nav__link--active,
-.md-nav__item--active > .md-nav__link,
-.md-nav__link--active:focus,
-.md-nav__link--active:hover {
-  color: #ffffff !important;
-  font-weight: 600;
-  background-color: transparent !important;
-}
-
-.md-nav__item--active > .md-nav__link::before {
-  content: none !important;
-}
-
-/* Ocultar completamente la flecha del acordeón y su botón lateral */
-.md-nav__icon,
-.md-nav__link .md-icon,
-.md-nav__container > label.md-nav__link,
-label.md-nav__link {
+/* Ocultar tabla de contenidos secundaria en la barra lateral izquierda */
+.md-sidebar--primary .md-nav--secondary {
   display: none !important;
 }
 
-.md-nav__container {
-  display: block !important;
+.md-nav {
+  font-size: 0.88rem;
 }
 
-.md-nav__container > a.md-nav__link {
-  display: block !important;
+/* Enlaces generales del menú - compactos estilo GitBook ("pegados" pero legibles) */
+.md-sidebar--primary .md-nav__link,
+.md-nav--primary .md-nav__link {
+  color: #8b949e;
+  transition: all 0.15s ease;
+  padding: 0.26rem 0.6rem !important;
+  margin: 0.04rem 0 !important;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  font-size: 0.88rem;
+  line-height: 1.4 !important;
+}
+
+.md-sidebar--primary .md-nav__link:hover,
+.md-nav--primary .md-nav__link:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+/* Reducción estricta de espacios en ítems y listas de la barra lateral */
+.md-sidebar--primary .md-nav__item {
+  padding: 0 !important;
+  margin: 0.05rem 0 !important;
+}
+
+.md-sidebar--primary .md-nav__list {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* El contenedor .md-nav__container envuelve título y toggle: sin padding/margin redundante */
+.md-sidebar--primary .md-nav__container,
+.md-sidebar--primary div.md-nav__link.md-nav__container {
+  padding: 0 !important;
+  margin: 0 !important;
+  background-color: transparent !important;
+}
+
+/* Categorías desplegables (MÁQUINAS HTB, HERRAMIENTAS, MIS NOTAS) */
+.md-sidebar--primary .md-nav__item--nested {
+  margin-top: 0.35rem !important;
+  margin-bottom: 0.05rem !important;
+}
+
+.md-sidebar--primary .md-nav__item--nested > .md-nav__container > a.md-nav__link,
+.md-sidebar--primary .md-nav__item--nested > a.md-nav__link {
+  text-transform: uppercase;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #f0f6fc !important;
+  padding: 0.26rem 0.6rem !important;
+  margin: 0 !important;
+  background-color: transparent !important;
+  border-left: none !important;
+}
+
+.md-sidebar--primary .md-nav__item--nested > .md-nav__container > a.md-nav__link:hover,
+.md-sidebar--primary .md-nav__item--nested > a.md-nav__link:hover {
+  color: #ffffff !important;
+  background-color: transparent !important;
+}
+
+/* Enlaces directos de primer nivel (Bitácora de javik, Certificaciones, Metodología AD, Mi Entorno) */
+.md-nav > .md-nav__list > .md-nav__item:not(.md-nav__item--nested) > .md-nav__link {
+  font-weight: 500;
+  font-size: 0.88rem;
+  padding: 0.26rem 0.6rem !important;
+  margin: 0.04rem 0 !important;
+}
+
+/* Indicador vertical rojo brillante para enlace activo de primer nivel */
+.md-nav > .md-nav__list > .md-nav__item:not(.md-nav__item--nested).md-nav__item--active > .md-nav__link {
+  color: #ff3838 !important;
+  font-weight: 600 !important;
+  background-color: transparent !important;
+  border-left: 3px solid #ff3838 !important;
+  border-radius: 0 4px 4px 0 !important;
+  padding-left: 0.6rem !important;
+}
+
+.md-nav > .md-nav__list > .md-nav__item:not(.md-nav__item--nested).md-nav__item--active > .md-nav__link:hover {
+  color: #ff5252 !important;
+  background-color: rgba(255, 56, 56, 0.08) !important;
+}
+
+/* Subpáginas activas (estilo pill/cápsula oscuro de SWAKS en GitBook) */
+nav.md-nav[data-md-level="1"] .md-nav__item--active > .md-nav__link,
+nav.md-nav[data-md-level="1"] .md-nav__link--active {
+  color: #ffffff !important;
+  background-color: #1a1e28 !important;
+  font-weight: 600 !important;
+  border-radius: 6px !important;
+  border-left: none !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Contenedor de sección desglosable / acordeón */
+.md-nav__container {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
   width: 100%;
 }
+
+.md-nav__container > a.md-nav__link,
+.md-nav__item--nested > a.md-nav__link {
+  flex: 1;
+  white-space: nowrap;
+}
+
+/* Evitar que los títulos de categoría se corten con elipsis */
+.md-nav__container > a.md-nav__link .md-ellipsis,
+.md-nav__item--nested > a.md-nav__link .md-ellipsis {
+  overflow: visible !important;
+  text-overflow: clip !important;
+  white-space: nowrap !important;
+}
+
+/* Botón flecha / toggle para desglosar y plegar paneles */
+.md-sidebar--primary .md-nav__container > label.md-nav__link,
+.md-sidebar--primary .md-nav__item--nested > label.md-nav__link {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  padding: 0.18rem 0.35rem !important;
+  margin: 0 !important;
+  color: #8b949e !important;
+  border-radius: 4px;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.md-sidebar--primary .md-nav__container > label.md-nav__link:hover,
+.md-sidebar--primary .md-nav__item--nested > label.md-nav__link:hover {
+  color: #ff3838 !important;
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Cuando una categoría está plegada, colapsar completamente su subárbol para evitar espacio muerto */
+.md-sidebar--primary .md-nav__toggle:not(:checked) ~ .md-nav {
+  display: none !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.md-sidebar--primary .md-nav__toggle:checked ~ .md-nav {
+  display: block !important;
+  height: auto !important;
+  padding-left: 0.35rem;
+}
+
+.md-nav__icon {
+  display: inline-block !important;
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.md-nav__icon svg {
+  fill: currentColor;
+}
+
+
+
 
 /* Enlaces generales */
 .md-typeset a,

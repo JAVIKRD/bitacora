@@ -45,32 +45,34 @@ markdown_extensions:
 
 nav:
   - 🎯 Bitácora de javik: index.md
-  - 💀 Máquinas HTB:
+  - 🏆 CERTIFICACIONES: certificaciones/index.md
+  - 🕸️ METODOLOGÍA AD: metodologia-ad/index.md
+  - 🖥️ MI ENTORNO: mi-entorno/index.md
+  - 💀 MÁQUINAS HTB:
       - maquinas/htb/index.md
-      - Administrator: maquinas/htb/administrator.md
-      - BabyTwo: maquinas/htb/babytwo.md
-      - Delegate: maquinas/htb/delegate.md
-      - TombWatcher: maquinas/htb/tombwatcher.md
-      - EscapeTwo: maquinas/htb/escapetwo.md
-      - Breach: maquinas/htb/breach.md
-      - Media: maquinas/htb/media.md
-      - Authority: maquinas/htb/authority.md
-      - Sendai: maquinas/htb/sendai.md
-      - Voleur: maquinas/htb/voleur.md
-
-  - 🛠️ Herramientas:
+      - 💻 Administrator: maquinas/htb/administrator.md
+      - 🛡️ BabyTwo: maquinas/htb/babytwo.md
+      - 🔑 Delegate: maquinas/htb/delegate.md
+      - ⏳ TombWatcher: maquinas/htb/tombwatcher.md
+      - 🚪 EscapeTwo: maquinas/htb/escapetwo.md
+      - ⚡ Breach: maquinas/htb/breach.md
+      - 🎬 Media: maquinas/htb/media.md
+      - 🏛️ Authority: maquinas/htb/authority.md
+      - 🏢 Sendai: maquinas/htb/sendai.md
+      - 🦊 Voleur: maquinas/htb/voleur.md
+  - 🛠️ HERRAMIENTAS:
       - herramientas/index.md
-      - NetExec (NXC): herramientas/nxc.md
-      - Sliver C2: herramientas/sliver-c2.md
-      - SeImpersonatePrivilege: herramientas/seimpersonate.md
-      - Enumeración MSSQL: herramientas/mssql.md
-      - Chisel & Pivoting: herramientas/chisel-pivoting.md
-  - 🏆 Certificaciones: certificaciones/index.md
-  - Mis Notas:
+      - ⚡ NetExec (NXC): herramientas/nxc.md
+      - 🗡️ Sliver C2: herramientas/sliver-c2.md
+      - 🎭 SeImpersonatePrivilege: herramientas/seimpersonate.md
+      - 🗄️ Enumeración MSSQL: herramientas/mssql.md
+      - 🔌 Chisel & Pivoting: herramientas/chisel-pivoting.md
+  - MIS NOTAS:
       - mis-notas/index.md
-      - Configuración de AD Básico: mis-notas/configuracion-ad-basico.md
-      - Abuso de AD CS (ESC1): mis-notas/ataques-adcs-esc1.md
-      - ¿Cómo Funciona Kerberos?: mis-notas/como-funciona-kerberos.md
-      - Tipos de Tickets Kerberos: mis-notas/tipos-de-tickets-kerberos.md
-      - Creación de Tickets (Golden y Silver): mis-notas/creacion-de-tickets.md
-      - Ataques Kerberos (AS-REP Roasting): mis-notas/kerberos-ataques.md
+      - 🏰 Configuración de AD Básico: mis-notas/configuracion-ad-basico.md
+      - 📜 Abuso de AD CS (ESC1): mis-notas/ataques-adcs-esc1.md
+      - 🛡️ ¿Cómo Funciona Kerberos?: mis-notas/como-funciona-kerberos.md
+      - 🎫 Tipos de Tickets Kerberos: mis-notas/tipos-de-tickets-kerberos.md
+      - 🎟️ Creación de Tickets (Golden y Silver): mis-notas/creacion-de-tickets.md
+      - 🔥 Ataques Kerberos (AS-REP Roasting): mis-notas/kerberos-ataques.md
+
