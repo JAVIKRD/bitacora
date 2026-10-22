@@ -1,0 +1,1719 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../ataques-adcs-esc1/">
+      
+      
+        <link rel="next" href="../tipos-de-tickets-kerberos/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/lucifer.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>🛡️ ¿Cómo Funciona Kerberos? - Bitácora de javik</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../estilos/gruvbox.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#como-funciona-kerberos" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Bitácora de javik" class="md-header__button md-logo" aria-label="Bitácora de javik" data-md-component="logo">
+      
+  <img src="../../assets/lucifer.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Bitácora de javik
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              🛡️ ¿Cómo Funciona Kerberos?
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Bitácora de javik" class="md-nav__button md-logo" aria-label="Bitácora de javik" data-md-component="logo">
+      
+  <img src="../../assets/lucifer.png" alt="logo">
+
+    </a>
+    Bitácora de javik
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎯 Bitácora de javik
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../certificaciones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏆 CERTIFICACIONES
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../metodologia-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🕸️ METODOLOGÍA AD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mi-entorno/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🖥️ MI ENTORNO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../maquinas/htb/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💀 MÁQUINAS HTB
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    💀 MÁQUINAS HTB
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/administrator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💻 Administrator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/babytwo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛡️ BabyTwo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/delegate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🔑 Delegate
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/tombwatcher/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ⏳ TombWatcher
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/escapetwo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🚪 EscapeTwo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/breach/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ⚡ Breach
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/media/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎬 Media
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/authority/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏛️ Authority
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/sendai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏢 Sendai
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/voleur/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🦊 Voleur
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../herramientas/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛠️ HERRAMIENTAS
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🛠️ HERRAMIENTAS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../herramientas/nxc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ⚡ NetExec (NXC)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../herramientas/sliver-c2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🗡️ Sliver C2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../herramientas/seimpersonate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎭 SeImpersonatePrivilege
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../herramientas/mssql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🗄️ Enumeración MSSQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../herramientas/chisel-pivoting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🔌 Chisel & Pivoting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MIS NOTAS
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    MIS NOTAS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuracion-ad-basico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏰 Configuración de AD Básico
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ataques-adcs-esc1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📜 Abuso de AD CS (ESC1)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛡️ ¿Cómo Funciona Kerberos?
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛡️ ¿Cómo Funciona Kerberos?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion-a-kerberos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introducción a Kerberos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#los-4-protagonistas-clave-de-kerberos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Los 4 Protagonistas Clave de Kerberos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arquitectura-interna-del-kdc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arquitectura Interna del KDC
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ciclo-de-autenticacion-paso-a-paso-ejemplo-practico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ciclo de Autenticación Paso a Paso (Ejemplo Práctico)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ciclo de Autenticación Paso a Paso (Ejemplo Práctico)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-as-req-rightarrow-as-rep-solicitud-y-entrega-del-tgt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. AS-REQ $\rightarrow$ AS-REP (Solicitud y entrega del TGT)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-tgs-req-rightarrow-tgs-rep-solicitud-del-ticket-de-servicio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. TGS-REQ $\rightarrow$ TGS-REP (Solicitud del Ticket de Servicio)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-ap-req-presentacion-del-ticket-al-servidor-final" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. AP-REQ (Presentación del ticket al Servidor Final)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-validacion-y-autorizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Validación y Autorización
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terminologia-de-mensajes-kerberos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terminología de Mensajes Kerberos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diferencia-fundamental-tgt-vs-ticket-de-servicio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diferencia Fundamental: TGT vs. Ticket de Servicio
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tipos-de-tickets-kerberos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎫 Tipos de Tickets Kerberos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../creacion-de-tickets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎟️ Creación de Tickets (Golden y Silver)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kerberos-ataques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🔥 Ataques Kerberos (AS-REP Roasting)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion-a-kerberos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introducción a Kerberos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#los-4-protagonistas-clave-de-kerberos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Los 4 Protagonistas Clave de Kerberos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arquitectura-interna-del-kdc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arquitectura Interna del KDC
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ciclo-de-autenticacion-paso-a-paso-ejemplo-practico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ciclo de Autenticación Paso a Paso (Ejemplo Práctico)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ciclo de Autenticación Paso a Paso (Ejemplo Práctico)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-as-req-rightarrow-as-rep-solicitud-y-entrega-del-tgt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. AS-REQ $\rightarrow$ AS-REP (Solicitud y entrega del TGT)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-tgs-req-rightarrow-tgs-rep-solicitud-del-ticket-de-servicio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. TGS-REQ $\rightarrow$ TGS-REP (Solicitud del Ticket de Servicio)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-ap-req-presentacion-del-ticket-al-servidor-final" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. AP-REQ (Presentación del ticket al Servidor Final)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-validacion-y-autorizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Validación y Autorización
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terminologia-de-mensajes-kerberos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terminología de Mensajes Kerberos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diferencia-fundamental-tgt-vs-ticket-de-servicio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diferencia Fundamental: TGT vs. Ticket de Servicio
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="como-funciona-kerberos">¿Cómo Funciona Kerberos?<a class="headerlink" href="#como-funciona-kerberos" title="Permanent link">&para;</a></h1>
+<p>Guía comprensiva sobre el funcionamiento interno de <strong>Kerberos</strong>, el protocolo de autenticación predeterminado en entornos de red basados en <strong>Active Directory</strong>: entidades participantes, estructura del KDC, ciclo de vida de los tickets y analogías prácticas.</p>
+<hr />
+<h2 id="introduccion-a-kerberos">Introducción a Kerberos<a class="headerlink" href="#introduccion-a-kerberos" title="Permanent link">&para;</a></h2>
+<p>Kerberos es un protocolo de autenticación mutua de red basado en criptografía de clave simétrica y en un tercero de confianza denominado <strong>KDC (Key Distribution Center)</strong>. Su premisa fundamental es <strong>no transmitir contraseñas en texto claro a través de la red</strong>, utilizando en su lugar un sistema de <strong>tickets cifrados</strong> con marcas de tiempo para validar identidades y autorizar accesos.</p>
+<p>El flujo de intercambio de tickets se estructura de la siguiente manera:</p>
+<p><img alt="Flujo de tickets Kerberos" src="../assets/Pasted%20image%2020261011160047.png" /></p>
+<p>Esquema de referencia del protocolo:</p>
+<p><img alt="Referencia visual de Kerberos" src="../assets/Pasted%20image%2020261011155013.png" /></p>
+<hr />
+<h2 id="los-4-protagonistas-clave-de-kerberos">Los 4 Protagonistas Clave de Kerberos<a class="headerlink" href="#los-4-protagonistas-clave-de-kerberos" title="Permanent link">&para;</a></h2>
+<p>Para comprender el flujo, es fundamental identificar a los cuatro actores principales:</p>
+<ol>
+<li><strong>El Cliente (Usuario o Equipo)</strong>: La entidad que solicita autenticarse en el dominio y acceder a un recurso compartido o servicio de red.</li>
+<li><strong>El KDC (Key Distribution Center)</strong>: El servicio central que reside en los Controladores de Dominio (DC) y gestiona la emisión, validación y sellado criptográfico de todos los tickets.</li>
+<li><strong>El Ticket</strong>: La credencial digital temporal cifrada que acredita la identidad y membresías del usuario ante el KDC o ante un servicio específico.</li>
+<li><strong>El Servicio de Destino (Resource Server)</strong>: El servidor o aplicación final (compartición SMB, base de datos MSSQL, servidor web IIS, servicio WinRM) al que el cliente desea conectarse.</li>
+</ol>
+<hr />
+<h2 id="arquitectura-interna-del-kdc">Arquitectura Interna del KDC<a class="headerlink" href="#arquitectura-interna-del-kdc" title="Permanent link">&para;</a></h2>
+<p>El KDC no es necesariamente un servidor físico independiente, sino un conjunto de servicios que se ejecutan de forma nativa en cada Controlador de Dominio de Active Directory:</p>
+<p><img alt="Componentes del KDC" src="../assets/Pasted%20image%2020261011162916.png" /></p>
+<p>El KDC se compone principalmente de:</p>
+<ol>
+<li>
+<p><strong>AS (Authentication Service)</strong>:<br />
+   Es el servicio de autenticación inicial. Recibe la petición del usuario (<code>AS-REQ</code>), valida su identidad mediante la preautenticación y le entrega un <strong>TGT (Ticket-Granting Ticket)</strong> (<code>AS-REP</code>).</p>
+</li>
+<li>
+<p><strong>TGS (Ticket-Granting Service)</strong>:<br />
+   Es el servicio emisor de tickets para recursos específicos. Recibe el TGT presentado por el usuario (<code>TGS-REQ</code>), comprueba su validez y emite un <strong>Ticket de Servicio</strong> cifrado con la clave del servicio de destino (<code>TGS-REP</code>).</p>
+</li>
+<li>
+<p><strong>Base de Datos NTDS.dit</strong>:<br />
+   El almacén central de Active Directory donde residen las cuentas, atributos y claves secretas (hashes derivados de las contraseñas) de todos los usuarios, máquinas, servicios y de la cuenta especial <code>krbtgt</code>.</p>
+</li>
+<li>
+<p><strong>El PAC (Privilege Attribute Certificate)</strong>:<br />
+   Es una estructura de datos generada por el KDC e insertada dentro del ticket Kerberos. Contiene el SID del usuario, los SIDs de los grupos a los que pertenece y los privilegios asignados. El PAC está firmado criptográficamente por el KDC (firma del servidor y firma del KDC) para evitar que el cliente pueda alterar sus permisos.</p>
+</li>
+</ol>
+<hr />
+<h2 id="ciclo-de-autenticacion-paso-a-paso-ejemplo-practico">Ciclo de Autenticación Paso a Paso (Ejemplo Práctico)<a class="headerlink" href="#ciclo-de-autenticacion-paso-a-paso-ejemplo-practico" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><strong>Escenario:</strong> El usuario <code>javi</code> necesita acceder a una carpeta compartida por SMB (<code>CIFS/fileserver.domain.com</code>) en un servidor de la empresa.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>sequenceDiagram
+    autonumber
+    actor Cliente as Usuario (javi)
+    participant AS as KDC: Authentication Service
+    participant TGS as KDC: Ticket-Granting Service
+    participant Servidor as Servidor de Archivos (SMB)
+
+    Cliente-&gt;&gt;AS: AS-REQ (Solicitud de TGT con preautenticación)
+    AS--&gt;&gt;Cliente: AS-REP (TGT cifrado con krbtgt + Clave de Sesión)
+
+    Cliente-&gt;&gt;TGS: TGS-REQ (Presenta TGT + SPN solicitado)
+    TGS--&gt;&gt;Cliente: TGS-REP (Ticket de Servicio cifrado con clave del servicio)
+
+    Cliente-&gt;&gt;Servidor: AP-REQ (Presenta Ticket de Servicio)
+    Servidor--&gt;&gt;Cliente: Validación de PAC y autorización de acceso
+</code></pre></div>
+<h3 id="1-as-req-rightarrow-as-rep-solicitud-y-entrega-del-tgt">1. AS-REQ $\rightarrow$ AS-REP (Solicitud y entrega del TGT)<a class="headerlink" href="#1-as-req-rightarrow-as-rep-solicitud-y-entrega-del-tgt" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Petición (<code>AS-REQ</code>):</strong> El cliente cifra una marca de tiempo actual con la clave derivada de su contraseña y la envía al KDC.</li>
+<li><strong>Respuesta (<code>AS-REP</code>):</strong> El KDC descifra el timestamp con el hash almacenado en <code>NTDS.dit</code>. Si es válido, emite el <strong>TGT (Ticket-Granting Ticket)</strong>, el cual va cifrado con el hash secreto de la cuenta <strong><code>krbtgt</code></strong>, además de una clave de sesión compartida.</li>
+<li><em>Analogía:</em> Te presentas en la recepción de un edificio con tu documento de identidad y te entregan una tarjeta de visitante general.</li>
+</ul>
+<h3 id="2-tgs-req-rightarrow-tgs-rep-solicitud-del-ticket-de-servicio">2. TGS-REQ $\rightarrow$ TGS-REP (Solicitud del Ticket de Servicio)<a class="headerlink" href="#2-tgs-req-rightarrow-tgs-rep-solicitud-del-ticket-de-servicio" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Petición (<code>TGS-REQ</code>):</strong> El cliente presenta su TGT intacto al KDC junto con el identificador del servicio al que desea acceder (<strong>SPN - Service Principal Name</strong>, por ejemplo <code>cifs/fileserver.domain.com</code>).</li>
+<li><strong>Respuesta (<code>TGS-REP</code>):</strong> El TGS descifra el TGT utilizando la clave de <code>krbtgt</code>, comprueba la vigencia y genera un <strong>Ticket de Servicio (TGS)</strong> cifrado con la clave secreta de la cuenta bajo la cual corre el servicio de destino.</li>
+<li><em>Analogía:</em> Presentas tu tarjeta de visitante general en el mostrador del departamento y solicitas un pase para ingresar a la sala de contabilidad.</li>
+</ul>
+<h3 id="3-ap-req-presentacion-del-ticket-al-servidor-final">3. AP-REQ (Presentación del ticket al Servidor Final)<a class="headerlink" href="#3-ap-req-presentacion-del-ticket-al-servidor-final" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Petición (<code>AP-REQ</code>):</strong> El cliente se conecta directamente al servidor de archivos y le entrega el Ticket de Servicio.</li>
+<li><em>Analogía:</em> Muestras el pase específico en la puerta de la sala de contabilidad para que te permitan entrar.</li>
+</ul>
+<h3 id="4-validacion-y-autorizacion">4. Validación y Autorización<a class="headerlink" href="#4-validacion-y-autorizacion" title="Permanent link">&para;</a></h3>
+<ul>
+<li>El servidor de archivos descifra el ticket utilizando su propia clave secreta (hash de su cuenta de máquina o cuenta de servicio).</li>
+<li>Extrae el <strong>PAC</strong>, inspecciona los grupos del usuario y decide si sus permisos (NTFS / Share permissions) le autorizan a abrir la carpeta.</li>
+<li><em>Analogía:</em> El guardia de la sala comprueba que el pase tenga el sello auténtico y revisa si estás en la lista de personas autorizadas a manipular los expedientes.</li>
+</ul>
+<hr />
+<h2 id="terminologia-de-mensajes-kerberos">Terminología de Mensajes Kerberos<a class="headerlink" href="#terminologia-de-mensajes-kerberos" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Mensaje</th>
+<th style="text-align: left;">Función Técnica</th>
+<th style="text-align: left;">Significado en Palabras Sencillas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong><code>AS-REQ</code></strong></td>
+<td style="text-align: left;"><em>Authentication Service Request</em></td>
+<td style="text-align: left;">Petición inicial de inicio de sesión enviada al KDC demostrando identidad con preautenticación.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>AS-REP</code></strong></td>
+<td style="text-align: left;"><em>Authentication Service Response</em></td>
+<td style="text-align: left;">Respuesta del KDC con el Ticket-Granting Ticket (<strong>TGT</strong>) y la clave de sesión inicial.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>TGS-REQ</code></strong></td>
+<td style="text-align: left;"><em>Ticket-Granting Service Request</em></td>
+<td style="text-align: left;">Solicitud enviada al KDC presentando el TGT para solicitar acceso a un servicio específico (<strong>SPN</strong>).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>TGS-REP</code></strong></td>
+<td style="text-align: left;"><em>Ticket-Granting Service Response</em></td>
+<td style="text-align: left;">Entrega del <strong>Ticket de Servicio</strong> cifrado con la clave del recurso solicitado.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>AP-REQ</code></strong></td>
+<td style="text-align: left;"><em>Application Request</em></td>
+<td style="text-align: left;">Entrega del Ticket de Servicio por parte del cliente al servidor final de la aplicación.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>AP-REP</code></strong></td>
+<td style="text-align: left;"><em>Application Response</em></td>
+<td style="text-align: left;">Confirmación opcional de autenticación mutua enviada por el servidor al cliente.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="diferencia-fundamental-tgt-vs-ticket-de-servicio">Diferencia Fundamental: TGT vs. Ticket de Servicio<a class="headerlink" href="#diferencia-fundamental-tgt-vs-ticket-de-servicio" title="Permanent link">&para;</a></h2>
+<p><img alt="Diferencia entre TGT y Ticket de Servicio" src="../assets/Pasted%20image%2020261011171842.png" /></p>
+<ul>
+<li><strong>TGT (Ticket-Granting Ticket)</strong>:</li>
+<li>Cifrado con la clave de la cuenta <strong><code>krbtgt</code></strong>.</li>
+<li>Solo el KDC puede leerlo y descifrarlo.</li>
+<li>Funciona como la acreditación de identidad general para solicitar tickets posteriores.</li>
+<li><strong>Ticket de Servicio (TGS)</strong>:</li>
+<li>Cifrado con la clave de la <strong>cuenta que ejecuta el servicio</strong> (cuenta de máquina <code>SERVER$</code> o cuenta de servicio <code>svc_app</code>).</li>
+<li>Solo el servidor de destino puede descifrarlo.</li>
+<li>Es el pase específico para interactuar con esa aplicación concreta.</li>
+</ul>
+<blockquote>
+<p>[!IMPORTANT]
+<strong>Autenticación no equivale a Autorización:</strong><br />
+Poseer un ticket de servicio válido demuestra quién eres ante el servidor de destino (<strong>Autenticación</strong>), pero los privilegios efectivos dentro de la aplicación dependerán de las listas de control de acceso (ACLs) y directivas del recurso (<strong>Autorización</strong>).</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pie" >
+        
+          
+          <a href="../ataques-adcs-esc1/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 📜 Abuso de AD CS (ESC1)">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                📜 Abuso de AD CS (ESC1)
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../tipos-de-tickets-kerberos/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: 🎫 Tipos de Tickets Kerberos">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              <div class="md-ellipsis">
+                🎫 Tipos de Tickets Kerberos
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.indexes", "navigation.top", "navigation.instant", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

