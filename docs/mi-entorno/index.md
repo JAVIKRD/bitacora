@@ -1,4 +1,4 @@
-# 🖥️ Mi Entorno de Trabajo
+# Mi Entorno de Trabajo
 
 Configuración personalizada de mi estación de trabajo sobre **Arch Linux** optimizada para auditorías de Active Directory, pentesting corporativo y seguridad ofensiva.
 
@@ -10,23 +10,23 @@ Configuración personalizada de mi estación de trabajo sobre **Arch Linux** opt
 
 ---
 
-## 📸 Capturas de Pantalla
+## Capturas de Pantalla
 
-### 🖥️ Escritorio Principal
+### Escritorio Principal
 Entorno minimalista sobre **Hyprland** (Wayland) con **Waybar** superior integrada, wallpaper de *Offensive Security* y gestión limpia de ventanas.
 
 ![Escritorio Principal](assets/primerafoto.png)
 
 ---
 
-### 💻 Terminal y Flujo de Trabajo Ofensivo
+### Terminal y Flujo de Trabajo
 Terminal **Kitty** con **Fish Shell**, **Starship Prompt** y **Tmux**, aprovechando búsqueda inversa difusa (*fuzzy search*) para comandos de reconocimiento y explotación de Active Directory con **NetExec (NXC)**.
 
 ![Terminal y Flujo de Trabajo](assets/segundafoto.png)
 
 ---
 
-## ⚙️ Stack y Componentes del Sistema
+## Stack y Componentes del Sistema
 
 | Componente | Herramienta | Descripción |
 | :--- | :--- | :--- |
@@ -42,7 +42,7 @@ Terminal **Kitty** con **Fish Shell**, **Starship Prompt** y **Tmux**, aprovecha
 
 ---
 
-## 🚀 Instalación y Despliegue de los Dotfiles
+## Instalación y Despliegue de los Dotfiles
 
 El repositorio oficial incluye un script automatizado que comprueba dependencias faltantes y despliega las configuraciones en `~/.config`, realizando copias de seguridad automáticas:
 

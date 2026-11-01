@@ -7,9 +7,9 @@ hide:
   <img src="assets/banner.gif" alt="Bitácora de javik" class="banner-img">
 </div>
 
-# 🎯 Bitácora de javik
+# Bitácora de javik
 
-🧠 Hola, soy javik, un chico apasionado por la ciberseguridad y autodidacta. Creé este entorno para poder compartir lo que hago. Me gustan mucho los temas de Active Directory; ¡espero que te guste y la pases bien!
+Hola, soy javik, un chico apasionado por la ciberseguridad y autodidacta. Creé este entorno para poder compartir lo que hago. Me gustan mucho los temas de Active Directory; ¡espero que te guste y la pases bien!
 
 
 <div class="welcome-box">
@@ -21,14 +21,14 @@ hide:
 </div>
 
 <div class="hero-actions" style="justify-content: center; margin-bottom: 2.5rem;">
-  <a href="mi-entorno/" class="md-button md-button--primary">🖥️ Mi Entorno</a>
-  <a href="certificaciones/" class="md-button">🏆 Certificaciones</a>
-  <a href="maquinas/htb/" class="md-button">💀 Ver Máquinas HTB</a>
-  <a href="mis-notas/" class="md-button">📝 Mis Notas AD</a>
-  <a href="metodologia-ad/" class="md-button">🕸️ Metodología AD</a>
+  <a href="mi-entorno/" class="md-button md-button--primary">Mi Entorno</a>
+  <a href="certificaciones/" class="md-button">Certificaciones</a>
+  <a href="maquinas/htb/" class="md-button">Máquinas HTB</a>
+  <a href="mis-notas/" class="md-button">Mis Notas</a>
+  <a href="metodologia-ad/" class="md-button">Metodología AD</a>
 </div>
 
-## 📌 Secciones principales
+## Secciones principales
 
 <div class="grid cards" markdown>
 

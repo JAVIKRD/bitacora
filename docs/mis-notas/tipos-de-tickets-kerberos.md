@@ -70,7 +70,7 @@ El Golden Ticket no convierte automáticamente a una persona en administrador de
 
 El alcance depende de la validez del ticket, los datos de autorización, la configuración del dominio, los controles del servicio y otros factores. Una falsificación puede permitir privilegios elevados, pero no elimina mágicamente todas las comprobaciones del sistema.
 
-👉 **Ver práctica:** [Creación de Golden Ticket](creacion-de-tickets.md#creacion-de-golden-ticket)
+**Ver práctica:** [Creación de Golden Ticket](creacion-de-tickets.md#creacion-de-golden-ticket)
 
 ---
 
@@ -100,7 +100,7 @@ En este escenario, el objetivo cambia: en lugar de fabricar un TGT, el atacante 
 
 Y ojo: Silver Ticket no significa necesariamente que el acceso vaya a ser limitado o poco importante. Si el servicio comprometido tiene permisos elevados o controla información crítica, el impacto puede ser enorme.
 
-👉 **Ver práctica:** [Creación de Silver Ticket](creacion-de-tickets.md#creacion-de-silver-ticket)
+**Ver práctica:** [Creación de Silver Ticket](creacion-de-tickets.md#creacion-de-silver-ticket)
 
 ---
 

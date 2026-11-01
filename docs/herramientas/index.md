@@ -1,4 +1,4 @@
-# 🛠️ Hojas de Truco (Cheatsheets)
+# Hojas de Truco (Cheatsheets)
 
 Colección organizada de chuletas técnicas, comandos esenciales y guías tácticas para auditorías de seguridad, Active Directory, pivoting y post-explotación.
 
